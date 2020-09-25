@@ -1,0 +1,19 @@
+{
+    "name": "hedeqiang\/jpush",
+    "description": "???? PHP Server SDK",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "hedeqiang",
+            "email": "laravel_code@163.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Hedeqiang\\JPush\\": "./src"
+        }
+    }
+}
