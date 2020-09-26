@@ -24,26 +24,6 @@ class JPush
     }
 
     /**
-     *
-     * @return string
-     */
-    protected function getAuthStr(): string
-    {
-        return base64_encode($this->config->get('appKey') .':'. $this->config->get('masterSecret'));
-    }
-
-    /**
-     * 获取 Header
-     * @return \string[][]
-     */
-    protected function getHeader(): array
-    {
-        return [
-            'Authorization' => 'Basic ' . $this->getAuthStr()
-        ];
-    }
-
-    /**
      * 向某单个设备或者某设备列表推送一条通知、或者消息。
      * @param array $options
      * @return string
@@ -64,12 +44,12 @@ class JPush
      * @param string $type
      * @return string
      */
-    public function getCid($count = 1,$type = 'push')
+    public function getCid(array $query)
     {
-        $query = [
-            'count' => $count,
-            'type'  => $type,
-        ];
+//        $query = [
+//            'count' => $count,
+//            'type'  => $type,
+//        ];
         try {
             $response = $this->get(self::ENDPOINT_TEMPLATE .'/push/cid', $query, $this->getHeader());
             return $response;
@@ -161,7 +141,7 @@ class JPush
     public function groupPush(array $options)
     {
         try {
-            $response = $this->postJson(self::ENDPOINT_TEMPLATE .'/grouppush', $options, $this->getHeader());
+            $response = $this->postJson(self::ENDPOINT_TEMPLATE .'/grouppush', $options, $this->getHeader('group'));
             return $response;
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
@@ -176,10 +156,37 @@ class JPush
     public function groupPushFile(array $options)
     {
         try {
-            $response = $this->postJson(self::ENDPOINT_TEMPLATE .'/grouppush/file', $options, $this->getHeader());
+            $response = $this->postJson(self::ENDPOINT_TEMPLATE .'/grouppush/file', $options, $this->getHeader('group'));
             return $response;
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
+    }
+
+    /**
+     * @param string $type
+     * @return string
+     */
+    protected function getAuthStr(string $type): string
+    {
+        if ($type === 'app')
+            return base64_encode($this->config->get('appKey') .':'. $this->config->get('masterSecret'));
+        else{
+            // group
+            return base64_encode($this->config->get('groupKey') .':'. $this->config->get('group_secret'));
+        }
+    }
+
+
+    /**
+     * 获取 Header
+     * @param string $type
+     * @return string[]
+     */
+    protected function getHeader($type = 'app'): array
+    {
+        return [
+            'Authorization' => 'Basic ' . $this->getAuthStr($type)
+        ];
     }
 }
