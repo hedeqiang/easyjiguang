@@ -1,6 +1,6 @@
 <h1 align="center"> jpush </h1>
 
-<p align="center"> ???? PHP Server SDK.</p>
+<p align="center"> 极光推送 PHP Server SDK.</p>
 
 
 ## Installing
