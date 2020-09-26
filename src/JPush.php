@@ -4,9 +4,12 @@ namespace Hedeqiang\JPush;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
+use Hedeqiang\JPush\Traits\HasHttpRequest;
 
 class JPush
 {
+    use HasHttpRequest;
+
     const ENDPOINT_TEMPLATE = 'https://api.jpush.cn/v3';
 
     const ENDPOINT_VERSION = 'v3';
@@ -30,6 +33,17 @@ class JPush
     }
 
     /**
+     * 获取 Header
+     * @return \string[][]
+     */
+    protected function getHeader(): array
+    {
+        return [
+            'Authorization' => 'Basic ' . $this->getAuthStr()
+        ];
+    }
+
+    /**
      * 向某单个设备或者某设备列表推送一条通知、或者消息。
      * @param array $options
      * @return string
@@ -37,13 +51,8 @@ class JPush
     public function message(array $options)
     {
         try {
-            $client = $this->getHttpClient()->post(self::ENDPOINT_TEMPLATE, [
-                'headers' => [
-                    'Authorization' => 'Basic ' . $this->getAuthStr()
-                ],
-                'json' => $options
-            ]);
-            return $client->getBody()->getContents();
+            $response = $this->postJson(self::ENDPOINT_TEMPLATE . '/push', $options, $this->getHeader());
+            return $response;
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -55,19 +64,15 @@ class JPush
      * @param string $type
      * @return string
      */
-    public function getCid(int $count = 1,string $type = 'push')
+    public function getCid($count = 1,$type = 'push')
     {
+        $query = [
+            'count' => $count,
+            'type'  => $type,
+        ];
         try {
-            $client = $this->getHttpClient()->get(self::ENDPOINT_TEMPLATE .'/push/cid', [
-                'headers' => [
-                    'Authorization' => 'Basic ' . $this->getAuthStr()
-                ],
-                'query' => [
-                    'count' => $count,
-                    'type'  => $type,
-                ]
-            ]);
-            return $client->getBody()->getContents();
+            $response = $this->get(self::ENDPOINT_TEMPLATE .'/push/cid', $query, $this->getHeader());
+            return $response;
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -78,16 +83,11 @@ class JPush
      * @param $options
      * @return string
      */
-    public function validate($options)
+    public function validate(array $options)
     {
         try {
-            $client = $this->getHttpClient()->post(self::ENDPOINT_TEMPLATE . '/push/validate', [
-                'headers' => [
-                    'Authorization' => 'Basic ' . $this->getAuthStr()
-                ],
-                'json' => $options
-            ]);
-            return $client->getBody()->getContents();
+            $response = $this->postJson(self::ENDPOINT_TEMPLATE . '/push/validate', $options, $this->getHeader());
+            return $response;
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -101,13 +101,8 @@ class JPush
     public function batchRegidSingle(array $options)
     {
         try {
-            $client = $this->getHttpClient()->post(self::ENDPOINT_TEMPLATE . '/push/batch/regid/single', [
-                'headers' => [
-                    'Authorization' => 'Basic ' . $this->getAuthStr()
-                ],
-                'json' => $options
-            ]);
-            return $client->getBody()->getContents();
+            $response = $this->postJson(self::ENDPOINT_TEMPLATE . '/push/batch/regid/single', $options, $this->getHeader());
+            return $response;
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -121,13 +116,8 @@ class JPush
     public function batchAliasSingle(array $options)
     {
         try {
-            $client = $this->getHttpClient()->post(self::ENDPOINT_TEMPLATE . '/push/batch/alias/single', [
-                'headers' => [
-                    'Authorization' => 'Basic ' . $this->getAuthStr()
-                ],
-                'json' => $options
-            ]);
-            return $client->getBody()->getContents();
+            $response = $this->postJson(self::ENDPOINT_TEMPLATE . '/push/batch/alias/single', $options, $this->getHeader());
+            return $response;
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -138,15 +128,11 @@ class JPush
      * @param $msgid
      * @return string
      */
-    public function delete($msgid)
+    public function revoke($msgid)
     {
         try {
-            $client = $this->getHttpClient()->delete(self::ENDPOINT_TEMPLATE .'/push/' . $msgid , [
-                'headers' => [
-                    'Authorization' => 'Basic ' . $this->getAuthStr()
-                ],
-            ]);
-            return $client->getBody()->getContents();
+            $response = $this->delete(self::ENDPOINT_TEMPLATE .'/push/' . $msgid , $this->getHeader());
+            return $response;
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -160,13 +146,8 @@ class JPush
     public function file(array $options)
     {
         try {
-            $client = $this->getHttpClient()->delete(self::ENDPOINT_TEMPLATE .'/push/file' , [
-                'headers' => [
-                    'Authorization' => 'Basic ' . $this->getAuthStr()
-                ],
-                'json' => $options
-            ]);
-            return $client->getBody()->getContents();
+            $response = $this->postJson(self::ENDPOINT_TEMPLATE .'/push/file', $options, $this->getHeader());
+            return $response;
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -180,45 +161,25 @@ class JPush
     public function groupPush(array $options)
     {
         try {
-            $client = $this->getHttpClient()->delete(self::ENDPOINT_TEMPLATE .'/grouppush' , [
-                'headers' => [
-                    'Authorization' => 'Basic ' . $this->getAuthStr()
-                ],
-                'json' => $options
-            ]);
-            return $client->getBody()->getContents();
+            $response = $this->postJson(self::ENDPOINT_TEMPLATE .'/grouppush', $options, $this->getHeader());
+            return $response;
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
-    }
-
-    public function groupPushFile(array $options)
-    {
-        try {
-            $client = $this->getHttpClient()->delete(self::ENDPOINT_TEMPLATE .'/grouppush/file' , [
-                'headers' => [
-                    'Authorization' => 'Basic ' . $this->getAuthStr()
-                ],
-                'json' => $options
-            ]);
-            return $client->getBody()->getContents();
-        } catch (GuzzleException $e) {
-            return $e->getResponse()->getBody()->getContents();
-        }
-    }
-
-
-    protected function getHttpClient(): Client
-    {
-        return new Client($this->guzzleOptions);
     }
 
     /**
+     * 应用分组文件推送（VIP专属接口）
      * @param array $options
      * @return array
      */
-    protected function setGuzzleOptions(array $options): array
+    public function groupPushFile(array $options)
     {
-        $this->guzzleOptions = $options;
+        try {
+            $response = $this->postJson(self::ENDPOINT_TEMPLATE .'/grouppush/file', $options, $this->getHeader());
+            return $response;
+        } catch (GuzzleException $e) {
+            return $e->getResponse()->getBody()->getContents();
+        }
     }
 }
