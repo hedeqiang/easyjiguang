@@ -72,6 +72,19 @@ trait HasHttpRequest
     }
 
     /**
+     * @param $endpoint
+     * @param array $headers
+     * @return array
+     */
+    protected function put($endpoint,$params, $headers = [])
+    {
+        return $this->request('put', [
+            'headers' => $headers,
+            'json' => $params,
+        ]);
+    }
+
+    /**
      * Make a http request.
      *
      * @param array $options http://docs.guzzlephp.org/en/latest/request-options.html
