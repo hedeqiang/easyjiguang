@@ -71,12 +71,14 @@ trait HasHttpRequest
     /**
      * @param $endpoint
      * @param array $headers
+     * @param array $query
      * @return array
      */
-    protected function delete($endpoint, $headers = [])
+    protected function delete($endpoint, $headers = [],$query = [])
     {
         return $this->request('delete',$endpoint,[
             'headers' => $headers,
+            'query' => $query,
         ]);
     }
 

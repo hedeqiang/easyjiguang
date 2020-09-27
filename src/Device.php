@@ -30,8 +30,7 @@ class Device
     public function getDevices($registration_id)
     {
         try {
-            $response = $this->get(self::ENDPOINT_TEMPLATE .'/devices/'. $registration_id,[], $this->getHeader());
-            return $response;
+            return $this->get(self::ENDPOINT_TEMPLATE .'/devices/'. $registration_id,[], $this->getHeader());
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -46,8 +45,7 @@ class Device
     public function setDevices($registration_id,$options)
     {
         try {
-            $response = $this->postJson(self::ENDPOINT_TEMPLATE .'/devices/'. $registration_id,$options, $this->getHeader());
-            return $response;
+            return $this->postJson(self::ENDPOINT_TEMPLATE .'/devices/'. $registration_id,$options, $this->getHeader());
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -62,8 +60,7 @@ class Device
     public function getAliases($alias_value, $platform = ['platform ' => 'all'])
     {
         try {
-            $response = $this->get(self::ENDPOINT_TEMPLATE .'/aliases/'. $alias_value,$platform, $this->getHeader());
-            return $response;
+            return $this->get(self::ENDPOINT_TEMPLATE .'/aliases/'. $alias_value,$platform, $this->getHeader());
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -75,11 +72,10 @@ class Device
      * @param string[] $platform
      * @return array
      */
-    public function deleteAliases($alias_value, $platform = ['platform ' => 'all'])
+    public function deleteAliases($alias_value, $platform = 'all')
     {
         try {
-            $response = $this->delete(self::ENDPOINT_TEMPLATE .'/aliases/'. $alias_value,$platform, $this->getHeader());
-            return $response;
+            return $this->delete(self::ENDPOINT_TEMPLATE .'/aliases/'. $alias_value, $this->getHeader());
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -94,8 +90,7 @@ class Device
     public function removeAliases($alias_value, $options)
     {
         try {
-            $response = $this->postJson(self::ENDPOINT_TEMPLATE .'/aliases/'. $alias_value,$options, $this->getHeader());
-            return $response;
+            return $this->postJson(self::ENDPOINT_TEMPLATE .'/aliases/'. $alias_value,$options, $this->getHeader());
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -108,8 +103,7 @@ class Device
     public function getTags()
     {
         try {
-            $response = $this->get(self::ENDPOINT_TEMPLATE .'/tags',[], $this->getHeader());
-            return $response;
+            return $this->get(self::ENDPOINT_TEMPLATE .'/tags',[], $this->getHeader());
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -121,12 +115,11 @@ class Device
      * @param string $registration_id
      * @return array
      */
-    public function isDerviceInTag(string $tag_value,string $registration_id)
+    public function isDeviceInTag(string $tag_value,string $registration_id)
     {
         try {
-            $response = $this->get(self::ENDPOINT_TEMPLATE .'/tags/' . $tags .'/registration_ids/' . $registration_id,
+            return $this->get(self::ENDPOINT_TEMPLATE .'/tags/' . $tag_value .'/registration_ids/' . $registration_id,
                 [], $this->getHeader());
-            return $response;
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -141,9 +134,8 @@ class Device
     public function updateTag(string $tag_value,array $options)
     {
         try {
-            $response = $this->postJson(self::ENDPOINT_TEMPLATE .'/tags/' .$tag_value,
+            return $this->postJson(self::ENDPOINT_TEMPLATE .'/tags/' .$tag_value,
                 $options, $this->getHeader());
-            return $response;
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -158,9 +150,8 @@ class Device
     public function deleteTag(string $tag_value,$platform = ['platform ' => 'all'])
     {
         try {
-            $response = $this->delete(self::ENDPOINT_TEMPLATE .'/tags/' .$tag_value,
-                $platform, $this->getHeader());
-            return $response;
+            return $this->delete(self::ENDPOINT_TEMPLATE .'/tags/' .$tag_value,
+                 $this->getHeader(),$platform);
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -174,9 +165,8 @@ class Device
     public function status(array $options)
     {
         try {
-            $response = $this->postJson(self::ENDPOINT_TEMPLATE .'/devices/status/',
+            return $this->postJson(self::ENDPOINT_TEMPLATE .'/devices/status/',
                 $options, $this->getHeader());
-            return $response;
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
