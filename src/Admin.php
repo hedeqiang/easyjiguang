@@ -6,7 +6,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Hedeqiang\JPush\Traits\HasHttpRequest;
 
-class Admin
+class Admin extends Base
 {
     use HasHttpRequest;
 
@@ -14,13 +14,6 @@ class Admin
 
     const ENDPOINT_VERSION = 'v1';
 
-    protected $config;
-
-
-    public function __construct(array $config)
-    {
-        $this->config = new Config($config);
-    }
 
     /**
      * 创建极光 app
@@ -30,9 +23,8 @@ class Admin
     public function createApp($options)
     {
         try {
-            $response = $this->postJson(self::ENDPOINT_TEMPLATE,
+            return $this->postJson(self::ENDPOINT_TEMPLATE,
                 $options, $this->getHeader('dev'));
-            return $response;
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -45,10 +37,10 @@ class Admin
      */
     public function deleteApp(string $appKey)
     {
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,$appKey .'/delete');
         try {
-            $response = $this->delete(self::ENDPOINT_TEMPLATE . '/' . $appKey .'/delete',
+            return $this->delete(self::ENDPOINT_TEMPLATE . '/' . $url,
                 [], $this->getHeader('dev'));
-            return $response;
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -62,45 +54,12 @@ class Admin
      */
     public function uploadCertificate(string $appKey,array $multipart)
     {
+      $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,$appKey .'/certificate');
         try {
-            $response = $this->post(self::ENDPOINT_TEMPLATE . '/' . $appKey .'/certificate',
+            return $this->post(self::ENDPOINT_TEMPLATE . '/' . $url,
                 [],$multipart, $this->getHeader('dev'));
-            return $response;
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
     }
-
-
-
-    /**
-     * @param string $type
-     * @return string
-     */
-    protected function getAuthStr(string $type): string
-    {
-        if ($type === 'app')
-            return base64_encode($this->config->get('appKey') .':'. $this->config->get('masterSecret'));
-        else if($type === 'group'){
-            // group
-            return base64_encode($this->config->get('groupKey') .':'. $this->config->get('group_secret'));
-        }
-        else if($type === 'dev'){
-            return base64_encode($this->config->get('devKey') .':'. $this->config->get('dev_secret'));
-        }
-    }
-
-
-    /**
-     * 获取 Header
-     * @param string $type
-     * @return string[]
-     */
-    protected function getHeader($type = 'app'): array
-    {
-        return [
-            'Authorization' => 'Basic ' . $this->getAuthStr($type)
-        ];
-    }
-
 }

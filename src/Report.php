@@ -6,7 +6,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Hedeqiang\JPush\Traits\HasHttpRequest;
 
-class Report
+class Report extends Base
 {
     use HasHttpRequest;
 
@@ -14,13 +14,6 @@ class Report
 
     const ENDPOINT_VERSION = 'v3';
 
-    protected $config;
-
-
-    public function __construct(array $config)
-    {
-        $this->config = new Config($config);
-    }
 
     /**
      * 送达统计详情（新）
@@ -32,8 +25,9 @@ class Report
 //        $query = [
 //            'msg_id' => $msg_id,
 //        ];
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,'received/detail');
         try {
-            return $this->get('/received/detail', $query, $this->getHeader());
+            return $this->get($url, $query, $this->getHeader());
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -46,8 +40,9 @@ class Report
      */
     public function status(array $options)
     {
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,'status/message');
         try {
-            return $this->postJson(self::ENDPOINT_TEMPLATE . '/status/message', $options, $this->getHeader());
+            return $this->postJson($url, $options, $this->getHeader());
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -63,8 +58,9 @@ class Report
 //        $query = [
 //            'msg_ids' => $msg_ids,
 //        ];
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,'messages/detail');
         try {
-            return $this->get(self::ENDPOINT_TEMPLATE . '/messages/detail', $query, $this->getHeader());
+            return $this->get($url, $query, $this->getHeader());
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -77,8 +73,9 @@ class Report
      */
     public function users(array $query)
     {
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,'users');
         try {
-            return $this->get(self::ENDPOINT_TEMPLATE . '/users', $query, $this->getHeader());
+            return $this->get($url, $query, $this->getHeader());
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -91,8 +88,9 @@ class Report
      */
     public function groupDetail(array $query)
     {
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,'group/messages/detail');
         try {
-            return $this->get(self::ENDPOINT_TEMPLATE . '/group/messages/detail', $query, $this->getHeader('group'));
+            return $this->get($url, $query, $this->getHeader('group'));
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -105,38 +103,11 @@ class Report
      */
     public function groupUsers(array $query)
     {
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,'group/users');
         try {
-            return $this->get(self::ENDPOINT_TEMPLATE . '/group/users', $query, $this->getHeader('group'));
+            return $this->get($url, $query, $this->getHeader('group'));
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
     }
-
-    /**
-     * @param string $type
-     * @return string
-     */
-    protected function getAuthStr(string $type): string
-    {
-        if ($type === 'app')
-            return base64_encode($this->config->get('appKey') .':'. $this->config->get('masterSecret'));
-        else{
-            // group
-            return base64_encode($this->config->get('groupKey') .':'. $this->config->get('group_secret'));
-        }
-    }
-
-
-    /**
-     * 获取 Header
-     * @param string $type
-     * @return string[]
-     */
-    protected function getHeader($type = 'app'): array
-    {
-        return [
-            'Authorization' => 'Basic ' . $this->getAuthStr($type)
-        ];
-    }
-
 }

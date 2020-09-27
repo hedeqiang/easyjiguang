@@ -6,7 +6,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Hedeqiang\JPush\Traits\HasHttpRequest;
 
-class JPush
+class JPush extends Base
 {
     use HasHttpRequest;
 
@@ -14,14 +14,6 @@ class JPush
 
     const ENDPOINT_VERSION = 'v3';
 
-    protected $config;
-
-    protected $guzzleOptions = [];
-
-    public function __construct(array $config)
-    {
-        $this->config = new Config($config);
-    }
 
     /**
      * 向某单个设备或者某设备列表推送一条通知、或者消息。
@@ -30,9 +22,9 @@ class JPush
      */
     public function message(array $options)
     {
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,'push');
         try {
-            $response = $this->postJson(self::ENDPOINT_TEMPLATE . '/push', $options, $this->getHeader());
-            return $response;
+            return $this->postJson($url, $options, $this->getHeader());
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -50,9 +42,9 @@ class JPush
 //            'count' => $count,
 //            'type'  => $type,
 //        ];
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,'push/cid');
         try {
-            $response = $this->get(self::ENDPOINT_TEMPLATE .'/push/cid', $query, $this->getHeader());
-            return $response;
+            return $this->get($url, $query, $this->getHeader());
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -65,9 +57,9 @@ class JPush
      */
     public function validate(array $options)
     {
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,'push/validate');
         try {
-            $response = $this->postJson(self::ENDPOINT_TEMPLATE . '/push/validate', $options, $this->getHeader());
-            return $response;
+            return $this->postJson($url, $options, $this->getHeader());
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -80,9 +72,9 @@ class JPush
      */
     public function batchRegidSingle(array $options)
     {
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,'push/batch/regid/single');
         try {
-            $response = $this->postJson(self::ENDPOINT_TEMPLATE . '/push/batch/regid/single', $options, $this->getHeader());
-            return $response;
+            return $this->postJson($url, $options, $this->getHeader());
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -95,9 +87,9 @@ class JPush
      */
     public function batchAliasSingle(array $options)
     {
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,'push/batch/alias/single');
         try {
-            $response = $this->postJson(self::ENDPOINT_TEMPLATE . '/push/batch/alias/single', $options, $this->getHeader());
-            return $response;
+            return $this->postJson($url, $options, $this->getHeader());
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -110,9 +102,9 @@ class JPush
      */
     public function revoke($msgid)
     {
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,'push/' .$msgid);
         try {
-            $response = $this->delete(self::ENDPOINT_TEMPLATE .'/push/' . $msgid , $this->getHeader());
-            return $response;
+            return $this->delete($url, $this->getHeader());
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -125,9 +117,9 @@ class JPush
      */
     public function file(array $options)
     {
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,'push/file');
         try {
-            $response = $this->postJson(self::ENDPOINT_TEMPLATE .'/push/file', $options, $this->getHeader());
-            return $response;
+            return $this->postJson($url, $options, $this->getHeader());
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -140,9 +132,9 @@ class JPush
      */
     public function groupPush(array $options)
     {
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,'grouppush');
         try {
-            $response = $this->postJson(self::ENDPOINT_TEMPLATE .'/grouppush', $options, $this->getHeader('group'));
-            return $response;
+            return $this->postJson($url, $options, $this->getHeader('group'));
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -155,38 +147,11 @@ class JPush
      */
     public function groupPushFile(array $options)
     {
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,'grouppush/file');
         try {
-            $response = $this->postJson(self::ENDPOINT_TEMPLATE .'/grouppush/file', $options, $this->getHeader('group'));
-            return $response;
+            return $this->postJson($url, $options, $this->getHeader('group'));
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
-    }
-
-    /**
-     * @param string $type
-     * @return string
-     */
-    protected function getAuthStr(string $type): string
-    {
-        if ($type === 'app')
-            return base64_encode($this->config->get('appKey') .':'. $this->config->get('masterSecret'));
-        else{
-            // group
-            return base64_encode($this->config->get('groupKey') .':'. $this->config->get('group_secret'));
-        }
-    }
-
-
-    /**
-     * 获取 Header
-     * @param string $type
-     * @return string[]
-     */
-    protected function getHeader($type = 'app'): array
-    {
-        return [
-            'Authorization' => 'Basic ' . $this->getAuthStr($type)
-        ];
     }
 }

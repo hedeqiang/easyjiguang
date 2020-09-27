@@ -6,7 +6,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Hedeqiang\JPush\Traits\HasHttpRequest;
 
-class File
+class File extends Base
 {
     use HasHttpRequest;
 
@@ -14,13 +14,6 @@ class File
 
     const ENDPOINT_VERSION = 'v3';
 
-    protected $config;
-
-
-    public function __construct(array $config)
-    {
-        $this->config = new Config($config);
-    }
 
     /**
      * 上传文件
@@ -30,8 +23,9 @@ class File
      */
     public function files(string $type,$content)
     {
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,$type);
         try {
-            return $this->post(self::ENDPOINT_TEMPLATE . '/' . $type, $content, $this->getHeader());
+            return $this->post($url, $content, $this->getHeader());
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -44,8 +38,7 @@ class File
     public function getFiles()
     {
         try {
-            return $this->get(self::ENDPOINT_TEMPLATE ,
-                [], $this->getHeader());
+            return $this->get(self::ENDPOINT_TEMPLATE , [], $this->getHeader());
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -58,8 +51,9 @@ class File
      */
     public function deleteFiles(string $file_id)
     {
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,$file_id);
         try {
-            return $this->delete(self::ENDPOINT_TEMPLATE .'/' . $file_id, $this->getHeader());
+            return $this->delete($url, $this->getHeader());
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -72,39 +66,13 @@ class File
      */
     public function getFilesById(string $file_id)
     {
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,$file_id);
         try {
-            return $this->get(self::ENDPOINT_TEMPLATE .'/' . $file_id,
-                [], $this->getHeader());
+            return $this->get($url, [], $this->getHeader());
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
     }
 
-    /**
-     * @param string $type
-     * @return string
-     */
-    protected function getAuthStr(string $type): string
-    {
-        if ($type === 'app')
-            return base64_encode($this->config->get('appKey') .':'. $this->config->get('masterSecret'));
-        else{
-            // group
-            return base64_encode($this->config->get('groupKey') .':'. $this->config->get('group_secret'));
-        }
-    }
-
-
-    /**
-     * 获取 Header
-     * @param string $type
-     * @return string[]
-     */
-    protected function getHeader($type = 'app'): array
-    {
-        return [
-            'Authorization' => 'Basic ' . $this->getAuthStr($type)
-        ];
-    }
 
 }

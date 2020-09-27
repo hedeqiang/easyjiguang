@@ -6,7 +6,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Hedeqiang\JPush\Traits\HasHttpRequest;
 
-class Device
+class Device extends Base
 {
     use HasHttpRequest;
 
@@ -17,11 +17,6 @@ class Device
     protected $config;
 
 
-    public function __construct(array $config)
-    {
-        $this->config = new Config($config);
-    }
-
     /**
      * 查询设备的别名与标签
      * @param $registration_id
@@ -29,8 +24,9 @@ class Device
      */
     public function getDevices($registration_id)
     {
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,'devices/'. $registration_id);
         try {
-            return $this->get(self::ENDPOINT_TEMPLATE .'/devices/'. $registration_id,[], $this->getHeader());
+            return $this->get($url ,[], $this->getHeader());
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -44,8 +40,9 @@ class Device
      */
     public function setDevices($registration_id,$options)
     {
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,'devices/'. $registration_id);
         try {
-            return $this->postJson(self::ENDPOINT_TEMPLATE .'/devices/'. $registration_id,$options, $this->getHeader());
+            return $this->postJson( $url ,$options, $this->getHeader());
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -59,8 +56,9 @@ class Device
      */
     public function getAliases($alias_value, $platform = ['platform ' => 'all'])
     {
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,'aliases/'. $alias_value);
         try {
-            return $this->get(self::ENDPOINT_TEMPLATE .'/aliases/'. $alias_value,$platform, $this->getHeader());
+            return $this->get($url ,$platform, $this->getHeader());
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -74,8 +72,9 @@ class Device
      */
     public function deleteAliases($alias_value, $platform = 'all')
     {
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,'aliases/'. $alias_value);
         try {
-            return $this->delete(self::ENDPOINT_TEMPLATE .'/aliases/'. $alias_value, $this->getHeader());
+            return $this->delete($url, $this->getHeader());
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -89,8 +88,9 @@ class Device
      */
     public function removeAliases($alias_value, $options)
     {
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,'aliases/'. $alias_value);
         try {
-            return $this->postJson(self::ENDPOINT_TEMPLATE .'/aliases/'. $alias_value,$options, $this->getHeader());
+            return $this->postJson($url,$options, $this->getHeader());
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -102,8 +102,9 @@ class Device
      */
     public function getTags()
     {
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,'tags'. $alias_value);
         try {
-            return $this->get(self::ENDPOINT_TEMPLATE .'/tags',[], $this->getHeader());
+            return $this->get($url,[], $this->getHeader());
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -117,9 +118,9 @@ class Device
      */
     public function isDeviceInTag(string $tag_value,string $registration_id)
     {
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,'tags'. 'tags/' . $tag_value .'/registration_ids/' . $registration_id);
         try {
-            return $this->get(self::ENDPOINT_TEMPLATE .'/tags/' . $tag_value .'/registration_ids/' . $registration_id,
-                [], $this->getHeader());
+            return $this->get($url, [], $this->getHeader());
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -133,9 +134,9 @@ class Device
      */
     public function updateTag(string $tag_value,array $options)
     {
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,'tags'. $tag_value);
         try {
-            return $this->postJson(self::ENDPOINT_TEMPLATE .'/tags/' .$tag_value,
-                $options, $this->getHeader());
+            return $this->postJson($url, $options, $this->getHeader());
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -149,9 +150,9 @@ class Device
      */
     public function deleteTag(string $tag_value,$platform = ['platform ' => 'all'])
     {
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,'tags'. $tag_value);
         try {
-            return $this->delete(self::ENDPOINT_TEMPLATE .'/tags/' .$tag_value,
-                 $this->getHeader(),$platform);
+            return $this->delete($url, $this->getHeader(),$platform);
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -164,42 +165,13 @@ class Device
      */
     public function status(array $options)
     {
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,'devices/status/');
         try {
-            return $this->postJson(self::ENDPOINT_TEMPLATE .'/devices/status/',
-                $options, $this->getHeader());
+            return $this->postJson($url, $options, $this->getHeader());
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
     }
 
-
-
-
-    /**
-     * @param string $type
-     * @return string
-     */
-    protected function getAuthStr(string $type): string
-    {
-        if ($type === 'app')
-            return base64_encode($this->config->get('appKey') .':'. $this->config->get('masterSecret'));
-        else{
-            // group
-            return base64_encode($this->config->get('groupKey') .':'. $this->config->get('group_secret'));
-        }
-    }
-
-
-    /**
-     * 获取 Header
-     * @param string $type
-     * @return string[]
-     */
-    protected function getHeader($type = 'app'): array
-    {
-        return [
-            'Authorization' => 'Basic ' . $this->getAuthStr($type)
-        ];
-    }
 
 }

@@ -6,7 +6,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Hedeqiang\JPush\Traits\HasHttpRequest;
 
-class Schedule
+class Schedule extends Base
 {
     use HasHttpRequest;
 
@@ -14,13 +14,6 @@ class Schedule
 
     const ENDPOINT_VERSION = 'v3';
 
-    protected $config;
-
-
-    public function __construct(array $config)
-    {
-        $this->config = new Config($config);
-    }
 
     /**
      * 创建定时任务
@@ -30,8 +23,7 @@ class Schedule
     public function addSchedules($options)
     {
         try {
-            $response = $this->postJson(self::ENDPOINT_TEMPLATE, $options, $this->getHeader());
-            return $response;
+            return $this->postJson(self::ENDPOINT_TEMPLATE, $options, $this->getHeader());
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -46,8 +38,7 @@ class Schedule
     public function getSchedules($page = 1,$query = ['page' => $page])
     {
         try {
-            $response = $this->get(self::ENDPOINT_TEMPLATE, $query, $this->getHeader());
-            return $response;
+            return $this->get(self::ENDPOINT_TEMPLATE, $query, $this->getHeader());
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -61,9 +52,9 @@ class Schedule
      */
     public function getSchedulesById($schedule_id)
     {
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,$schedule_id);
         try {
-            $response = $this->get(self::ENDPOINT_TEMPLATE .'/' . $schedule_id, [], $this->getHeader());
-            return $response;
+            return $this->get($url, [], $this->getHeader());
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -76,9 +67,9 @@ class Schedule
      */
     public function getMsgId($schedule_id)
     {
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,$schedule_id .'/msg_ids');
         try {
-            $response = $this->get(self::ENDPOINT_TEMPLATE .'/' . $schedule_id .'/msg_ids', [], $this->getHeader());
-            return $response;
+            return $this->get($url, [], $this->getHeader());
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -92,9 +83,9 @@ class Schedule
      */
     public function updateSchedules($schedule_id,$options)
     {
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,$schedule_id);
         try {
-            $response = $this->put(self::ENDPOINT_TEMPLATE .'/' . $schedule_id, $options, $this->getHeader());
-            return $response;
+            return $this->put($url, $options, $this->getHeader());
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -107,42 +98,12 @@ class Schedule
      */
     public function deleteSchedules($schedule_id)
     {
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,$schedule_id);
         try {
-            $response = $this->delete(self::ENDPOINT_TEMPLATE .'/' . $schedule_id, $options, $this->getHeader());
-            return $response;
+            return $this->delete($url, $options, $this->getHeader());
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
-    }
-
-
-
-
-    /**
-     * @param string $type
-     * @return string
-     */
-    protected function getAuthStr(string $type): string
-    {
-        if ($type === 'app')
-            return base64_encode($this->config->get('appKey') .':'. $this->config->get('masterSecret'));
-        else{
-            // group
-            return base64_encode($this->config->get('groupKey') .':'. $this->config->get('group_secret'));
-        }
-    }
-
-
-    /**
-     * 获取 Header
-     * @param string $type
-     * @return string[]
-     */
-    protected function getHeader($type = 'app'): array
-    {
-        return [
-            'Authorization' => 'Basic ' . $this->getAuthStr($type)
-        ];
     }
 
 }
