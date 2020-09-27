@@ -25,19 +25,13 @@ class File
     /**
      * 上传文件
      * @param string $type
-     * @param array $multipart
+     * @param $content
      * @return array
      */
-    public function files(string $type,array $multipart)
+    public function files(string $type,$content)
     {
-        /* $multipart = [
-            'name'     => 'file_name',
-            'contents' => fopen('/path/to/file', 'r')
-        ],*/
         try {
-            $response = $this->post(self::ENDPOINT_TEMPLATE . '/' . $type,
-                [],$multipart, $this->getHeader());
-            return $response;
+            return $this->post(self::ENDPOINT_TEMPLATE . '/' . $type, $content, $this->getHeader());
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -50,9 +44,8 @@ class File
     public function getFiles()
     {
         try {
-            $response = $this->get(self::ENDPOINT_TEMPLATE ,
+            return $this->get(self::ENDPOINT_TEMPLATE ,
                 [], $this->getHeader());
-            return $response;
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -66,9 +59,7 @@ class File
     public function deleteFiles(string $file_id)
     {
         try {
-            $response = $this->delete(self::ENDPOINT_TEMPLATE .'/' . $file_id,
-                [], $this->getHeader());
-            return $response;
+            return $this->delete(self::ENDPOINT_TEMPLATE .'/' . $file_id, $this->getHeader());
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
@@ -82,9 +73,8 @@ class File
     public function getFilesById(string $file_id)
     {
         try {
-            $response = $this->get(self::ENDPOINT_TEMPLATE .'/' . $file_id,
+            return $this->get(self::ENDPOINT_TEMPLATE .'/' . $file_id,
                 [], $this->getHeader());
-            return $response;
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }

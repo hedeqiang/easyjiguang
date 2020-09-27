@@ -13,6 +13,7 @@ trait HasHttpRequest
     /**
      * Make a get request.
      *
+     * @param string $endpoint
      * @param array $query
      * @param array $headers
      *
@@ -29,17 +30,24 @@ trait HasHttpRequest
     /**
      * Make a post request.
      *
-     * @param array $params
+     * @param string $endpoint
+     * @param $content
      * @param array $headers
      *
      * @return array
      */
-    protected function post(string $endpoint, $params = [],$multipart = [], $headers = [])
+    protected function post(string $endpoint, $content, $headers = [])
     {
-        return $this->request('post', $endpoint, [
+        return $this->request('post', $endpoint,[
             'headers' => $headers,
-            'form_params' => $params,
-            'multipart' => $multipart
+            'multipart' => [
+                [
+                    'Content-type' => 'multipart/form-data',
+                    'name' => 'filename',
+                    'contents' => $content
+                ]
+            ],
+
         ]);
     }
 
@@ -67,19 +75,20 @@ trait HasHttpRequest
      */
     protected function delete($endpoint, $headers = [])
     {
-        return $this->request('delete', [
+        return $this->request('delete',$endpoint,[
             'headers' => $headers,
         ]);
     }
 
     /**
      * @param $endpoint
+     * @param $params
      * @param array $headers
      * @return array
      */
     protected function put($endpoint,$params, $headers = [])
     {
-        return $this->request('put', [
+        return $this->request('put', $endpoint,[
             'headers' => $headers,
             'json' => $params,
         ]);
@@ -88,6 +97,8 @@ trait HasHttpRequest
     /**
      * Make a http request.
      *
+     * @param string $method
+     * @param string $endpoint
      * @param array $options http://docs.guzzlephp.org/en/latest/request-options.html
      *
      * @return array
@@ -104,17 +115,16 @@ trait HasHttpRequest
      */
     protected function getBaseOptions()
     {
-        $options = [
+        return [
             'base_uri' => method_exists($this, 'getBaseUri') ? $this->getBaseUri() : '',
             'timeout' => method_exists($this, 'getTimeout') ? $this->getTimeout() : 10.0,
         ];
-
-        return $options;
     }
 
     /**
      * Return http client.
      *
+     * @param array $options
      * @return \GuzzleHttp\Client
      *
      * @codeCoverageIgnore
@@ -127,6 +137,7 @@ trait HasHttpRequest
     /**
      * Convert response contents to json.
      *
+     * @param ResponseInterface $response
      * @return ResponseInterface|array|string
      */
     protected function unwrapResponse(ResponseInterface $response)
