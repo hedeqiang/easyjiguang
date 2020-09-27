@@ -10,7 +10,7 @@ class JPushServiceProvider extends \Illuminate\Support\ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/Config/antispam.php' => config_path('jpush.php'),
+            __DIR__.'/Config/jpush.php' => config_path('jpush.php'),
         ], 'jpush');
     }
 
