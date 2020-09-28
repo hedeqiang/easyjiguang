@@ -32,11 +32,11 @@ class JPushServiceProvider extends \Illuminate\Support\ServiceProvider
             return new Schedule(config('jpush'));
         });
 
-        $this->app->alias(JPush::class, 'jpush.push');
-        $this->app->alias(Device::class, 'jpush.device');
-        $this->app->alias(File::class, 'jpush.file');
-        $this->app->alias(Report::class, 'jpush.report');
-        $this->app->alias(Schedule::class, 'jpush.schedule');
+//        $this->app->alias(JPush::class, 'jpush.push');
+//        $this->app->alias(Device::class, 'jpush.device');
+//        $this->app->alias(File::class, 'jpush.file');
+//        $this->app->alias(Report::class, 'jpush.report');
+//        $this->app->alias(Schedule::class, 'jpush.schedule');
     }
 
     public function provides()

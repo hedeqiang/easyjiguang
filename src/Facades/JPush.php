@@ -13,7 +13,7 @@ class JPush extends Facade
      */
     public static function getFacadeAccessor()
     {
-        return 'jpush';
+        return 'jpush.push';
     }
 
     /**
