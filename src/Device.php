@@ -38,7 +38,7 @@ class Device extends Base
      * @param $options
      * @return array
      */
-    public function setDevices($registration_id,$options)
+    public function updateDevices($registration_id,$options)
     {
         $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,'devices/'. $registration_id);
         try {

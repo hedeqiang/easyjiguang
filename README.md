@@ -10,6 +10,217 @@ $ composer require hedeqiang/jpush -vvv
 ```
 
 ## Usage
+```php
+require __DIR__ .'/vendor/autoload.php';
+
+use Hedeqiang\JPush\JPush;
+use Hedeqiang\JPush\File;
+use Hedeqiang\JPush\Device;
+use Hedeqiang\JPush\Report;
+use Hedeqiang\JPush\Schedule;
+use Hedeqiang\JPush\Admin;
+
+$config = [
+    'appKey' => '',
+    'masterSecret' => '',
+
+    'groupKey' => '',
+    'groupSecret' => '',
+
+    'devKey' => '',
+    'devSecret' => '',
+];
+
+$push = new JPush($config);
+$file = new File($config);
+$device = new Device($config);
+$report = new Report($config);
+$schedule = new Schedule($config);
+$admin = new Admin($config);
+```
+
+## Push API
+> 请求参数详见：http://docs.jiguang.cn/jpush/server/push/rest_api_v3_push/
+### 推送消息
+```php
+$options = [
+    'platform' => 'all',
+    'audience' => ['registration_id' => ['1']],
+    'notification' => [
+        'alert' => 'Hello',
+        'android' => [],
+        'ios' => [
+            'extras' => ['newsid' => '123']
+        ]
+    ],
+    ...
+];
+return $push->message($options);
+```
+
+### 推送唯一标识符
+```php
+$query = [
+   'count' => 1,
+   'type'  => 'push',
+];
+return $push->revoke($query);
+```
+
+### 推送校验
+```php
+$options = [
+    ...
+    // 该 API 只用于验证推送调用是否能够成功，
+    // 与推送 API 的区别在于：不向用户发送任何消息。 其他字段说明：同推送 API
+];
+return $push->validate($options);
+```
+
+### 批量单推 针对的是RegID方式批量单推
+```php
+$options = [
+    ...
+];
+return $push->batchRegidSingle($options);
+```
+
+### 批量单推 针对的是Alias方式批量单推
+```php
+$options = [
+    ...
+];
+return $push->batchAliasSingle($options);
+```
+
+### 推送撤销
+```php
+return $push->getCid($msgid);
+```
+
+### 文件推送
+```php
+$options = [
+    ...
+    'audience' => [
+        'file' => ['file_id' => 'xxxx']
+    ]
+];
+return $push->file($options);
+```
+
+### Group Push API：应用分组推送
+```php
+$options = [
+    ...
+];
+return $push->groupPush($options);
+```
+
+### 应用分组文件推送（VIP专属接口）
+```php
+$options = [
+    ...
+];
+return $push->groupPushFile($options);
+```
+
+
+## File API
+### 上传文件
+```php
+$type = 'registration_id'; //type 文件类型，当前可取值为： alias、registration_id，不能为空。
+return $file->files($type,fopen('xxx.txt','r'));
+```
+
+### 查询文件有效列表
+```php
+return $file->getFiles();
+```
+
+### 删除文件
+```php
+return $file->deleteFiles($file_id);
+```
+
+### 查询指定文件详情
+```php
+return $file->getFilesById($file_id);
+```
+
+
+## Report API 
+
+### 送达统计详情（新）
+```php
+$query = [
+    'msg_ids' => '1613113584,1229760629'
+];
+return $report->received($query);
+```
+
+### 送达状态查询
+```php
+$options = [
+    'msg_id' => '',
+    'registration_ids' => '',
+    'date' => '' //可选
+];
+return $report->status($options);
+```
+
+### 消息统计详情（VIP 专属接口，新）
+```php
+$query = [
+    'msg_ids' => '1613113584,1229760629'
+];
+return $report->detail($query);
+```
+
+### 用户统计（VIP 专属接口）
+```php
+$options = [
+    'time_unit' => '',
+    'start' => '',
+    'duration' => ''
+];
+return $report->users($options);
+```
+
+### 分组统计-消息统计（VIP 专属接口）
+```php
+$query = [
+    'group_msgids' => '1613113584,1229760629'
+];
+return $report->groupUsers($query);
+```
+
+### 分组统计-用户统计（VIP 专属接口）
+```php
+$options = [
+    'time_unit' => '',
+    'start' => '',
+    'duration' => ''
+];
+return $report->groupUsers($options);
+```
+
+## Device API 
+
+### 查询设备的别名与标签
+```php
+return $report->getDevices($registration_id);
+```
+
+### 设置设备的别名与标签
+```php
+$options = [
+    'time_unit' => '',
+    'start' => '',
+    'duration' => ''
+];
+return $report->updateDevices($registration_id);
+```
 
 TODO
 
