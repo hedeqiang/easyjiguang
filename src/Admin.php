@@ -49,15 +49,14 @@ class Admin extends Base
     /**
      * 证书上传
      * @param string $appKey
-     * @param array $multipart
+     * @param array $options
      * @return array
      */
-    public function uploadCertificate(string $appKey,array $multipart)
+    public function uploadCertificate(string $appKey,array $options)
     {
       $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,$appKey .'/certificate');
         try {
-            return $this->post(self::ENDPOINT_TEMPLATE . '/' . $url,
-                [],$multipart, $this->getHeader('dev'));
+            return $this->post($url,$options, $this->getHeader('dev'));
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }

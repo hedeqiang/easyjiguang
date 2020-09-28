@@ -18,7 +18,7 @@ class JPush extends Base
     /**
      * 向某单个设备或者某设备列表推送一条通知、或者消息。
      * @param array $options
-     * @return string
+     * @return array
      */
     public function message(array $options)
     {
@@ -32,9 +32,8 @@ class JPush extends Base
 
     /**
      * 推送唯一标识符
-     * @param int $count
-     * @param string $type
-     * @return string
+     * @param array $query
+     * @return array
      */
     public function getCid(array $query)
     {
@@ -53,7 +52,7 @@ class JPush extends Base
     /**
      * 推送校验 API
      * @param $options
-     * @return string
+     * @return array
      */
     public function validate(array $options)
     {
@@ -68,7 +67,7 @@ class JPush extends Base
     /**
      * 批量单推  针对的是RegID方式批量单推
      * @param array $options
-     * @return string
+     * @return array
      */
     public function batchRegidSingle(array $options)
     {
@@ -83,7 +82,7 @@ class JPush extends Base
     /**
      * 针对的是Alias方式批量单推
      * @param array $options
-     * @return string
+     * @return array
      */
     public function batchAliasSingle(array $options)
     {
@@ -98,7 +97,7 @@ class JPush extends Base
     /**
      * 推送撤销
      * @param $msgid
-     * @return string
+     * @return array
      */
     public function revoke($msgid)
     {
@@ -113,7 +112,7 @@ class JPush extends Base
     /**
      * 文件推送
      * @param array $options
-     * @return string
+     * @return array
      */
     public function file(array $options)
     {
@@ -128,7 +127,7 @@ class JPush extends Base
     /**
      * Group Push API：应用分组推送
      * @param array $options
-     * @return string
+     * @return array
      */
     public function groupPush(array $options)
     {

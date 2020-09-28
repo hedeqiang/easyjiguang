@@ -31,22 +31,16 @@ trait HasHttpRequest
      * Make a post request.
      *
      * @param string $endpoint
-     * @param $content
+     * @param $options
      * @param array $headers
      *
      * @return array
      */
-    protected function post(string $endpoint, $content, $headers = [])
+    protected function post(string $endpoint, $options, $headers = [])
     {
         return $this->request('post', $endpoint,[
             'headers' => $headers,
-            'multipart' => [
-                [
-                    'Content-type' => 'multipart/form-data',
-                    'name' => 'filename',
-                    'contents' => $content
-                ]
-            ],
+            'multipart' => $options,
 
         ]);
     }

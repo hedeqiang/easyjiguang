@@ -17,7 +17,7 @@ class Report extends Base
 
     /**
      * 送达统计详情（新）
-     * @param string $msg_id
+     * @param array $query
      * @return array
      */
     public function received(array $query)
@@ -50,7 +50,7 @@ class Report extends Base
 
     /**
      * 消息统计详情（VIP 专属接口，新）
-     * @param $msg_ids
+     * @param array $query
      * @return array
      */
     public function detail(array $query)

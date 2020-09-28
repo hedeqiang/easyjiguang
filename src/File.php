@@ -25,7 +25,14 @@ class File extends Base
     {
         $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,$type);
         try {
-            return $this->post($url, $content, $this->getHeader());
+            $options = [
+                [
+                    'Content-type' => 'multipart/form-data',
+                    'name' => 'filename',
+                    'contents' => $content
+                ]
+            ];
+            return $this->post($url, $options, $this->getHeader());
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }

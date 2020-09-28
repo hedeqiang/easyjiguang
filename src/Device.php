@@ -102,7 +102,7 @@ class Device extends Base
      */
     public function getTags()
     {
-        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,'tags'. $alias_value);
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,'tags');
         try {
             return $this->get($url,[], $this->getHeader());
         } catch (GuzzleException $e) {
@@ -118,7 +118,7 @@ class Device extends Base
      */
     public function isDeviceInTag(string $tag_value,string $registration_id)
     {
-        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,'tags'. 'tags/' . $tag_value .'/registration_ids/' . $registration_id);
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, 'tags/' . $tag_value .'/registration_ids/' . $registration_id);
         try {
             return $this->get($url, [], $this->getHeader());
         } catch (GuzzleException $e) {

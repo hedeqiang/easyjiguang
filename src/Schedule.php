@@ -100,7 +100,7 @@ class Schedule extends Base
     {
         $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,$schedule_id);
         try {
-            return $this->delete($url, $options, $this->getHeader());
+            return $this->delete($url, $this->getHeader());
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
