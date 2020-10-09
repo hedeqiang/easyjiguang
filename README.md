@@ -209,7 +209,7 @@ return $report->groupUsers($options);
 
 ### 查询设备的别名与标签
 ```php
-return $report->getDevices($registration_id);
+return $device->getDevices($registration_id);
 ```
 
 ### 设置设备的别名与标签
@@ -219,7 +219,17 @@ $options = [
     'start' => '',
     'duration' => ''
 ];
-return $report->updateDevices($registration_id);
+return $device->updateDevices($registration_id);
+```
+
+### 查询别名
+```php
+return $device->getAliases($alias_value, $platform = ['platform ' => 'all']);
+```
+
+### 删除别名
+```php
+return $device->deleteAliases($alias_value, $platform = ['platform ' => 'all']);
 ```
 
 TODO
