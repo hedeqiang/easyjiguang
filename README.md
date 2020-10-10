@@ -278,7 +278,85 @@ return $device->status($options);
 ```
 
 
-TODO
+## 在 Laravel 中使用
+
+### 发布配置文件
+```php
+php artisan vendor:publish --tag=jpush
+or 
+php artisan vendor:publish --provider="Hedeqiang\JPush\JPushServiceProvider"
+```
+
+### 编写配置文件
+```php
+JPUSH_APP_KEY=
+JPUSH_MASTER_SECRET=
+
+JPUSH_GROUP_KEY=
+JPUSH_GROUP_SECRET=
+
+JPUSH_DEV_KEY=
+JPUSH_DEV_SECRET=
+```
+
+### 使用
+#### 服务名访问
+```php
+
+public function index()
+{
+    $options = [
+        'platform' => 'all',
+        'audience' => ['registration_id' => ['1']],
+        'notification' => [
+            'alert' => 'Hello',
+            'android' => [],
+            'ios' => [
+                'extras' => ['newsid' => '123']
+            ]
+        ],
+        ...
+    ];
+    return app('jpush.push')->message($options);
+}
+```
+
+#### Facades 门面使用(可以提示)
+```php
+use Hedeqiang\JPush\Facades\JPush;
+
+public function index()
+{
+    $options = [
+        'platform' => 'all',
+        'audience' => ['registration_id' => ['1']],
+        'notification' => [
+            'alert' => 'Hello',
+            'android' => [],
+            'ios' => [
+                'extras' => ['newsid' => '123']
+            ]
+        ],
+        ...
+    ];
+    return JPush::push()->message($options);
+}
+```
+
+### 其他门面
+```php
+\Hedeqiang\JPush\Facades\JPush::file()->XXX
+\Hedeqiang\JPush\Facades\JPush::report()->XXX
+\Hedeqiang\JPush\Facades\JPush::device()->XXX
+\Hedeqiang\JPush\Facades\JPush::schedule()->XXX
+\Hedeqiang\JPush\Facades\JPush::admin()->XXX
+```
+
+更多用法参考：
+- http://docs.jiguang.cn/jpush/server/push/server_overview/
+
+
+> 能力有限 不可能都能测试到，（权限问题等）。遇到错误麻烦帮忙改进，谢谢。
 
 ## Contributing
 
