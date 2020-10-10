@@ -60,4 +60,13 @@ class JPush extends Facade
     {
         return app('jpush.schedule');
     }
+
+    /**
+     * Return the facade accessor.
+     * @return \Hedeqiang\JPush\Admin
+     */
+    public static function admin()
+    {
+        return app('jpush.admin');
+    }
 }
