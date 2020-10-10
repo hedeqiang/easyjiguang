@@ -70,11 +70,11 @@ class Device extends Base
      * @param string[] $platform
      * @return array
      */
-    public function deleteAliases($alias_value, $platform = 'all')
+    public function deleteAliases($alias_value, $platform = ['platform ' => 'all'])
     {
         $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,'aliases/'. $alias_value);
         try {
-            return $this->delete($url, $this->getHeader());
+            return $this->delete($url, $this->getHeader(),$platform);
         } catch (GuzzleException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
