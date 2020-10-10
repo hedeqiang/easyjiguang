@@ -232,6 +232,52 @@ return $device->getAliases($alias_value, $platform = ['platform ' => 'all']);
 return $device->deleteAliases($alias_value, $platform = ['platform ' => 'all']);
 ```
 
+### 删除别名
+```php
+$options = [
+    'registration_ids' => [
+        'remove' => ['registration_id1','registration_id2']
+    ]
+];
+return $device->removeAliases($alias_value, $options);
+```
+
+
+### 查询标签列表
+```php
+return $device->getTags();
+```
+
+### 判断设备与标签绑定关系
+```php
+return $device->isDeviceInTag($tag_value,$registration_id);
+```
+
+### 更新标签
+```php
+$options = [
+    'registration_ids' => [
+        'add' => ['registration_id1','registration_id2'],
+        'remove' => ['registration_id1','registration_id2']
+    ]
+];
+return $device->updateTag($tag_value,$options);
+```
+
+### 删除标签
+```php
+return $device->deleteTag($tag_value,$platform = ['platform ' => 'all']);
+```
+
+### 获取用户在线状态（VIP 专属接口）
+```php
+$options = [
+    'registration_ids' => ['010b81b3582','0207870f1b8','0207870f9b8']
+];
+return $device->status($options);
+```
+
+
 TODO
 
 ## Contributing
