@@ -300,10 +300,12 @@ JPUSH_DEV_SECRET=
 ```
 
 ### 使用
-#### 服务名访问
-```php
 
-public function index()
+#### 方法参数注入
+```php
+use Hedeqiang\JPush\JPush;
+
+public function index(JPush $push)
 {
     $options = [
         'platform' => 'all',
@@ -321,24 +323,20 @@ public function index()
 }
 ```
 
+#### 服务名访问
+```php
+public function index()
+{
+    return app('jpush.push')->message($options);
+}
+```
+
 #### Facades 门面使用(可以提示)
 ```php
 use Hedeqiang\JPush\Facades\JPush;
 
 public function index()
 {
-    $options = [
-        'platform' => 'all',
-        'audience' => ['registration_id' => ['1']],
-        'notification' => [
-            'alert' => 'Hello',
-            'android' => [],
-            'ios' => [
-                'extras' => ['newsid' => '123']
-            ]
-        ],
-        ...
-    ];
     return JPush::push()->message($options);
 }
 ```
