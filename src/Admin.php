@@ -2,8 +2,7 @@
 
 namespace Hedeqiang\JPush;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\GuzzleException;
+use Hedeqiang\JPush\Exceptions\HttpException;
 use Hedeqiang\JPush\Traits\HasHttpRequest;
 
 class Admin extends Base
@@ -19,14 +18,15 @@ class Admin extends Base
      * 创建极光 app
      * @param $options
      * @return array
+     * @throws HttpException
      */
     public function createApp($options)
     {
         try {
             return $this->postJson(self::ENDPOINT_TEMPLATE,
                 $options, $this->getHeader('dev'));
-        } catch (GuzzleException $e) {
-            return $e->getResponse()->getBody()->getContents();
+        } catch (\Exception $e) {
+            throw new HttpException($e->getMessage(), $e->getCode(), $e);
         }
     }
 
@@ -34,6 +34,7 @@ class Admin extends Base
      * app 删除
      * @param string $appKey
      * @return array
+     * @throws HttpException
      */
     public function deleteApp(string $appKey)
     {
@@ -41,8 +42,8 @@ class Admin extends Base
         try {
             return $this->delete(self::ENDPOINT_TEMPLATE . '/' . $url,
                 [], $this->getHeader('dev'));
-        } catch (GuzzleException $e) {
-            return $e->getResponse()->getBody()->getContents();
+        } catch (\Exception $e) {
+            throw new HttpException($e->getMessage(), $e->getCode(), $e);
         }
     }
 
@@ -51,14 +52,15 @@ class Admin extends Base
      * @param string $appKey
      * @param array $options
      * @return array
+     * @throws HttpException
      */
     public function uploadCertificate(string $appKey,array $options)
     {
       $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,$appKey .'/certificate');
         try {
             return $this->post($url,$options, $this->getHeader('dev'));
-        } catch (GuzzleException $e) {
-            return $e->getResponse()->getBody()->getContents();
+        } catch (\Exception $e) {
+            throw new HttpException($e->getMessage(), $e->getCode(), $e);
         }
     }
 }
