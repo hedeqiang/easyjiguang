@@ -64,7 +64,7 @@ $query = [
    'count' => 1,
    'type'  => 'push',
 ];
-return $push->revoke($query);
+return $push->getCid($query);
 ```
 
 ### 推送校验
@@ -95,7 +95,7 @@ return $push->batchAliasSingle($options);
 
 ### 推送撤销
 ```php
-return $push->getCid($msgid);
+return $push->revoke($msgid);
 ```
 
 ### 文件推送
