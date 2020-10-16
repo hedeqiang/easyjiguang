@@ -44,7 +44,6 @@ class Admin extends Base
     /**
      * app 删除.
      *
-     * @param string $appKey
      * @return array
      *
      * @throws HttpException
@@ -63,8 +62,6 @@ class Admin extends Base
     /**
      * 证书上传.
      *
-     * @param string $appKey
-     * @param array $options
      * @return array
      *
      * @throws HttpException
