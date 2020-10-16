@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the hedeqiang/jpush.
+ *
+ * (c) hedeqiang<laravel_code@163.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace Hedeqiang\JPush;
 
 use Hedeqiang\JPush\Exceptions\HttpException;
@@ -13,16 +22,16 @@ class JPush extends Base
 
     const ENDPOINT_VERSION = 'v3';
 
-
     /**
      * 向某单个设备或者某设备列表推送一条通知、或者消息。
-     * @param array $options
+     *
      * @return array
+     *
      * @throws HttpException
      */
     public function message(array $options)
     {
-        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,'push');
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, 'push');
         try {
             return $this->postJson($url, $options, $this->getHeader());
         } catch (\Exception $e) {
@@ -31,9 +40,10 @@ class JPush extends Base
     }
 
     /**
-     * 推送唯一标识符
-     * @param array $query
+     * 推送唯一标识符.
+     *
      * @return array
+     *
      * @throws HttpException
      */
     public function getCid(array $query)
@@ -42,7 +52,7 @@ class JPush extends Base
             'count' => $count,
             'type'  => $type,
         ];*/
-        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,'push/cid');
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, 'push/cid');
         try {
             return $this->get($url, $query, $this->getHeader());
         } catch (\Exception $e) {
@@ -51,14 +61,17 @@ class JPush extends Base
     }
 
     /**
-     * 推送校验 API
+     * 推送校验 API.
+     *
      * @param $options
+     *
      * @return array
+     *
      * @throws HttpException
      */
     public function validate(array $options)
     {
-        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,'push/validate');
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, 'push/validate');
         try {
             return $this->postJson($url, $options, $this->getHeader());
         } catch (\Exception $e) {
@@ -67,14 +80,15 @@ class JPush extends Base
     }
 
     /**
-     * 批量单推  针对的是RegID方式批量单推
-     * @param array $options
+     * 批量单推  针对的是RegID方式批量单推.
+     *
      * @return array
+     *
      * @throws HttpException
      */
     public function batchRegidSingle(array $options)
     {
-        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,'push/batch/regid/single');
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, 'push/batch/regid/single');
         try {
             return $this->postJson($url, $options, $this->getHeader());
         } catch (\Exception $e) {
@@ -83,14 +97,15 @@ class JPush extends Base
     }
 
     /**
-     * 针对的是Alias方式批量单推
-     * @param array $options
+     * 针对的是Alias方式批量单推.
+     *
      * @return array
+     *
      * @throws HttpException
      */
     public function batchAliasSingle(array $options)
     {
-        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,'push/batch/alias/single');
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, 'push/batch/alias/single');
         try {
             return $this->postJson($url, $options, $this->getHeader());
         } catch (\Exception $e) {
@@ -100,13 +115,16 @@ class JPush extends Base
 
     /**
      * 推送撤销
+     *
      * @param $msgid
+     *
      * @return array
+     *
      * @throws HttpException
      */
     public function revoke($msgid)
     {
-        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,'push/' .$msgid);
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, 'push/'.$msgid);
         try {
             return $this->delete($url, $this->getHeader());
         } catch (\Exception $e) {
@@ -116,13 +134,14 @@ class JPush extends Base
 
     /**
      * 文件推送
-     * @param array $options
+     *
      * @return array
+     *
      * @throws HttpException
      */
     public function file(array $options)
     {
-        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,'push/file');
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, 'push/file');
         try {
             return $this->postJson($url, $options, $this->getHeader());
         } catch (\Exception $e) {
@@ -132,13 +151,14 @@ class JPush extends Base
 
     /**
      * Group Push API：应用分组推送
-     * @param array $options
+     *
      * @return array
+     *
      * @throws HttpException
      */
     public function groupPush(array $options)
     {
-        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,'grouppush');
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, 'grouppush');
         try {
             return $this->postJson($url, $options, $this->getHeader('group'));
         } catch (\Exception $e) {
@@ -147,14 +167,15 @@ class JPush extends Base
     }
 
     /**
-     * 应用分组文件推送（VIP专属接口）
-     * @param array $options
+     * 应用分组文件推送（VIP专属接口）.
+     *
      * @return array
+     *
      * @throws HttpException
      */
     public function groupPushFile(array $options)
     {
-        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,'grouppush/file');
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, 'grouppush/file');
         try {
             return $this->postJson($url, $options, $this->getHeader('group'));
         } catch (\Exception $e) {

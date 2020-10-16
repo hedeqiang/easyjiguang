@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the hedeqiang/jpush.
+ *
+ * (c) hedeqiang<laravel_code@163.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace Hedeqiang\JPush\Facades;
 
 use Illuminate\Support\Facades\Facade;
@@ -18,6 +27,7 @@ class JPush extends Facade
 
     /**
      * Return the facade accessor.
+     *
      * @return \Hedeqiang\JPush\JPush
      */
     public static function push()
@@ -27,6 +37,7 @@ class JPush extends Facade
 
     /**
      * Return the facade accessor.
+     *
      * @return \Hedeqiang\JPush\File
      */
     public static function file()
@@ -36,6 +47,7 @@ class JPush extends Facade
 
     /**
      * Return the facade accessor.
+     *
      * @return \Hedeqiang\JPush\Device
      */
     public static function device()
@@ -45,6 +57,7 @@ class JPush extends Facade
 
     /**
      * Return the facade accessor.
+     *
      * @return \Hedeqiang\JPush\Report
      */
     public static function report()
@@ -54,6 +67,7 @@ class JPush extends Facade
 
     /**
      * Return the facade accessor.
+     *
      * @return \Hedeqiang\JPush\Schedule
      */
     public static function schedule()
@@ -63,6 +77,7 @@ class JPush extends Facade
 
     /**
      * Return the facade accessor.
+     *
      * @return \Hedeqiang\JPush\Admin
      */
     public static function admin()
