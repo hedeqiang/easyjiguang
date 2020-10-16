@@ -25,6 +25,7 @@ class JPush extends Base
     /**
      * 向某单个设备或者某设备列表推送一条通知、或者消息。
      *
+     * @param array $options
      * @return array
      *
      * @throws HttpException
@@ -42,6 +43,7 @@ class JPush extends Base
     /**
      * 推送唯一标识符.
      *
+     * @param array $query
      * @return array
      *
      * @throws HttpException
@@ -82,6 +84,7 @@ class JPush extends Base
     /**
      * 批量单推  针对的是RegID方式批量单推.
      *
+     * @param array $options
      * @return array
      *
      * @throws HttpException
@@ -99,6 +102,7 @@ class JPush extends Base
     /**
      * 针对的是Alias方式批量单推.
      *
+     * @param array $options
      * @return array
      *
      * @throws HttpException
@@ -135,6 +139,7 @@ class JPush extends Base
     /**
      * 文件推送
      *
+     * @param array $options
      * @return array
      *
      * @throws HttpException
@@ -152,6 +157,7 @@ class JPush extends Base
     /**
      * Group Push API：应用分组推送
      *
+     * @param array $options
      * @return array
      *
      * @throws HttpException
@@ -169,6 +175,7 @@ class JPush extends Base
     /**
      * 应用分组文件推送（VIP专属接口）.
      *
+     * @param array $options
      * @return array
      *
      * @throws HttpException

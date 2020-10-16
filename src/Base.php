@@ -38,6 +38,10 @@ abstract class Base
         ];
     }
 
+    /**
+     * @param string $type
+     * @return string
+     */
     protected function getAuthStr(string $type): string
     {
         if ('app' === $type) {
@@ -53,6 +57,8 @@ abstract class Base
     /**
      * Build endpoint url.
      *
+     * @param string $url
+     * @param string $action
      * @return string
      */
     protected function buildEndpoint(string $url, string $action)
