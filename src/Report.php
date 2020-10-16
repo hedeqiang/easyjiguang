@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the hedeqiang/jpush.
+ *
+ * (c) hedeqiang<laravel_code@163.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace Hedeqiang\JPush;
 
 use Hedeqiang\JPush\Exceptions\HttpException;
@@ -13,11 +22,11 @@ class Report extends Base
 
     const ENDPOINT_VERSION = 'v3';
 
-
     /**
-     * 送达统计详情（新）
-     * @param array $query
+     * 送达统计详情（新）.
+     *
      * @return array
+     *
      * @throws HttpException
      */
     public function received(array $query)
@@ -25,7 +34,7 @@ class Report extends Base
         /*$query = [
             'msg_id' => $msg_id,
         ];*/
-        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,'received/detail');
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, 'received/detail');
         try {
             return $this->get($url, $query, $this->getHeader());
         } catch (\Exception $e) {
@@ -34,14 +43,15 @@ class Report extends Base
     }
 
     /**
-     * 送达状态查询
-     * @param array $options
+     * 送达状态查询.
+     *
      * @return array
+     *
      * @throws HttpException
      */
     public function status(array $options)
     {
-        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,'status/message');
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, 'status/message');
         try {
             return $this->postJson($url, $options, $this->getHeader());
         } catch (\Exception $e) {
@@ -50,9 +60,10 @@ class Report extends Base
     }
 
     /**
-     * 消息统计详情（VIP 专属接口，新）
-     * @param array $query
+     * 消息统计详情（VIP 专属接口，新）.
+     *
      * @return array
+     *
      * @throws HttpException
      */
     public function detail(array $query)
@@ -60,7 +71,7 @@ class Report extends Base
         /*$query = [
             'msg_ids' => $msg_ids,
         ];*/
-        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,'messages/detail');
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, 'messages/detail');
         try {
             return $this->get($url, $query, $this->getHeader());
         } catch (\Exception $e) {
@@ -69,14 +80,15 @@ class Report extends Base
     }
 
     /**
-     * 用户统计（VIP 专属接口）
-     * @param array $query
+     * 用户统计（VIP 专属接口）.
+     *
      * @return array
+     *
      * @throws HttpException
      */
     public function users(array $query)
     {
-        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,'users');
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, 'users');
         try {
             return $this->get($url, $query, $this->getHeader());
         } catch (\Exception $e) {
@@ -85,14 +97,15 @@ class Report extends Base
     }
 
     /**
-     * 分组统计-消息统计（VIP 专属接口）
-     * @param array $query
+     * 分组统计-消息统计（VIP 专属接口）.
+     *
      * @return array
+     *
      * @throws HttpException
      */
     public function groupDetail(array $query)
     {
-        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,'group/messages/detail');
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, 'group/messages/detail');
         try {
             return $this->get($url, $query, $this->getHeader('group'));
         } catch (\Exception $e) {
@@ -101,14 +114,15 @@ class Report extends Base
     }
 
     /**
-     * 分组统计-用户统计（VIP 专属接口）
-     * @param array $query
+     * 分组统计-用户统计（VIP 专属接口）.
+     *
      * @return array
+     *
      * @throws HttpException
      */
     public function groupUsers(array $query)
     {
-        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE,'group/users');
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, 'group/users');
         try {
             return $this->get($url, $query, $this->getHeader('group'));
         } catch (\Exception $e) {
