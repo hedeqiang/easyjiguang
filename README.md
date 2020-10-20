@@ -2,6 +2,7 @@
 
 <p align="center"> 极光推送 PHP Server SDK.</p>
 
+> 如需友盟推送 请前往 [友盟推送](https://github.com/hedeqiang/UMeng-Push)
 
 ## Installing
 
