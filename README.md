@@ -4,6 +4,9 @@
 
 > 如需友盟推送 请前往 [友盟推送](https://github.com/hedeqiang/UMeng-Push)
 
+## 配置
+在使用本扩展之前，你需要去 [极光](https://www.jiguang.cn/) 注册账号，进入开发者平台，然后创建应用，获取应用的 appKey 和 masterSecret。
+
 ## Installing
 
 ```shell
