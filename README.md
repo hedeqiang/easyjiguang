@@ -44,7 +44,9 @@ $admin = new Admin($config);
 ```
 
 ## Push API
+
 > 请求参数详见：http://docs.jiguang.cn/jpush/server/push/rest_api_v3_push/
+
 ### 推送消息
 ```php
 $options = [
@@ -131,6 +133,9 @@ return $push->groupPushFile($options);
 
 
 ## File API
+
+> 请求参数详见：http://docs.jiguang.cn/jpush/server/push/rest_api_v3_file/
+
 ### 上传文件
 ```php
 $type = 'registration_id'; //type 文件类型，当前可取值为： alias、registration_id，不能为空。
@@ -154,6 +159,8 @@ return $file->getFilesById($file_id);
 
 
 ## Report API 
+
+> 请求参数详见：http://docs.jiguang.cn/jpush/server/push/rest_api_v3_report/
 
 ### 送达统计详情（新）
 ```php
@@ -210,6 +217,8 @@ return $report->groupUsers($options);
 ```
 
 ## Device API 
+
+> 请求参数详见：http://docs.jiguang.cn/jpush/server/push/rest_api_v3_device/
 
 ### 查询设备的别名与标签
 ```php
