@@ -219,11 +219,14 @@ return $device->getDevices($registration_id);
 ### 设置设备的别名与标签
 ```php
 $options = [
-    'time_unit' => '',
-    'start' => '',
-    'duration' => ''
+    'tags'   => [
+        'add'    => ['tag1', 'tag2'],
+        'remove' => ['tag3', 'tag4']
+    ],
+    'alias'  => 'alias1',
+    'mobile' => '13012345678'
 ];
-return $device->updateDevices($registration_id);
+return $device->updateDevices($registration_id,$options);
 ```
 
 ### 查询别名
