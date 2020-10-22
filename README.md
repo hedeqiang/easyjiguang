@@ -239,7 +239,7 @@ return $device->getAliases($alias_value, $platform = ['platform ' => 'all']);
 return $device->deleteAliases($alias_value, $platform = ['platform ' => 'all']);
 ```
 
-### 删除别名
+### 解绑设备与别名的绑定关系
 ```php
 $options = [
     'registration_ids' => [
