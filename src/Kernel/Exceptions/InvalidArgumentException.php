@@ -9,8 +9,8 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Hedeqiang\JPush\Exceptions;
+namespace EasyJiGuang\Kernel\Exceptions;
 
-class HttpException extends Exception
+class InvalidArgumentException extends Exception
 {
 }
