@@ -11,7 +11,6 @@
 
 namespace EasyJiGuang;
 
-
 use EasyJiGuang\JPush\Application as JPush;
 use EasyJiGuang\JVerify\Application as JVerify;
 
@@ -22,7 +21,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__ . '/Config/jiguang.php' => config_path('jiguang.php'),
+            __DIR__.'/Config/jiguang.php' => config_path('jiguang.php'),
         ], 'jiguang');
     }
 
@@ -30,17 +29,15 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     {
         $apps = [
             'verify' => JVerify::class,
-            'push'   => JPush::class,
+            'push' => JPush::class,
         ];
         foreach ($apps as $name => $class) {
             $this->app->singleton($class, function () {
                 $app = new $class(config('jiguang'));
+
                 return $app;
             });
             $this->app->alias($class, $name);
         }
-
-
     }
-
 }

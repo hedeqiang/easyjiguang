@@ -1,10 +1,18 @@
 <?php
 
+/*
+ * This file is part of the hedeqiang/jpush.
+ *
+ * (c) hedeqiang<laravel_code@163.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace EasyJiGuang\Kernel\Support;
 
 class Str
 {
-
     /**
      * The cache of studly-cased words.
      *
@@ -12,11 +20,11 @@ class Str
      */
     protected static $studlyCache = [];
 
-
     /**
      * Convert a value to studly caps case.
      *
-     * @param  string  $value
+     * @param string $value
+     *
      * @return string
      */
     public static function studly($value)
@@ -31,5 +39,4 @@ class Str
 
         return static::$studlyCache[$key] = str_replace(' ', '', $value);
     }
-
 }
