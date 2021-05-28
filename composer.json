@@ -28,7 +28,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "EasyJiGuang\\JPushServiceProvider"
+              "EasyJiGuang\\ServiceProvider"
             ]
         }
     }
