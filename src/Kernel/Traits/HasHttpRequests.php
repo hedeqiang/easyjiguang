@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the hedeqiang/jpush.
+ *
+ * (c) hedeqiang<laravel_code@163.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace EasyJiGuang\Kernel\Traits;
 
 use GuzzleHttp\Client;
@@ -8,8 +17,7 @@ use GuzzleHttp\HandlerStack;
 use Psr\Http\Message\ResponseInterface;
 
 /**
- * Trait HasHttpRequests
- * @package EasyJiGuang\Kernel\Traits
+ * Trait HasHttpRequests.
  */
 trait HasHttpRequests
 {
@@ -51,8 +59,6 @@ trait HasHttpRequests
 
     /**
      * Return current guzzle default settings.
-     *
-     * @return array
      */
     protected static function getDefaultOptions(): array
     {
@@ -61,8 +67,6 @@ trait HasHttpRequests
 
     /**
      * Set GuzzleHttp\Client.
-     *
-     * @param \GuzzleHttp\ClientInterface $httpClient
      *
      * @return $this
      */
@@ -75,8 +79,6 @@ trait HasHttpRequests
 
     /**
      * Return GuzzleHttp\ClientInterface instance.
-     *
-     * @return ClientInterface
      */
     protected function getHttpClient(): ClientInterface
     {
@@ -94,8 +96,7 @@ trait HasHttpRequests
     /**
      * Add a middleware.
      *
-     * @param callable $middleware
-     * @param string   $name
+     * @param string $name
      *
      * @return $this
      */
@@ -112,8 +113,6 @@ trait HasHttpRequests
 
     /**
      * Return all middlewares.
-     *
-     * @return array
      */
     protected function getMiddlewares(): array
     {
@@ -126,8 +125,6 @@ trait HasHttpRequests
      * @param string $url
      * @param string $method
      * @param array  $options
-     *
-     * @return \Psr\Http\Message\ResponseInterface
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
@@ -150,8 +147,6 @@ trait HasHttpRequests
     }
 
     /**
-     * @param \GuzzleHttp\HandlerStack $handlerStack
-     *
      * @return $this
      */
     protected function setHandlerStack(HandlerStack $handlerStack)
@@ -163,8 +158,6 @@ trait HasHttpRequests
 
     /**
      * Build a handler stack.
-     *
-     * @return \GuzzleHttp\HandlerStack
      */
     protected function getHandlerStack(): HandlerStack
     {
@@ -181,11 +174,6 @@ trait HasHttpRequests
         return $this->handlerStack;
     }
 
-    /**
-     * @param array $options
-     *
-     * @return array
-     */
     protected function fixJsonIssue(array $options): array
     {
         if (isset($options['json']) && is_array($options['json'])) {

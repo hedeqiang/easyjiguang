@@ -11,7 +11,6 @@
 
 namespace EasyJiGuang;
 
-
 use EasyJiGuang\JPush\Application as JPush;
 use EasyJiGuang\JVerify\Application as JVerify;
 
@@ -33,8 +32,7 @@ class JPushServiceProvider extends \Illuminate\Support\ServiceProvider
             'JPush' => JPush::class,
         ];
 
-        $this->app->alias( JPush::class,"push");
-        $this->app->alias( JVerify::class,"verify");
+        $this->app->alias(JPush::class, 'push');
+        $this->app->alias(JVerify::class, 'verify');
     }
-
 }

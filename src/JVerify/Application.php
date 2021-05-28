@@ -1,18 +1,26 @@
 <?php
 
+/*
+ * This file is part of the hedeqiang/jpush.
+ *
+ * (c) hedeqiang<laravel_code@163.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace EasyJiGuang\JVerify;
 
 use EasyJiGuang\Kernel\ServiceContainer;
 
 /**
- * Class Application
+ * Class Application.
+ *
  * @property \EasyJiGuang\JVerify\Client $verify
- * @package EasyJiGuang\JPush
  */
 class Application extends ServiceContainer
 {
     protected $providers = [
         ServiceProvider::class,
     ];
-
 }

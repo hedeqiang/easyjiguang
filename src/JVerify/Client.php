@@ -15,18 +15,15 @@ use EasyJiGuang\Kernel\Support\BaseClient;
 
 class Client extends BaseClient
 {
-
     const ENDPOINT_TEMPLATE = 'https://api.verification.jpush.cn/v1/';
 
     const ENDPOINT_VERSION = 'v1';
 
-
     /**
      * 号码认证
      *
-     * @param array $options
-     * @param string $type
      * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
+     *
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
@@ -38,37 +35,42 @@ class Client extends BaseClient
                 'exID' => $exID,
           ];*/
 
-        if ($type === 'Web'){
+        if ('Web' === $type) {
             $action = 'web/h5/verify';
-        }else{
+        } else {
             $action = 'web/verify';
         }
         $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, $action);
+
         return $this->httpPostJson($url, $options, $this->getHeader());
     }
 
     /**
-     * 一键登录
+     * 一键登录.
      *
-     * @param string $loginToken
      * @param $exID
+     *
      * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
+     *
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function loginTokenVerify(string $loginToken,$exID)
+    public function loginTokenVerify(string $loginToken, $exID)
     {
         $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, 'web/loginTokenVerify');
         $options = [
             'loginToken' => $loginToken,
             'exID' => $exID,
         ];
+
         return $this->httpPostJson($url, $options, $this->getHeader());
     }
 
     /**
-     * 解密手机号
+     * 解密手机号.
+     *
      * @param $encrypted
+     *
      * @return string[]
      */
     public function decrzypt(string $encrypted): array
@@ -79,10 +81,9 @@ class Client extends BaseClient
 
         $prikey = $this->config->get('priKey');
 
-        $key = $prefix . "\n" . $prikey . "\n" . $suffix;
+        $key = $prefix."\n".$prikey."\n".$suffix;
         $r = openssl_private_decrypt(base64_decode($encrypted), $result, openssl_pkey_get_private($key));
+
         return ['phone' => $result];
     }
-
-
 }

@@ -1,20 +1,26 @@
 <?php
 
+/*
+ * This file is part of the hedeqiang/jpush.
+ *
+ * (c) hedeqiang<laravel_code@163.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace EasyJiGuang;
-
-
 
 /**
  * @method static \EasyJiGuang\JPush\Application JPush(array $config)
  * @method static \EasyJiGuang\JVerify\Application JVerify(array $config)
- * Class Factory
- * @package EasyJiGuang
+ *                                                                        Class Factory
  */
 class Factory
 {
     /**
      * @param $name
-     * @param array $config
+     *
      * @return mixed
      */
     public static function make($name, array $config)
@@ -27,9 +33,6 @@ class Factory
 
     /**
      * Dynamically pass methods to the application.
-     *
-     * @param string $name
-     * @param array $arguments
      *
      * @return mixed
      */
