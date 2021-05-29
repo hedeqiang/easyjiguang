@@ -8,6 +8,7 @@ namespace EasyJiGuang;
  * @method static \EasyJiGuang\JPush\Application JPush(array $config)
  * @method static \EasyJiGuang\JVerify\Application JVerify(array $config)
  * @method static \EasyJiGuang\JMessage\Application JMessage(array $config)
+ * @method static \EasyJiGuang\JMLink\Application JMLink(array $config)
  * Class Factory
  * @package EasyJiGuang
  */

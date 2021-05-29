@@ -51,4 +51,12 @@ class EasyJiGuang extends Facade
         return app('message');
     }
 
+    /**
+     * @return \EasyJiGuang\JMLink\Application
+     */
+    public static function JMLink(): \EasyJiGuang\JMLink\Application
+    {
+        return app('link');
+    }
+
 }
