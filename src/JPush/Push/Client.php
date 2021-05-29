@@ -11,7 +11,6 @@
 
 namespace EasyJiGuang\JPush\Push;
 
-use EasyJiGuang\Kernel\Exceptions\HttpException;
 use EasyJiGuang\Kernel\Support\BaseClient;
 use GuzzleHttp\Exception\GuzzleException;
 
@@ -24,7 +23,6 @@ class Client extends BaseClient
     /**
      * 向某单个设备或者某设备列表推送一条通知、或者消息。
      *
-     * @param array $options
      * @return \Psr\Http\Message\ResponseInterface
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
@@ -35,13 +33,13 @@ class Client extends BaseClient
         $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, 'push');
 
         return $this->httpPostJson($url, $options, $this->getHeader());
-
     }
 
     /**
      * 推送唯一标识符.
-     * @param array $query
+     *
      * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
+     *
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
@@ -52,104 +50,114 @@ class Client extends BaseClient
             'type'  => $type,
         ];*/
         $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, 'push/cid');
+
         return $this->httpGet($url, $query, $this->getHeader());
     }
 
     /**
      * 推送校验 API.
      *
-     * @param array $options
      * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
+     *
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function validate(array $options)
     {
         $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, 'push/validate');
+
         return $this->httpPostJson($url, $options, $this->getHeader());
     }
 
     /**
      * 批量单推  针对的是RegID方式批量单推.
-     * @param array $options
+     *
      * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
+     *
      * @throws GuzzleException
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      */
     public function batchRegidSingle(array $options)
     {
         $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, 'push/batch/regid/single');
+
         return $this->httpPostJson($url, $options, $this->getHeader());
     }
 
     /**
      * 针对的是Alias方式批量单推.
      *
-     * @param array $options
      * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
+     *
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function batchAliasSingle(array $options)
     {
         $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, 'push/batch/alias/single');
+
         return $this->httpPostJson($url, $options, $this->getHeader());
     }
 
     /**
      * 推送撤销
+     *
      * @param $msgid
+     *
      * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
+     *
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function revoke($msgid)
     {
         $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, 'push/'.$msgid);
+
         return $this->httpDelete($url, $this->getHeader());
     }
 
     /**
      * 文件推送
      *
-     * @param array $options
      * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
+     *
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function file(array $options)
     {
         $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, 'push/file');
+
         return $this->httpPostJson($url, $options, $this->getHeader());
     }
 
     /**
      * Group Push API：应用分组推送
      *
-     * @param array $options
      * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
+     *
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function groupPush(array $options)
     {
         $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, 'grouppush');
-        return $this->httpPostJson($url, $options, $this->getHeader('group'));
 
+        return $this->httpPostJson($url, $options, $this->getHeader('group'));
     }
 
     /**
      * 应用分组文件推送（VIP专属接口）.
      *
-     * @param array $options
      * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
+     *
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function groupPushFile(array $options)
     {
         $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, 'grouppush/file');
-        return $this->httpPostJson($url, $options, $this->getHeader('group'));
 
+        return $this->httpPostJson($url, $options, $this->getHeader('group'));
     }
 }

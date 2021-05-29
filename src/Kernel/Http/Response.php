@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the hedeqiang/jpush.
+ *
+ * (c) hedeqiang<laravel_code@163.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace EasyJiGuang\Kernel\Http;
 
 use EasyJiGuang\Kernel\Support\Collection;
@@ -8,14 +17,10 @@ use GuzzleHttp\Psr7\Response as GuzzleResponse;
 use Psr\Http\Message\ResponseInterface;
 
 /**
- * Class Response
- * @package EasyJiGuang\Kernel\Http
+ * Class Response.
  */
 class Response extends GuzzleResponse
 {
-    /**
-     * @return string
-     */
     public function getBodyContents(): string
     {
         $this->getBody()->rewind();
@@ -26,8 +31,6 @@ class Response extends GuzzleResponse
     }
 
     /**
-     * @param \Psr\Http\Message\ResponseInterface $response
-     *
      * @return \EasyJiGuang\Kernel\Http\Response
      */
     public static function buildFromPsrResponse(ResponseInterface $response)
@@ -100,8 +103,6 @@ class Response extends GuzzleResponse
     }
 
     /**
-     * @param string $content
-     *
      * @return string
      */
     protected function removeControlCharacters(string $content)

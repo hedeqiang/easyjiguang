@@ -1,5 +1,13 @@
 <?php
 
+/*
+ * This file is part of the hedeqiang/jpush.
+ *
+ * (c) hedeqiang<laravel_code@163.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
 
 namespace EasyJiGuang\Kernel\Support;
 
@@ -11,7 +19,6 @@ class Arr
     /**
      * Add an element to an array using "dot" notation if it doesn't exist.
      *
-     * @param array  $array
      * @param string $key
      * @param mixed  $value
      *
@@ -57,8 +64,6 @@ class Arr
     /**
      * Divide an array into two arrays. One with keys and the other with values.
      *
-     * @param array $array
-     *
      * @return array
      */
     public static function divide(array $array)
@@ -69,7 +74,6 @@ class Arr
     /**
      * Flatten a multi-dimensional associative array with dots.
      *
-     * @param array  $array
      * @param string $prepend
      *
      * @return array
@@ -92,7 +96,6 @@ class Arr
     /**
      * Get all of the given array except for a specified array of items.
      *
-     * @param array        $array
      * @param array|string $keys
      *
      * @return array
@@ -107,7 +110,6 @@ class Arr
     /**
      * Determine if the given key exists in the provided array.
      *
-     * @param array      $array
      * @param string|int $key
      *
      * @return bool
@@ -120,9 +122,7 @@ class Arr
     /**
      * Return the first element in an array passing a given truth test.
      *
-     * @param array         $array
-     * @param callable|null $callback
-     * @param mixed         $default
+     * @param mixed $default
      *
      * @return mixed
      */
@@ -150,9 +150,7 @@ class Arr
     /**
      * Return the last element in an array passing a given truth test.
      *
-     * @param array         $array
-     * @param callable|null $callback
-     * @param mixed         $default
+     * @param mixed $default
      *
      * @return mixed
      */
@@ -168,8 +166,7 @@ class Arr
     /**
      * Flatten a multi-dimensional array into a single level.
      *
-     * @param array $array
-     * @param int   $depth
+     * @param int $depth
      *
      * @return array
      */
@@ -191,7 +188,6 @@ class Arr
     /**
      * Remove one or many array items from a given array using "dot" notation.
      *
-     * @param array        $array
      * @param array|string $keys
      */
     public static function forget(array &$array, $keys)
@@ -234,7 +230,6 @@ class Arr
     /**
      * Get an item from an array using "dot" notation.
      *
-     * @param array  $array
      * @param string $key
      * @param mixed  $default
      *
@@ -264,7 +259,6 @@ class Arr
     /**
      * Check if an item or items exist in an array using "dot" notation.
      *
-     * @param array        $array
      * @param string|array $keys
      *
      * @return bool
@@ -281,7 +275,7 @@ class Arr
             return false;
         }
 
-        if ($keys === []) {
+        if ([] === $keys) {
             return false;
         }
 
@@ -309,8 +303,6 @@ class Arr
      *
      * An array is "associative" if it doesn't have sequential numerical keys beginning with zero.
      *
-     * @param array $array
-     *
      * @return bool
      */
     public static function isAssoc(array $array)
@@ -323,7 +315,6 @@ class Arr
     /**
      * Get a subset of the items from the given array.
      *
-     * @param array        $array
      * @param array|string $keys
      *
      * @return array
@@ -336,7 +327,6 @@ class Arr
     /**
      * Push an item onto the beginning of an array.
      *
-     * @param array $array
      * @param mixed $value
      * @param mixed $key
      *
@@ -356,7 +346,6 @@ class Arr
     /**
      * Get a value from the array, and remove it.
      *
-     * @param array  $array
      * @param string $key
      * @param mixed  $default
      *
@@ -373,9 +362,6 @@ class Arr
 
     /**
      * Get a 1 value from an array.
-     *
-     * @param array    $array
-     * @param int|null $amount
      *
      * @return mixed
      *
@@ -403,9 +389,7 @@ class Arr
      *
      * If no key is given to the method, the entire array will be replaced.
      *
-     * @param array  $array
-     * @param string $key
-     * @param mixed  $value
+     * @param mixed $value
      *
      * @return array
      */
@@ -433,9 +417,6 @@ class Arr
 
     /**
      * Filter the array using the given callback.
-     *
-     * @param array    $array
-     * @param callable $callback
      *
      * @return array
      */
