@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the hedeqiang/jpush.
+ * This file is part of the hedeqiang/easyjiguang.
  *
  * (c) hedeqiang<laravel_code@163.com>
  *
@@ -25,7 +25,6 @@ class File extends Base
     /**
      * 上传文件.
      *
-     * @param string $type
      * @param $content
      *
      * @return array
@@ -69,7 +68,6 @@ class File extends Base
     /**
      * 删除文件.
      *
-     * @param string $file_id
      * @return array
      *
      * @throws HttpException
@@ -87,7 +85,6 @@ class File extends Base
     /**
      * 查询指定文件详情.
      *
-     * @param string $file_id
      * @return array
      *
      * @throws HttpException

@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the hedeqiang/jpush.
+ * This file is part of the hedeqiang/easyjiguang.
  *
  * (c) hedeqiang<laravel_code@163.com>
  *
@@ -25,7 +25,6 @@ class Report extends Base
     /**
      * 送达统计详情（新）.
      *
-     * @param array $query
      * @return array
      *
      * @throws HttpException
@@ -46,7 +45,6 @@ class Report extends Base
     /**
      * 送达状态查询.
      *
-     * @param array $options
      * @return array
      *
      * @throws HttpException
@@ -64,7 +62,6 @@ class Report extends Base
     /**
      * 消息统计详情（VIP 专属接口，新）.
      *
-     * @param array $query
      * @return array
      *
      * @throws HttpException
@@ -85,7 +82,6 @@ class Report extends Base
     /**
      * 用户统计（VIP 专属接口）.
      *
-     * @param array $query
      * @return array
      *
      * @throws HttpException
@@ -103,7 +99,6 @@ class Report extends Base
     /**
      * 分组统计-消息统计（VIP 专属接口）.
      *
-     * @param array $query
      * @return array
      *
      * @throws HttpException
@@ -121,7 +116,6 @@ class Report extends Base
     /**
      * 分组统计-用户统计（VIP 专属接口）.
      *
-     * @param array $query
      * @return array
      *
      * @throws HttpException

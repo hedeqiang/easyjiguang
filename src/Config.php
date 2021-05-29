@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the hedeqiang/jpush.
+ * This file is part of the hedeqiang/easyjiguang.
  *
  * (c) hedeqiang<laravel_code@163.com>
  *
@@ -25,7 +25,6 @@ class Config implements ArrayAccess
 
     /**
      * Config constructor.
-     * @param array $config
      */
     public function __construct(array $config = [])
     {
@@ -35,7 +34,6 @@ class Config implements ArrayAccess
     /**
      * Get an item from an array using "dot" notation.
      *
-     * @param string $key
      * @param mixed $default
      *
      * @return mixed
