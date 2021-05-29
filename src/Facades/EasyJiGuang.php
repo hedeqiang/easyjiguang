@@ -43,4 +43,12 @@ class EasyJiGuang extends Facade
         return app('verify');
     }
 
+    /**
+     * @return \EasyJiGuang\JMessage\Application
+     */
+    public static function JMessage(): \EasyJiGuang\JMessage\Application
+    {
+        return app('message');
+    }
+
 }
