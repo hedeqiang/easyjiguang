@@ -1,6 +1,6 @@
-<h1 align="center"> jpush </h1>
+<h1 align="center"> JIGUANG </h1>
 
-<p align="center"> 极光推送 PHP Server SDK.</p>
+<p align="center"> 极光 API Server SDK for PHP.</p>
 
 > 如需友盟推送 请前往 [友盟推送](https://github.com/hedeqiang/UMeng-Push)
 
@@ -11,7 +11,7 @@
 ## Installing
 
 ```shell
-$ composer require hedeqiang/jpush -vvv
+$ composer require hedeqiang/easyjiguang -vvv
 ```
 
 ## Usage
@@ -21,19 +21,30 @@ require __DIR__ .'/vendor/autoload.php';
 
 
 $config = [
-    'appKey'       => '**********',
-    'masterSecret' => '**********',
+    'appKey'       => 'XXX',
+    'masterSecret' => 'XXX',
 
-    'groupKey'    => '',
-    'groupSecret' => '',
+    'groupKey'    => 'XXX',
+    'groupSecret' => 'XXX',
 
-    'devKey'    => '',
-    'devSecret' => '',
+    'devKey'        => 'XXX',
+    'devSecret'     => 'XXX',
 
+    /*
+     * 指定 API 调用返回结果的类型：array(default)/collection/object/raw/自定义类名
+     */
     'response_type' => 'array',
-//
+
+
+    /**
+     * 日志配置
+     *
+     * level: 日志级别, 可选为：
+     *         debug/info/notice/warning/error/critical/alert/emergency
+     * path：日志文件位置(绝对路径!!!)，要求可写权限
+     */
     'log'           => [
-        'default'  => 'dev', // 默认使用的 channel，生产环境可以改为下面的 prod
+        'default'  => env('APP_DEBUG', false) ? 'dev' : 'prod', // 默认使用的 channel，生产环境可以改为下面的 prod
         'channels' => [
             // 测试环境
             'dev'  => [
@@ -44,7 +55,7 @@ $config = [
             // 生产环境
             'prod' => [
                 'driver' => 'daily',
-                'path'   => '/tpm/push.log',
+                'path'   => '/tmp/push.log',
                 'level'  => 'info',
             ],
         ],
@@ -354,55 +365,19 @@ More...
 ### 发布配置文件
 
 ```php
-php artisan vendor:publish --tag=jpush
+php artisan vendor:publish --tag=jiguang
 or 
-php artisan vendor:publish --provider="Hedeqiang\JPush\JPushServiceProvider"
-```
-
-### 编写配置文件
-
-```php
-JPUSH_APP_KEY=
-JPUSH_MASTER_SECRET=
-
-JPUSH_GROUP_KEY=
-JPUSH_GROUP_SECRET=
-
-JPUSH_DEV_KEY=
-JPUSH_DEV_SECRET=
+php artisan vendor:publish --provider="EasyJiGuang\ServiceProvider"
 ```
 
 ### 使用
-
-#### 方法参数注入
-
-```php
-use EasyJiGuang\JPush;
-
-public function index(JPush $push)
-{
-    $options = [
-        'platform' => 'all',
-        'audience' => ['registration_id' => ['1']],
-        'notification' => [
-            'alert' => 'Hello',
-            'android' => [],
-            'ios' => [
-                'extras' => ['newsid' => '123']
-            ]
-        ],
-        ...
-    ];
-    return app('jpush.push')->message($options);
-}
-```
 
 #### 服务名访问
 
 ```php
 public function index()
 {
-    return app('jpush.push')->message($options);
+    return app('push')->push->message($options);
 }
 ```
 
@@ -413,25 +388,28 @@ use EasyJiGuang\Facades\EasyJiGuang;
 
 public function index()
 {
-    return EasyJiGuang::push()->message($options);
+    return EasyJiGuang::JPush()->push->message($options);
 }
 ```
 
 ### 其他门面
 
 ```php
-\EasyJiGuang\Facades\EasyJiGuang::file()->XXX
-\EasyJiGuang\Facades\EasyJiGuang::report()->XXX
-\EasyJiGuang\Facades\EasyJiGuang::device()->XXX
-\EasyJiGuang\Facades\EasyJiGuang::schedule()->XXX
-\EasyJiGuang\Facades\EasyJiGuang::admin()->XXX
+EasyJiGuang::JVerify()->verify->verify();
+.
+.
+.
 ```
 
 更多用法参考：
 
 - http://docs.jiguang.cn/jpush/server/push/server_overview/
-
+- https://docs.jiguang.cn/jverification/server/rest_api/rest_api_summary/
 > 能力有限 不可能都能测试到，（权限问题等）。遇到错误麻烦帮忙改进，谢谢。
+
+# 鸣谢
+[EasyWechat](https://github.com/w7corp/easywechat)
+> 文中大量代码来自 EasyWechat ，超哥写的代码简直太优雅、太完美。
 
 ## Contributing
 

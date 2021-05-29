@@ -33,7 +33,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             'push'   => JPush::class,
         ];
         foreach ($apps as $name => $class) {
-            $this->app->singleton($class, function () {
+            $this->app->singleton($class, function () use($class) {
                 $app = new $class(config('jiguang'));
                 return $app;
             });

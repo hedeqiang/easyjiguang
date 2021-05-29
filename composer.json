@@ -1,6 +1,6 @@
 {
-    "name": "hedeqiang\/jpush",
-    "description": "jpush PHP Server SDK",
+    "name": "hedeqiang/easyjiguang",
+    "description": "极光 API Server SDK for PHP",
     "license": "MIT",
     "authors": [
         {
