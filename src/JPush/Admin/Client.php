@@ -11,7 +11,6 @@
 
 namespace EasyJiGuang\JPush\Admin;
 
-
 use EasyJiGuang\Kernel\Support\BaseClient;
 
 class Client extends BaseClient
@@ -24,7 +23,9 @@ class Client extends BaseClient
      * 创建极光 app.
      *
      * @param $options
+     *
      * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
+     *
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
@@ -36,29 +37,30 @@ class Client extends BaseClient
     /**
      * app 删除.
      *
-     * @param string $appKey
      * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
+     *
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function deleteApp(string $appKey)
     {
         $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, $appKey.'/delete');
+
         return $this->httpDelete(self::ENDPOINT_TEMPLATE.'/'.$url, $this->getHeader('dev'));
     }
 
     /**
      * 证书上传.
      *
-     * @param string $appKey
-     * @param array $options
      * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
+     *
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function uploadCertificate(string $appKey, array $options)
     {
         $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, $appKey.'/certificate');
+
         return $this->httpUpload($url, $options, $this->getHeader('dev'));
     }
 }

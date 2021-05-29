@@ -11,20 +11,21 @@
 
 namespace EasyJiGuang\JPush\Schedule;
 
-
 use EasyJiGuang\Kernel\Support\BaseClient;
 
 class Client extends BaseClient
 {
-
     const ENDPOINT_TEMPLATE = 'https://api.jpush.cn/v3/schedules';
 
     const ENDPOINT_VERSION = 'v3';
 
     /**
      * 创建定时任务
+     *
      * @param $options
+     *
      * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
+     *
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
@@ -36,9 +37,11 @@ class Client extends BaseClient
     /**
      * 获取有效的 Schedule 列表.
      *
-     * @param int $page
+     * @param int         $page
      * @param array|int[] $query
+     *
      * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
+     *
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
@@ -51,13 +54,16 @@ class Client extends BaseClient
      * 获取指定的定时任务
      *
      * @param $schedule_id
+     *
      * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
+     *
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function getSchedulesById($schedule_id)
     {
         $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, $schedule_id);
+
         return $this->httpGet($url, [], $this->getHeader());
     }
 
@@ -65,13 +71,16 @@ class Client extends BaseClient
      * 获取定时任务对应的所有 msg_id.
      *
      * @param $schedule_id
+     *
      * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
+     *
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function getMsgId($schedule_id)
     {
         $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, $schedule_id.'/msg_ids');
+
         return $this->httpGet($url, [], $this->getHeader());
     }
 
@@ -80,13 +89,16 @@ class Client extends BaseClient
      *
      * @param $schedule_id
      * @param $options
+     *
      * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
+     *
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function updateSchedules($schedule_id, $options)
     {
         $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, $schedule_id);
+
         return $this->httpPut($url, $options, $this->getHeader());
     }
 
@@ -94,13 +106,16 @@ class Client extends BaseClient
      * 删除指定的 Schedule 任务
      *
      * @param $schedule_id
+     *
      * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
+     *
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function deleteSchedules($schedule_id)
     {
         $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, $schedule_id);
+
         return $this->httpDelete($url, $this->getHeader());
     }
 }
