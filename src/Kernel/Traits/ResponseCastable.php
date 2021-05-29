@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the hedeqiang/jpush.
+ *
+ * (c) hedeqiang<laravel_code@163.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace EasyJiGuang\Kernel\Traits;
 
 use EasyJiGuang\Kernel\Contracts\Arrayable;
@@ -10,14 +19,12 @@ use EasyJiGuang\Kernel\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 
 /**
- * Trait ResponseCastable
- * @package EasyJiGuang\Kernel\Traits
+ * Trait ResponseCastable.
  */
 trait ResponseCastable
 {
     /**
-     * @param \Psr\Http\Message\ResponseInterface $response
-     * @param string|null                         $type
+     * @param string|null $type
      *
      * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
      *

@@ -27,36 +27,24 @@ class EasyJiGuang extends Facade
 
     /**
      * Return the facade accessor.
-     *
-     * @return \EasyJiGuang\JPush\Application
      */
     public static function JPush(): \EasyJiGuang\JPush\Application
     {
         return app('push');
     }
 
-    /**
-     * @return \EasyJiGuang\JVerify\Application
-     */
     public static function JVerify(): \EasyJiGuang\JVerify\Application
     {
         return app('verify');
     }
 
-    /**
-     * @return \EasyJiGuang\JMessage\Application
-     */
     public static function JMessage(): \EasyJiGuang\JMessage\Application
     {
         return app('message');
     }
 
-    /**
-     * @return \EasyJiGuang\JMLink\Application
-     */
     public static function JMLink(): \EasyJiGuang\JMLink\Application
     {
         return app('link');
     }
-
 }
