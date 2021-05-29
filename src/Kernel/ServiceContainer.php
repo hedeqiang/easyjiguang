@@ -1,6 +1,13 @@
 <?php
 
-
+/*
+ * This file is part of the hedeqiang/jpush.
+ *
+ * (c) hedeqiang<laravel_code@163.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
 
 namespace EasyJiGuang\Kernel;
 
@@ -13,14 +20,13 @@ use Pimple\Container;
 /**
  * Class ServiceContainer.
  *
- * @property \EasyJiGuang\Kernel\Config                          $config
- * @property \Symfony\Component\HttpFoundation\Request          $request
- * @property \GuzzleHttp\Client                                 $http_client
- * @property \Monolog\Logger                                    $logger
+ * @property \EasyJiGuang\Kernel\Config                $config
+ * @property \Symfony\Component\HttpFoundation\Request $request
+ * @property \GuzzleHttp\Client                        $http_client
+ * @property \Monolog\Logger                           $logger
  */
 class ServiceContainer extends Container
 {
-
     /**
      * @var string
      */
@@ -43,10 +49,6 @@ class ServiceContainer extends Container
 
     /**
      * Constructor.
-     *
-     * @param array       $config
-     * @param array       $prepends
-     * @param string|null $id
      */
     public function __construct(array $config = [], array $prepends = [], string $id = null)
     {
@@ -85,8 +87,6 @@ class ServiceContainer extends Container
 
     /**
      * Return all providers.
-     *
-     * @return array
      */
     public function getProviders(): array
     {
@@ -131,9 +131,6 @@ class ServiceContainer extends Container
         $this->offsetSet($id, $value);
     }
 
-    /**
-     * @param array $providers
-     */
     public function registerProviders(array $providers)
     {
         foreach ($providers as $provider) {

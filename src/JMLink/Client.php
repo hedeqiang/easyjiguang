@@ -15,15 +15,13 @@ use EasyJiGuang\Kernel\Support\BaseClient;
 
 class Client extends BaseClient
 {
-
     const ENDPOINT_TEMPLATE = 'https://api.jmlk.co/v1/';
 
     const ENDPOINT_VERSION = 'v1';
 
     /**
-     * 短链查询
+     * 短链查询.
      *
-     * @param array $options
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
@@ -31,14 +29,12 @@ class Client extends BaseClient
     {
         $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, 'links');
 
-        $this->httpGet($url,$options,$this->getHeader());
+        $this->httpGet($url, $options, $this->getHeader());
     }
 
     /**
      * 短链统计
      *
-     * @param string $link_key
-     * @param array $options
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
@@ -46,7 +42,6 @@ class Client extends BaseClient
     {
         $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, "links/$link_key/stat");
 
-        $this->httpGet($url,$options,$this->getHeader());
+        $this->httpGet($url, $options, $this->getHeader());
     }
-
 }
