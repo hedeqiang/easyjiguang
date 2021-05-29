@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the hedeqiang/jpush.
+ * This file is part of the hedeqiang/easyjiguang.
  *
  * (c) hedeqiang<laravel_code@163.com>
  *
