@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the hedeqiang/jpush.
+ * This file is part of the hedeqiang/easyjiguang.
  *
  * (c) hedeqiang<laravel_code@163.com>
  *
@@ -143,8 +143,6 @@ class Device extends Base
     /**
      * 判断设备与标签绑定关系.
      *
-     * @param string $tag_value
-     * @param string $registration_id
      * @return array
      *
      * @throws HttpException
@@ -162,8 +160,6 @@ class Device extends Base
     /**
      * 更新标签.
      *
-     * @param string $tag_value
-     * @param array $options
      * @return array
      *
      * @throws HttpException
@@ -181,7 +177,6 @@ class Device extends Base
     /**
      * 删除标签.
      *
-     * @param string $tag_value
      * @param string[] $platform
      *
      * @return array
@@ -201,7 +196,6 @@ class Device extends Base
     /**
      * 获取用户在线状态（VIP 专属接口）.
      *
-     * @param array $options
      * @return array
      *
      * @throws HttpException
