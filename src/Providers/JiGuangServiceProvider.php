@@ -23,7 +23,7 @@ class JiGuangServiceProvider extends \Illuminate\Support\ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__ . '/../Config/jiguang.php' => config_path('jiguang.php'),
+            __DIR__.'/../Config/jiguang.php' => config_path('jiguang.php'),
         ], 'jiguang');
     }
 
