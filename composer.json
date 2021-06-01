@@ -1,6 +1,13 @@
 {
     "name": "hedeqiang/easyjiguang",
     "description": "极光 API Server SDK for PHP",
+    "keywords": [
+        "jiguang",
+        "push",
+        "verify",
+        "sms",
+        "link"
+    ],
     "license": "MIT",
     "authors": [
         {
