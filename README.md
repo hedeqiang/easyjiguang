@@ -373,7 +373,7 @@ More...
 ```php
 php artisan vendor:publish --tag=jiguang
 or 
-php artisan vendor:publish --provider="EasyJiGuang\ServiceProvider"
+php artisan vendor:publish --provider="EasyJiGuang\Providers\JiGuangServiceProvider"
 ```
 
 ### 使用
