@@ -45,7 +45,6 @@ class JiGuangServiceProvider extends \Illuminate\Support\ServiceProvider
 
     public function provides()
     {
-        return ['verify','push','message','link'];
+        return ['verify', 'push', 'message', 'link'];
     }
-
 }

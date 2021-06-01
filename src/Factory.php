@@ -22,7 +22,7 @@ class Factory
 {
     /**
      * @param $name
-     * @param array $config
+     *
      * @return \EasyJiGuang\Kernel\ServiceContainer
      */
     public static function make($name, array $config)
