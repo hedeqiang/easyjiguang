@@ -16,13 +16,13 @@ namespace EasyJiGuang;
  * @method static \EasyJiGuang\JVerify\Application JVerify(array $config)
  * @method static \EasyJiGuang\JMessage\Application JMessage(array $config)
  * @method static \EasyJiGuang\JMLink\Application JMLink(array $config)
- * Class Factory
+ *                                                                          Class Factory
  */
 class Factory
 {
     /**
      * @param $name
-     * @param array $config
+     *
      * @return mixed
      */
     public static function make($name, array $config)
