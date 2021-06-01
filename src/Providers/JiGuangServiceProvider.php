@@ -13,7 +13,7 @@ namespace EasyJiGuang\Providers;
 
 use EasyJiGuang\JPush\Application as JPush;
 use EasyJiGuang\JVerify\Application as JVerify;
-use EasyJiGuang\JVerify\Application as JMessage;
+use EasyJiGuang\JMessage\Application as JMessage;
 use EasyJiGuang\JMLink\Application as JMLink;
 
 class JiGuangServiceProvider extends \Illuminate\Support\ServiceProvider
@@ -23,7 +23,7 @@ class JiGuangServiceProvider extends \Illuminate\Support\ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__ . '/../Config/jiguang.php' => config_path('jiguang.php'),
+            __DIR__.'/../Config/jiguang.php' => config_path('jiguang.php'),
         ], 'jiguang');
     }
 
@@ -36,10 +36,16 @@ class JiGuangServiceProvider extends \Illuminate\Support\ServiceProvider
             'link' => JMLink::class,
         ];
         foreach ($apps as $name => $class) {
-            $this->app->singleton($class, function () use ($class) {
+            $this->app->singleton($class, function ($app) use ($class) {
                 return new $class(config('jiguang'));
             });
             $this->app->alias($class, $name);
         }
     }
+
+    public function provides()
+    {
+        return ['verify','push','message','link'];
+    }
+
 }
