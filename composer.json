@@ -22,14 +22,17 @@
     },
     "autoload": {
         "psr-4": {
-            "EasyJiGuang\\": "src"
+            "EasyJiGuang\\": "./src"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-              "EasyJiGuang\\ServiceProvider"
-            ]
+                "EasyJiGuang\\Providers\\JiGuangServiceProvider"
+            ],
+            "aliases": {
+                "EasyJiGuang": "EasyJiGuang\\Facades\\EasyJiGuang"
+            }
         }
     }
 }

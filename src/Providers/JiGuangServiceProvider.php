@@ -9,21 +9,21 @@
  * with this source code in the file LICENSE.
  */
 
-namespace EasyJiGuang;
+namespace EasyJiGuang\Providers;
 
 use EasyJiGuang\JPush\Application as JPush;
 use EasyJiGuang\JVerify\Application as JVerify;
 use EasyJiGuang\JVerify\Application as JMessage;
 use EasyJiGuang\JMLink\Application as JMLink;
 
-class ServiceProvider extends \Illuminate\Support\ServiceProvider
+class JiGuangServiceProvider extends \Illuminate\Support\ServiceProvider
 {
     protected $defer = true;
 
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/Config/jiguang.php' => config_path('jiguang.php'),
+            __DIR__ . '/../Config/jiguang.php' => config_path('jiguang.php'),
         ], 'jiguang');
     }
 
@@ -37,9 +37,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         ];
         foreach ($apps as $name => $class) {
             $this->app->singleton($class, function () use ($class) {
-                $app = new $class(config('jiguang'));
-
-                return $app;
+                return new $class(config('jiguang'));
             });
             $this->app->alias($class, $name);
         }
