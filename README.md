@@ -2,6 +2,10 @@
 
 <p align="center"> 极光 API Server SDK for PHP.</p>
 
+
+![StyleCI build status](https://github.styleci.io/repos/296584756/shield) 
+
+
 > 如需友盟推送 请前往 [友盟推送](https://github.com/hedeqiang/UMeng-Push)
 
 目前支持以下：
