@@ -4,7 +4,7 @@
 
 
 ![StyleCI build status](https://github.styleci.io/repos/296584756/shield) 
-
+[![Total Downloads](https://poser.pugx.org/hedeqiang/easyjiguang/downloads)](https://packagist.org/packages/hedeqiang/easyjiguang) 
 
 > 如需友盟推送 请前往 [友盟推送](https://github.com/hedeqiang/UMeng-Push)
 
