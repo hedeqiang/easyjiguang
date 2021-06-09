@@ -3,8 +3,10 @@
 <p align="center"> 极光 API Server SDK for PHP.</p>
 
 
-![StyleCI build status](https://github.styleci.io/repos/296584756/shield) 
-[![Total Downloads](https://poser.pugx.org/hedeqiang/easyjiguang/downloads)](https://packagist.org/packages/hedeqiang/easyjiguang) 
+[![Latest Stable Version](https://poser.pugx.org/hedeqiang/easyjiguang/v)](//packagist.org/packages/hedeqiang/easyjiguang)
+[![Total Downloads](https://poser.pugx.org/hedeqiang/easyjiguang/downloads)](//packagist.org/packages/hedeqiang/easyjiguang)
+[![Latest Unstable Version](https://poser.pugx.org/hedeqiang/easyjiguang/v/unstable)](//packagist.org/packages/hedeqiang/easyjiguang)
+[![License](https://poser.pugx.org/hedeqiang/easyjiguang/license)](//packagist.org/packages/hedeqiang/easyjiguang)
 
 > 如需友盟推送 请前往 [友盟推送](https://github.com/hedeqiang/UMeng-Push)
 
