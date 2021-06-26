@@ -21,11 +21,11 @@ class XML
     /**
      * XML to array.
      *
-     * @param string $xml XML string
+     * @param  string  $xml  XML string
      *
      * @return array
      */
-    public static function parse($xml)
+    public static function parse(string $xml)
     {
         PHP_MAJOR_VERSION < 8 && $backup = libxml_disable_entity_loader(true);
 
@@ -39,21 +39,16 @@ class XML
     /**
      * XML encode.
      *
-     * @param mixed  $data
-     * @param string $root
-     * @param string $item
-     * @param string $attr
-     * @param string $id
+     * @param mixed    $data
+     * @param  string  $root
+     * @param  string  $item
+     * @param  string  $attr
+     * @param  string  $id
      *
      * @return string
      */
-    public static function build(
-        $data,
-        $root = 'xml',
-        $item = 'item',
-        $attr = '',
-        $id = 'id'
-    ) {
+    public static function build($data, string $root = 'xml', string $item = 'item', string $attr = '', string $id = 'id'): string
+    {
         if (is_array($attr)) {
             $_attr = [];
 
@@ -76,11 +71,11 @@ class XML
     /**
      * Build CDATA.
      *
-     * @param string $string
+     * @param  string  $string
      *
      * @return string
      */
-    public static function cdata($string)
+    public static function cdata(string $string): string
     {
         return sprintf('<![CDATA[%s]]>', $string);
     }
@@ -88,11 +83,11 @@ class XML
     /**
      * Object to array.
      *
-     * @param SimpleXMLElement $obj
+     * @param  SimpleXMLElement  $obj
      *
      * @return array
      */
-    protected static function normalize($obj)
+    protected static function normalize(SimpleXMLElement $obj)
     {
         $result = null;
 
@@ -119,13 +114,13 @@ class XML
     /**
      * Array to XML.
      *
-     * @param array  $data
-     * @param string $item
-     * @param string $id
+     * @param  array   $data
+     * @param  string  $item
+     * @param  string  $id
      *
      * @return string
      */
-    protected static function data2Xml($data, $item = 'item', $id = 'id')
+    protected static function data2Xml(array $data, string $item = 'item', string $id = 'id'): string
     {
         $xml = $attr = '';
 
@@ -155,11 +150,11 @@ class XML
      * @see https://www.w3.org/TR/2008/REC-xml-20081126/#charsets - XML charset range
      * @see http://php.net/manual/en/regexp.reference.escape.php - escape in UTF-8 mode
      *
-     * @param string $xml
+     * @param  string  $xml
      *
      * @return string
      */
-    public static function sanitize($xml)
+    public static function sanitize(string $xml): string
     {
         return preg_replace('/[^\x{9}\x{A}\x{D}\x{20}-\x{D7FF}\x{E000}-\x{FFFD}\x{10000}-\x{10FFFF}]+/u', '', $xml);
     }

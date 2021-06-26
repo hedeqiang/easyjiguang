@@ -204,11 +204,11 @@ abstract class BaseClient
     /**
      * 获取 Header.
      *
-     * @param string $type
+     * @param  string  $type
      *
      * @return string[]
      */
-    protected function getHeader($type = 'app'): array
+    protected function getHeader(string $type = 'app'): array
     {
         return [
             'Authorization' => 'Basic '.$this->getAuthStr($type),
