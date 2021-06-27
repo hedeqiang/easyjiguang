@@ -61,7 +61,7 @@ abstract class BaseClient
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    protected function httpPost(string $url, array $data = [], array $headers)
+    protected function httpPost(string $url, array $data = [], array $headers=[])
     {
         return $this->request($url, 'POST', ['form_params' => $data, 'headers' => $headers]);
     }
@@ -139,13 +139,12 @@ abstract class BaseClient
     }
 
     /**
-     * @param false $returnRaw
      *
      * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
      *
      * @throws \GuzzleHttp\Exception\GuzzleException|\EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      */
-    protected function request(string $url, string $method = 'GET', array $options = [], $returnRaw = false)
+    protected function request(string $url, string $method = 'GET', array $options = [])
     {
         if (empty($this->middlewares)) {
             $this->registerHttpMiddlewares();

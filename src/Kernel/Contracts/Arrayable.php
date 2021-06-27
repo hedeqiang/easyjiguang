@@ -23,5 +23,5 @@ interface Arrayable extends ArrayAccess
      *
      * @return array
      */
-    public function toArray();
+    public function toArray(): array;
 }
