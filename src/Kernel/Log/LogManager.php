@@ -57,13 +57,13 @@ class LogManager implements LoggerInterface
      * @var array
      */
     protected $levels = [
-        'debug' => Monolog::DEBUG,
-        'info' => Monolog::INFO,
-        'notice' => Monolog::NOTICE,
-        'warning' => Monolog::WARNING,
-        'error' => Monolog::ERROR,
-        'critical' => Monolog::CRITICAL,
-        'alert' => Monolog::ALERT,
+        'debug'     => Monolog::DEBUG,
+        'info'      => Monolog::INFO,
+        'notice'    => Monolog::NOTICE,
+        'warning'   => Monolog::WARNING,
+        'error'     => Monolog::ERROR,
+        'critical'  => Monolog::CRITICAL,
+        'alert'     => Monolog::ALERT,
         'emergency' => Monolog::EMERGENCY,
     ];
 
@@ -78,11 +78,11 @@ class LogManager implements LoggerInterface
     /**
      * Create a new, on-demand aggregate logger instance.
      *
-     * @param  string|null  $channel
-     *
-     * @return \Psr\Log\LoggerInterface
+     * @param string|null $channel
      *
      * @throws Exception
+     *
+     * @return \Psr\Log\LoggerInterface
      */
     public function stack(array $channels, string $channel = null)
     {
@@ -92,11 +92,11 @@ class LogManager implements LoggerInterface
     /**
      * Get a log channel instance.
      *
-     * @param  string|null  $channel
-     *
-     * @return mixed
+     * @param string|null $channel
      *
      * @throws Exception
+     *
+     * @return mixed
      */
     public function channel(string $channel = null)
     {
@@ -106,11 +106,11 @@ class LogManager implements LoggerInterface
     /**
      * Get a log driver instance.
      *
-     * @param  string|null  $driver
-     *
-     * @return mixed
+     * @param string|null $driver
      *
      * @throws Exception
+     *
+     * @return mixed
      */
     public function driver(string $driver = null)
     {
@@ -120,11 +120,11 @@ class LogManager implements LoggerInterface
     /**
      * Attempt to get the log from the local cache.
      *
-     * @param  string  $name
-     *
-     * @return \Psr\Log\LoggerInterface
+     * @param string $name
      *
      * @throws Exception
+     *
+     * @return \Psr\Log\LoggerInterface
      */
     protected function get(string $name)
     {
@@ -144,11 +144,11 @@ class LogManager implements LoggerInterface
     /**
      * Resolve the given log instance by name.
      *
-     * @param  string  $name
-     *
-     * @return \Psr\Log\LoggerInterface
+     * @param string $name
      *
      * @throws InvalidArgumentException
+     *
+     * @return \Psr\Log\LoggerInterface
      */
     protected function resolve(string $name): LoggerInterface
     {
@@ -197,11 +197,11 @@ class LogManager implements LoggerInterface
     /**
      * Create an aggregate log driver instance.
      *
-     * @param  array  $config
-     *
-     * @return \Monolog\Logger
+     * @param array $config
      *
      * @throws Exception
+     *
+     * @return \Monolog\Logger
      */
     protected function createStackDriver(array $config): Monolog
     {
@@ -221,9 +221,9 @@ class LogManager implements LoggerInterface
     /**
      * Create an instance of the single file log driver.
      *
-     * @return \Psr\Log\LoggerInterface
-     *
      * @throws \Exception
+     *
+     * @return \Psr\Log\LoggerInterface
      */
     protected function createSingleDriver(array $config)
     {
@@ -316,7 +316,7 @@ class LogManager implements LoggerInterface
     /**
      * Prepare the handlers for usage by Monolog.
      *
-     * @param  array  $handlers
+     * @param array $handlers
      *
      * @return array
      */
@@ -361,7 +361,7 @@ class LogManager implements LoggerInterface
     /**
      * Extract the log channel from the given configuration.
      *
-     * @param  array  $config
+     * @param array $config
      *
      * @return string
      */
@@ -373,10 +373,9 @@ class LogManager implements LoggerInterface
     /**
      * Parse the string level into a Monolog constant.
      *
-     * @param  array  $config
+     * @param array $config
      *
      * @return int
-     *
      */
     protected function level(array $config): int
     {
@@ -402,7 +401,7 @@ class LogManager implements LoggerInterface
     /**
      * Set the default log driver name.
      *
-     * @param  string  $name
+     * @param string $name
      */
     public function setDefaultDriver(string $name)
     {
@@ -412,8 +411,8 @@ class LogManager implements LoggerInterface
     /**
      * Register a custom driver creator Closure.
      *
-     * @param  string    $driver
-     * @param  \Closure  $callback
+     * @param string   $driver
+     * @param \Closure $callback
      *
      * @return $this
      */
@@ -429,9 +428,9 @@ class LogManager implements LoggerInterface
      *
      * @param string $message
      *
-     * @return void
-     *
      * @throws Exception
+     *
+     * @return void
      */
     public function emergency($message, array $context = [])
     {
@@ -446,9 +445,9 @@ class LogManager implements LoggerInterface
      *
      * @param string $message
      *
-     * @return mixed
-     *
      * @throws \Exception
+     *
+     * @return mixed
      */
     public function alert($message, array $context = [])
     {
@@ -462,9 +461,9 @@ class LogManager implements LoggerInterface
      *
      * @param string $message
      *
-     * @return mixed
-     *
      * @throws \Exception
+     *
+     * @return mixed
      */
     public function critical($message, array $context = [])
     {
@@ -477,9 +476,9 @@ class LogManager implements LoggerInterface
      *
      * @param string $message
      *
-     * @return mixed
-     *
      * @throws \Exception
+     *
+     * @return mixed
      */
     public function error($message, array $context = [])
     {
@@ -494,9 +493,9 @@ class LogManager implements LoggerInterface
      *
      * @param string $message
      *
-     * @return mixed
-     *
      * @throws \Exception
+     *
+     * @return mixed
      */
     public function warning($message, array $context = [])
     {
@@ -508,9 +507,9 @@ class LogManager implements LoggerInterface
      *
      * @param string $message
      *
-     * @return mixed
-     *
      * @throws \Exception
+     *
+     * @return mixed
      */
     public function notice($message, array $context = [])
     {
@@ -524,9 +523,9 @@ class LogManager implements LoggerInterface
      *
      * @param string $message
      *
-     * @return mixed
-     *
      * @throws \Exception
+     *
+     * @return mixed
      */
     public function info($message, array $context = [])
     {
@@ -538,9 +537,9 @@ class LogManager implements LoggerInterface
      *
      * @param string $message
      *
-     * @return mixed
-     *
      * @throws \Exception
+     *
+     * @return mixed
      */
     public function debug($message, array $context = [])
     {
@@ -553,9 +552,9 @@ class LogManager implements LoggerInterface
      * @param mixed  $level
      * @param string $message
      *
-     * @return mixed
-     *
      * @throws \Exception
+     *
+     * @return mixed
      */
     public function log($level, $message, array $context = [])
     {
@@ -565,12 +564,12 @@ class LogManager implements LoggerInterface
     /**
      * Dynamically call the default driver instance.
      *
-     * @param  string  $method
-     * @param  array   $parameters
-     *
-     * @return mixed
+     * @param string $method
+     * @param array  $parameters
      *
      * @throws Exception
+     *
+     * @return mixed
      */
     public function __call(string $method, array $parameters)
     {

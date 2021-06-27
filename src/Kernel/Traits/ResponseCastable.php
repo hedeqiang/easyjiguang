@@ -24,11 +24,11 @@ use Psr\Http\Message\ResponseInterface;
 trait ResponseCastable
 {
     /**
-     * @param  string|null  $type
-     *
-     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
+     * @param string|null $type
      *
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
+     *
+     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
      */
     protected function castResponseToType(ResponseInterface $response, string $type = null)
     {
@@ -54,13 +54,13 @@ trait ResponseCastable
     }
 
     /**
-     * @param mixed         $response
-     * @param  string|null  $type
-     *
-     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
+     * @param mixed       $response
+     * @param string|null $type
      *
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidArgumentException
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
+     *
+     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
      */
     protected function detectAndCastResponseToType($response, string $type = null)
     {

@@ -31,7 +31,7 @@ class Response extends GuzzleResponse
     }
 
     /**
-     * @param  ResponseInterface  $response
+     * @param ResponseInterface $response
      *
      * @return \EasyJiGuang\Kernel\Http\Response
      */
@@ -105,7 +105,7 @@ class Response extends GuzzleResponse
     }
 
     /**
-     * @param  string  $content
+     * @param string $content
      *
      * @return string
      */

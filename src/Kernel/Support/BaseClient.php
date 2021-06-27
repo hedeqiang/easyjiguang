@@ -43,10 +43,10 @@ abstract class BaseClient
     /**
      * GET request.
      *
-     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
-     *
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
      */
     protected function httpGet(string $url, array $query, array $headers)
     {
@@ -56,12 +56,12 @@ abstract class BaseClient
     /**
      * POST request.
      *
-     * @return \Psr\Http\Message\ResponseInterface
-     *
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return \Psr\Http\Message\ResponseInterface
      */
-    protected function httpPost(string $url, array $data = [], array $headers=[])
+    protected function httpPost(string $url, array $data = [], array $headers = [])
     {
         return $this->request($url, 'POST', ['form_params' => $data, 'headers' => $headers]);
     }
@@ -80,17 +80,17 @@ abstract class BaseClient
     {
         return $this->request($url, 'DELETE', [
             'headers' => $headers,
-            'query' => $query,
+            'query'   => $query,
         ]);
     }
 
     /**
      * JSON request.
      *
-     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
-     *
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
      */
     protected function httpPostJson(string $url, array $data, array $headers)
     {
@@ -100,10 +100,10 @@ abstract class BaseClient
     /**
      * PUT request.
      *
-     * @return array|Collection|object|ResponseInterface|string
-     *
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return array|Collection|object|ResponseInterface|string
      */
     protected function httpPut(string $url, array $data, array $headers)
     {
@@ -114,17 +114,17 @@ abstract class BaseClient
      * 上传文件
      * Upload file.
      *
-     * @return \Psr\Http\Message\ResponseInterface
-     *
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return \Psr\Http\Message\ResponseInterface
      */
     protected function httpUpload(string $url, array $files, array $headers, array $form = [])
     {
         $multipart = [];
         foreach ($files as $name => $path) {
             $multipart[] = [
-                'name' => $name,
+                'name'     => $name,
                 'contents' => fopen($path, 'r'),
             ];
         }
@@ -134,15 +134,16 @@ abstract class BaseClient
         }
 
         return $this->request(
-            $url, 'POST', ['multipart' => $multipart, 'headers' => $headers, 'connect_timeout' => 30, 'timeout' => 30, 'read_timeout' => 30]
+            $url,
+            'POST',
+            ['multipart' => $multipart, 'headers' => $headers, 'connect_timeout' => 30, 'timeout' => 30, 'read_timeout' => 30]
         );
     }
 
     /**
+     * @throws \GuzzleHttp\Exception\GuzzleException|\EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      *
      * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
-     *
-     * @throws \GuzzleHttp\Exception\GuzzleException|\EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      */
     protected function request(string $url, string $method = 'GET', array $options = [])
     {
@@ -190,9 +191,9 @@ abstract class BaseClient
                 // Limit the number of retries to 2
                 // Retry on server errors
                 return $retries < $this->app->config->get(
-                        'http.max_retries',
-                        1
-                    ) && $response && $response->getStatusCode() >= 500;
+                    'http.max_retries',
+                    1
+                ) && $response && $response->getStatusCode() >= 500;
             },
             function () {
                 return abs($this->app->config->get('http.retry_delay', 500));
@@ -203,7 +204,7 @@ abstract class BaseClient
     /**
      * 获取 Header.
      *
-     * @param  string  $type
+     * @param string $type
      *
      * @return string[]
      */

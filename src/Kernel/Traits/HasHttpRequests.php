@@ -51,7 +51,7 @@ trait HasHttpRequests
     /**
      * Set guzzle default settings.
      *
-     * @param  array  $defaults
+     * @param array $defaults
      */
     protected static function setDefaultOptions(array $defaults = [])
     {
@@ -97,8 +97,8 @@ trait HasHttpRequests
     /**
      * Add a middleware.
      *
-     * @param  callable  $middleware
-     * @param  string    $name
+     * @param callable $middleware
+     * @param string   $name
      *
      * @return $this
      */
@@ -124,12 +124,13 @@ trait HasHttpRequests
     /**
      * Make a request.
      *
-     * @param  string  $url
-     * @param  string  $method
-     * @param  array   $options
+     * @param string $url
+     * @param string $method
+     * @param array  $options
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return ResponseInterface
-     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     protected function request(string $url, string $method = 'GET', array $options = []): ResponseInterface
     {
