@@ -41,10 +41,10 @@ class Client extends BaseClient
      * @param $registration_id
      * @param $options
      *
-     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
-     *
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
      */
     public function updateDevices($registration_id, $options)
     {
@@ -59,10 +59,10 @@ class Client extends BaseClient
      * @param $alias_value
      * @param string[] $platform
      *
-     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
-     *
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
      */
     public function getAliases($alias_value, $platform = ['platform ' => 'all'])
     {
@@ -77,10 +77,10 @@ class Client extends BaseClient
      * @param $alias_value
      * @param string[] $platform
      *
-     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
-     *
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
      */
     public function deleteAliases($alias_value, $platform = ['platform ' => 'all'])
     {
@@ -95,10 +95,10 @@ class Client extends BaseClient
      * @param $alias_value
      * @param $options
      *
-     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
-     *
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
      */
     public function removeAliases($alias_value, $options)
     {
@@ -110,10 +110,10 @@ class Client extends BaseClient
     /**
      * 查询标签列表.
      *
-     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
-     *
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
      */
     public function getTags()
     {
@@ -125,10 +125,10 @@ class Client extends BaseClient
     /**
      * 判断设备与标签绑定关系.
      *
-     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
-     *
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
      */
     public function isDeviceInTag(string $tag_value, string $registration_id)
     {
@@ -140,10 +140,10 @@ class Client extends BaseClient
     /**
      * 更新标签.
      *
-     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
-     *
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
      */
     public function updateTag(string $tag_value, array $options)
     {
@@ -157,10 +157,10 @@ class Client extends BaseClient
      *
      * @param string[] $platform
      *
-     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
-     *
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
      */
     public function deleteTag(string $tag_value, $platform = ['platform ' => 'all'])
     {
@@ -172,10 +172,10 @@ class Client extends BaseClient
     /**
      * 获取用户在线状态（VIP 专属接口）.
      *
-     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
-     *
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
      */
     public function status(array $options)
     {

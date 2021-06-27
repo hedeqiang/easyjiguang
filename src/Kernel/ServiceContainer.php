@@ -99,8 +99,8 @@ class ServiceContainer extends Container
     }
 
     /**
-     * @param  string  $id
-     * @param mixed    $value
+     * @param string $id
+     * @param mixed  $value
      */
     public function rebind(string $id, $value)
     {
@@ -111,7 +111,7 @@ class ServiceContainer extends Container
     /**
      * Magic get access.
      *
-     * @param  string  $id
+     * @param string $id
      *
      * @return mixed
      */
@@ -123,8 +123,8 @@ class ServiceContainer extends Container
     /**
      * Magic set access.
      *
-     * @param  string  $id
-     * @param mixed    $value
+     * @param string $id
+     * @param mixed  $value
      */
     public function __set(string $id, $value)
     {

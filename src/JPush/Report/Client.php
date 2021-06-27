@@ -22,10 +22,10 @@ class Client extends BaseClient
     /**
      * 送达统计详情（新）.
      *
-     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
-     *
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
      */
     public function received(array $query)
     {
@@ -40,10 +40,10 @@ class Client extends BaseClient
     /**
      * 送达状态查询.
      *
-     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
-     *
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
      */
     public function status(array $options)
     {
@@ -55,10 +55,10 @@ class Client extends BaseClient
     /**
      * 消息统计详情（VIP 专属接口，新）.
      *
-     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
-     *
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
      */
     public function detail(array $query)
     {
@@ -73,10 +73,10 @@ class Client extends BaseClient
     /**
      * 用户统计（VIP 专属接口）.
      *
-     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
-     *
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
      */
     public function users(array $query)
     {
@@ -88,10 +88,10 @@ class Client extends BaseClient
     /**
      * 分组统计-消息统计（VIP 专属接口）.
      *
-     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
-     *
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
      */
     public function groupDetail(array $query)
     {
@@ -103,10 +103,10 @@ class Client extends BaseClient
     /**
      * 分组统计-用户统计（VIP 专属接口）.
      *
-     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
-     *
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
      */
     public function groupUsers(array $query)
     {

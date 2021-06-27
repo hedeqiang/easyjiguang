@@ -11,10 +11,10 @@
 
 namespace EasyJiGuang\Providers;
 
-use EasyJiGuang\JPush\Application as JPush;
-use EasyJiGuang\JVerify\Application as JVerify;
 use EasyJiGuang\JMessage\Application as JMessage;
 use EasyJiGuang\JMLink\Application as JMLink;
+use EasyJiGuang\JPush\Application as JPush;
+use EasyJiGuang\JVerify\Application as JVerify;
 
 class JiGuangServiceProvider extends \Illuminate\Support\ServiceProvider
 {
@@ -30,10 +30,10 @@ class JiGuangServiceProvider extends \Illuminate\Support\ServiceProvider
     public function register()
     {
         $apps = [
-            'verify' => JVerify::class,
-            'push' => JPush::class,
+            'verify'  => JVerify::class,
+            'push'    => JPush::class,
             'message' => JMessage::class,
-            'link' => JMLink::class,
+            'link'    => JMLink::class,
         ];
         foreach ($apps as $name => $class) {
             $this->app->singleton($class, function ($app) use ($class) {

@@ -10,13 +10,13 @@
  */
 
 return [
-    'appKey' => env('JPUSH_APP_KEY'),
+    'appKey'       => env('JPUSH_APP_KEY'),
     'masterSecret' => env('JPUSH_MASTER_SECRET'),
 
-    'groupKey' => env('JPUSH_GROUP_KEY'),
+    'groupKey'    => env('JPUSH_GROUP_KEY'),
     'groupSecret' => env('JPUSH_GROUP_SECRET'),
 
-    'devKey' => env('JPUSH_DEV_KEY'),
+    'devKey'    => env('JPUSH_DEV_KEY'),
     'devSecret' => env('JPUSH_DEV_SECRET'),
 
     /*
@@ -32,19 +32,19 @@ return [
      * path：日志文件位置(绝对路径!!!)，要求可写权限
      */
     'log' => [
-        'default' => env('APP_DEBUG', false) ? 'dev' : 'prod', // 默认使用的 channel，生产环境可以改为下面的 prod
+        'default'  => env('APP_DEBUG', false) ? 'dev' : 'prod', // 默认使用的 channel，生产环境可以改为下面的 prod
         'channels' => [
             // 测试环境
             'dev' => [
                 'driver' => 'single',
-                'path' => '/tmp/push.log',
-                'level' => 'debug',
+                'path'   => '/tmp/push.log',
+                'level'  => 'debug',
             ],
             // 生产环境
             'prod' => [
                 'driver' => 'daily',
-                'path' => '/tmp/push.log',
-                'level' => 'info',
+                'path'   => '/tmp/push.log',
+                'level'  => 'info',
             ],
         ],
     ],

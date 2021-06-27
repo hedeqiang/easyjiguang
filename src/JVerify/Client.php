@@ -22,10 +22,10 @@ class Client extends BaseClient
     /**
      * 号码认证
      *
-     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
-     *
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
      */
     public function verify(array $options, string $type = 'Android、iOS')
     {
@@ -50,17 +50,17 @@ class Client extends BaseClient
      *
      * @param $exID
      *
-     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
-     *
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
      */
     public function loginTokenVerify(string $loginToken, $exID)
     {
         $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, 'web/loginTokenVerify');
         $options = [
             'loginToken' => $loginToken,
-            'exID' => $exID,
+            'exID'       => $exID,
         ];
 
         return $this->httpPostJson($url, $options, $this->getHeader());

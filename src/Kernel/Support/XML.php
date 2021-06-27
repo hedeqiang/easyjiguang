@@ -18,11 +18,10 @@ use SimpleXMLElement;
  */
 class XML
 {
-
     /**
      * XML to array.
      *
-     * @param  string  $xml  XML string
+     * @param string $xml XML string
      *
      * @return array
      */
@@ -40,11 +39,11 @@ class XML
     /**
      * XML encode.
      *
-     * @param  mixed   $data
-     * @param  string  $root
-     * @param  string  $item
-     * @param  string  $attr
-     * @param  string  $id
+     * @param mixed  $data
+     * @param string $root
+     * @param string $item
+     * @param string $attr
+     * @param string $id
      *
      * @return string
      */
@@ -72,7 +71,7 @@ class XML
     /**
      * Build CDATA.
      *
-     * @param  string  $string
+     * @param string $string
      *
      * @return string
      */
@@ -84,7 +83,7 @@ class XML
     /**
      * Object to array.
      *
-     * @param  SimpleXMLElement  $obj
+     * @param SimpleXMLElement $obj
      *
      * @return array
      */
@@ -93,7 +92,7 @@ class XML
         $result = null;
 
         if (is_object($obj)) {
-            $obj = (array)$obj;
+            $obj = (array) $obj;
         }
 
         if (is_array($obj)) {
@@ -115,9 +114,9 @@ class XML
     /**
      * Array to XML.
      *
-     * @param  array   $data
-     * @param  string  $item
-     * @param  string  $id
+     * @param array  $data
+     * @param string $item
+     * @param string $id
      *
      * @return string
      */
@@ -134,7 +133,7 @@ class XML
             $xml .= "<{$key}{$attr}>";
 
             if ((is_array($val) || is_object($val))) {
-                $xml .= self::data2Xml((array)$val, $item, $id);
+                $xml .= self::data2Xml((array) $val, $item, $id);
             } else {
                 $xml .= is_numeric($val) ? $val : self::cdata($val);
             }
@@ -151,7 +150,7 @@ class XML
      * @see https://www.w3.org/TR/2008/REC-xml-20081126/#charsets - XML charset range
      * @see http://php.net/manual/en/regexp.reference.escape.php - escape in UTF-8 mode
      *
-     * @param  string  $xml
+     * @param string $xml
      *
      * @return string
      */
@@ -159,5 +158,4 @@ class XML
     {
         return preg_replace('/[^\x{9}\x{A}\x{D}\x{20}-\x{D7FF}\x{E000}-\x{FFFD}\x{10000}-\x{10FFFF}]+/u', '', $xml);
     }
-
 }

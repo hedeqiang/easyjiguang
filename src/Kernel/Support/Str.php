@@ -23,7 +23,7 @@ class Str
     /**
      * Convert a value to studly caps case.
      *
-     * @param  string  $value
+     * @param string $value
      *
      * @return string
      */
