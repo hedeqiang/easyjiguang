@@ -18,6 +18,7 @@ use SimpleXMLElement;
  */
 class XML
 {
+
     /**
      * XML to array.
      *
@@ -39,7 +40,7 @@ class XML
     /**
      * XML encode.
      *
-     * @param mixed    $data
+     * @param  mixed   $data
      * @param  string  $root
      * @param  string  $item
      * @param  string  $attr
@@ -92,13 +93,13 @@ class XML
         $result = null;
 
         if (is_object($obj)) {
-            $obj = (array) $obj;
+            $obj = (array)$obj;
         }
 
         if (is_array($obj)) {
             foreach ($obj as $key => $value) {
                 $res = self::normalize($value);
-                if (('@attributes' === $key) && ($key)) {
+                if ($key && '@attributes' === $key) {
                     $result = $res; // @codeCoverageIgnore
                 } else {
                     $result[$key] = $res;
@@ -133,7 +134,7 @@ class XML
             $xml .= "<{$key}{$attr}>";
 
             if ((is_array($val) || is_object($val))) {
-                $xml .= self::data2Xml((array) $val, $item, $id);
+                $xml .= self::data2Xml((array)$val, $item, $id);
             } else {
                 $xml .= is_numeric($val) ? $val : self::cdata($val);
             }
@@ -158,4 +159,5 @@ class XML
     {
         return preg_replace('/[^\x{9}\x{A}\x{D}\x{20}-\x{D7FF}\x{E000}-\x{FFFD}\x{10000}-\x{10FFFF}]+/u', '', $xml);
     }
+
 }

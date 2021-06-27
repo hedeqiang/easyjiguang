@@ -23,12 +23,14 @@ class Client extends BaseClient
     /**
      * 向某单个设备或者某设备列表推送一条通知、或者消息。
      *
+     * @param  array  $options
+     *
      * @return \Psr\Http\Message\ResponseInterface
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      */
-    public function message(array $options)
+    public function message(array $options): \Psr\Http\Message\ResponseInterface
     {
         $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, 'push');
 

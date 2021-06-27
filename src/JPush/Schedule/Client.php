@@ -37,15 +37,15 @@ class Client extends BaseClient
     /**
      * 获取有效的 Schedule 列表.
      *
-     * @param int         $page
-     * @param array|int[] $query
+     * @param  int          $page
+     * @param  array|int[]  $query
      *
      * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
      *
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function getSchedules($page = 1, $query = ['page' => $page])
+    public function getSchedules(int $page = 1, array $query = ['page' => $page])
     {
         return $this->httpGet(self::ENDPOINT_TEMPLATE, $query, $this->getHeader());
     }

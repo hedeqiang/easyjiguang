@@ -66,6 +66,8 @@ class Arr
     /**
      * Divide an array into two arrays. One with keys and the other with values.
      *
+     * @param  array  $array
+     *
      * @return array
      */
     public static function divide(array $array): array
@@ -114,11 +116,12 @@ class Arr
     /**
      * Determine if the given key exists in the provided array.
      *
-     * @param string|int $key
+     * @param  array       $array
+     * @param  string|int  $key
      *
      * @return bool
      */
-    public static function exists(array $array, $key)
+    public static function exists(array $array, $key): bool
     {
         return array_key_exists($key, $array);
     }

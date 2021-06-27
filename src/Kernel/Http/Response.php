@@ -31,9 +31,11 @@ class Response extends GuzzleResponse
     }
 
     /**
+     * @param  ResponseInterface  $response
+     *
      * @return \EasyJiGuang\Kernel\Http\Response
      */
-    public static function buildFromPsrResponse(ResponseInterface $response)
+    public static function buildFromPsrResponse(ResponseInterface $response): Response
     {
         return new static(
             $response->getStatusCode(),
@@ -49,7 +51,7 @@ class Response extends GuzzleResponse
      *
      * @return string
      */
-    public function toJson()
+    public function toJson(): string
     {
         return json_encode($this->toArray());
     }
@@ -59,7 +61,7 @@ class Response extends GuzzleResponse
      *
      * @return array
      */
-    public function toArray()
+    public function toArray(): array
     {
         $content = $this->removeControlCharacters($this->getBodyContents());
 
@@ -81,7 +83,7 @@ class Response extends GuzzleResponse
      *
      * @return \EasyJiGuang\Kernel\Support\Collection
      */
-    public function toCollection()
+    public function toCollection(): Collection
     {
         return new Collection($this->toArray());
     }
@@ -103,10 +105,12 @@ class Response extends GuzzleResponse
     }
 
     /**
+     * @param  string  $content
+     *
      * @return string
      */
-    protected function removeControlCharacters(string $content)
+    protected function removeControlCharacters(string $content): string
     {
-        return \preg_replace('/[\x00-\x1F\x80-\x9F]/u', '', $content);
+        return preg_replace('/[\x00-\x1F\x80-\x9F]/u', '', $content);
     }
 }

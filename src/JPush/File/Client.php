@@ -20,7 +20,8 @@ class Client extends BaseClient
     const ENDPOINT_VERSION = 'v3';
 
     /**
-     * @param $content
+     * @param  string  $type
+     * @param          $path
      *
      * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
      *
