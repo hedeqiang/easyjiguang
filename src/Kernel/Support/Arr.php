@@ -16,15 +16,10 @@ namespace EasyJiGuang\Kernel\Support;
  */
 class Arr
 {
-
     /**
      * Add an element to an array using "dot" notation if it doesn't exist.
      *
-     * @param  array   $array
-     * @param  string  $key
-     * @param  mixed   $value
-     *
-     * @return array
+     * @param mixed $value
      */
     public static function add(array $array, string $key, $value): array
     {
@@ -39,8 +34,6 @@ class Arr
      * Cross join the given arrays, returning all possible permutations.
      *
      * @param array ...$arrays
-     *
-     * @return array
      */
     public static function crossJoin(...$arrays): array
     {
@@ -65,8 +58,6 @@ class Arr
 
     /**
      * Divide an array into two arrays. One with keys and the other with values.
-     *
-     * @return array
      */
     public static function divide(array $array): array
     {
@@ -75,11 +66,6 @@ class Arr
 
     /**
      * Flatten a multi-dimensional associative array with dots.
-     *
-     * @param  array   $array
-     * @param  string  $prepend
-     *
-     * @return array
      */
     public static function dot(array $array, string $prepend = ''): array
     {
@@ -99,10 +85,7 @@ class Arr
     /**
      * Get all of the given array except for a specified array of items.
      *
-     * @param  array         $array
-     * @param  array|string  $keys
-     *
-     * @return array
+     * @param array|string $keys
      */
     public static function except(array $array, $keys): array
     {
@@ -169,11 +152,6 @@ class Arr
 
     /**
      * Flatten a multi-dimensional array into a single level.
-     *
-     * @param  array  $array
-     * @param  int    $depth
-     *
-     * @return array
      */
     public static function flatten(array $array, int $depth = \PHP_INT_MAX): array
     {
@@ -235,9 +213,7 @@ class Arr
     /**
      * Get an item from an array using "dot" notation.
      *
-     * @param  array   $array
-     * @param  string  $key
-     * @param  mixed   $default
+     * @param mixed $default
      *
      * @return mixed
      */
@@ -265,10 +241,7 @@ class Arr
     /**
      * Check if an item or items exist in an array using "dot" notation.
      *
-     * @param  array         $array
-     * @param  string|array  $keys
-     *
-     * @return bool
+     * @param string|array $keys
      */
     public static function has(array $array, $keys): bool
     {
@@ -309,10 +282,6 @@ class Arr
      * Determines if an array is associative.
      *
      * An array is "associative" if it doesn't have sequential numerical keys beginning with zero.
-     *
-     * @param  array  $array
-     *
-     * @return bool
      */
     public static function isAssoc(array $array): bool
     {
@@ -324,10 +293,7 @@ class Arr
     /**
      * Get a subset of the items from the given array.
      *
-     * @param  array         $array
-     * @param  array|string  $keys
-     *
-     * @return array
+     * @param array|string $keys
      */
     public static function only(array $array, $keys): array
     {
@@ -337,11 +303,8 @@ class Arr
     /**
      * Push an item onto the beginning of an array.
      *
-     * @param  array  $array
-     * @param  mixed  $value
-     * @param  mixed  $key
-     *
-     * @return array
+     * @param mixed $value
+     * @param mixed $key
      */
     public static function prepend(array $array, $value, $key = null): array
     {
@@ -357,9 +320,7 @@ class Arr
     /**
      * Get a value from the array, and remove it.
      *
-     * @param  array   $array
-     * @param  string  $key
-     * @param  mixed   $default
+     * @param mixed $default
      *
      * @return mixed
      */
@@ -401,11 +362,7 @@ class Arr
      *
      * If no key is given to the method, the entire array will be replaced.
      *
-     * @param  array   $array
-     * @param  string  $key
-     * @param  mixed   $value
-     *
-     * @return array
+     * @param mixed $value
      */
     public static function set(array &$array, string $key, $value): array
     {
@@ -431,11 +388,6 @@ class Arr
 
     /**
      * Filter the array using the given callback.
-     *
-     * @param  array     $array
-     * @param  callable  $callback
-     *
-     * @return array
      */
     public static function where(array $array, callable $callback): array
     {
@@ -446,8 +398,6 @@ class Arr
      * If the given value is not an array, wrap it in one.
      *
      * @param mixed $value
-     *
-     * @return array
      */
     public static function wrap($value): array
     {

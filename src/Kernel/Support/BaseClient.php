@@ -204,8 +204,6 @@ abstract class BaseClient
     /**
      * 获取 Header.
      *
-     * @param  string  $type
-     *
      * @return string[]
      */
     protected function getHeader(string $type = 'app'): array

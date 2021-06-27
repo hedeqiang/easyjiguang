@@ -61,17 +61,11 @@ class ServiceContainer extends Container
         $this->id = $id;
     }
 
-    /**
-     * @return string
-     */
     public function getId(): string
     {
         return $this->id ?? $this->id = md5(json_encode($this->userConfig));
     }
 
-    /**
-     * @return array
-     */
     public function getConfig(): array
     {
         $base = [
@@ -99,8 +93,7 @@ class ServiceContainer extends Container
     }
 
     /**
-     * @param  string  $id
-     * @param mixed    $value
+     * @param mixed $value
      */
     public function rebind(string $id, $value)
     {
@@ -110,8 +103,6 @@ class ServiceContainer extends Container
 
     /**
      * Magic get access.
-     *
-     * @param  string  $id
      *
      * @return mixed
      */
@@ -123,8 +114,7 @@ class ServiceContainer extends Container
     /**
      * Magic set access.
      *
-     * @param  string  $id
-     * @param mixed    $value
+     * @param mixed $value
      */
     public function __set(string $id, $value)
     {

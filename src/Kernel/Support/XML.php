@@ -21,7 +21,7 @@ class XML
     /**
      * XML to array.
      *
-     * @param  string  $xml  XML string
+     * @param string $xml XML string
      *
      * @return array
      */
@@ -39,13 +39,7 @@ class XML
     /**
      * XML encode.
      *
-     * @param mixed    $data
-     * @param  string  $root
-     * @param  string  $item
-     * @param  string  $attr
-     * @param  string  $id
-     *
-     * @return string
+     * @param mixed $data
      */
     public static function build($data, string $root = 'xml', string $item = 'item', string $attr = '', string $id = 'id'): string
     {
@@ -70,10 +64,6 @@ class XML
 
     /**
      * Build CDATA.
-     *
-     * @param  string  $string
-     *
-     * @return string
      */
     public static function cdata(string $string): string
     {
@@ -82,8 +72,6 @@ class XML
 
     /**
      * Object to array.
-     *
-     * @param  SimpleXMLElement  $obj
      *
      * @return array
      */
@@ -113,12 +101,6 @@ class XML
 
     /**
      * Array to XML.
-     *
-     * @param  array   $data
-     * @param  string  $item
-     * @param  string  $id
-     *
-     * @return string
      */
     protected static function data2Xml(array $data, string $item = 'item', string $id = 'id'): string
     {
@@ -149,10 +131,6 @@ class XML
      *
      * @see https://www.w3.org/TR/2008/REC-xml-20081126/#charsets - XML charset range
      * @see http://php.net/manual/en/regexp.reference.escape.php - escape in UTF-8 mode
-     *
-     * @param  string  $xml
-     *
-     * @return string
      */
     public static function sanitize(string $xml): string
     {

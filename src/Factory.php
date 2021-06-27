@@ -20,10 +20,8 @@ namespace EasyJiGuang;
  */
 class Factory
 {
-
     /**
-     * @param         $name
-     * @param  array  $config
+     * @param $name
      *
      * @return \EasyJiGuang\Kernel\ServiceContainer
      */

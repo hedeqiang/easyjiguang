@@ -43,8 +43,6 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate, JsonSeria
 
     /**
      * Return all items.
-     *
-     * @return array
      */
     public function all(): array
     {
@@ -53,10 +51,6 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate, JsonSeria
 
     /**
      * Return specific items.
-     *
-     * @param  array  $keys
-     *
-     * @return Collection
      */
     public function only(array $keys): Collection
     {
@@ -91,8 +85,6 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate, JsonSeria
      * Merge data.
      *
      * @param Collection|array $items
-     *
-     * @return Collection
      */
     public function merge($items): Collection
     {
@@ -107,10 +99,6 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate, JsonSeria
 
     /**
      * To determine Whether the specified element exists.
-     *
-     * @param  string  $key
-     *
-     * @return bool
      */
     public function has(string $key): bool
     {
@@ -129,8 +117,6 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate, JsonSeria
 
     /**
      * Retrieve the last item.
-     *
-     * @return bool
      */
     public function last(): bool
     {
@@ -144,8 +130,7 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate, JsonSeria
     /**
      * add the item value.
      *
-     * @param  string  $key
-     * @param mixed    $value
+     * @param mixed $value
      */
     public function add(string $key, $value)
     {
@@ -155,8 +140,7 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate, JsonSeria
     /**
      * Set the item value.
      *
-     * @param  string  $key
-     * @param mixed    $value
+     * @param mixed $value
      */
     public function set(string $key, $value)
     {
@@ -166,8 +150,7 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate, JsonSeria
     /**
      * Retrieve item from Collection.
      *
-     * @param  string  $key
-     * @param mixed    $default
+     * @param mixed $default
      *
      * @return mixed
      */
@@ -178,8 +161,6 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate, JsonSeria
 
     /**
      * Remove item form Collection.
-     *
-     * @param  string  $key
      */
     public function forget(string $key)
     {
@@ -188,8 +169,6 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate, JsonSeria
 
     /**
      * Build to array.
-     *
-     * @return array
      */
     public function toArray(): array
     {
@@ -198,8 +177,6 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate, JsonSeria
 
     /**
      * Build to json.
-     *
-     * @param  int  $option
      *
      * @return string
      */
@@ -295,8 +272,6 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate, JsonSeria
     /**
      * Get a data by key.
      *
-     * @param  string  $key
-     *
      * @return mixed
      */
     public function __get(string $key)
@@ -307,8 +282,7 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate, JsonSeria
     /**
      * Assigns a value to the specified data.
      *
-     * @param  string  $key
-     * @param mixed    $value
+     * @param mixed $value
      */
     public function __set(string $key, $value)
     {
@@ -317,8 +291,6 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate, JsonSeria
 
     /**
      * Whether or not an data exists by key.
-     *
-     * @param  string  $key
      *
      * @return bool
      */
@@ -329,8 +301,6 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate, JsonSeria
 
     /**
      * Unset an data by key.
-     *
-     * @param  string  $key
      */
     public function __unset(string $key)
     {
