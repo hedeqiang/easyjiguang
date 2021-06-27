@@ -64,7 +64,7 @@ class ServiceContainer extends Container
     /**
      * @return string
      */
-    public function getId()
+    public function getId(): string
     {
         return $this->id ?? $this->id = md5(json_encode($this->userConfig));
     }
@@ -72,7 +72,7 @@ class ServiceContainer extends Container
     /**
      * @return array
      */
-    public function getConfig()
+    public function getConfig(): array
     {
         $base = [
             // http://docs.guzzlephp.org/en/stable/request-options.html
@@ -99,10 +99,10 @@ class ServiceContainer extends Container
     }
 
     /**
-     * @param string $id
-     * @param mixed  $value
+     * @param  string  $id
+     * @param mixed    $value
      */
-    public function rebind($id, $value)
+    public function rebind(string $id, $value)
     {
         $this->offsetUnset($id);
         $this->offsetSet($id, $value);
@@ -111,11 +111,11 @@ class ServiceContainer extends Container
     /**
      * Magic get access.
      *
-     * @param string $id
+     * @param  string  $id
      *
      * @return mixed
      */
-    public function __get($id)
+    public function __get(string $id)
     {
         return $this->offsetGet($id);
     }
@@ -123,10 +123,10 @@ class ServiceContainer extends Container
     /**
      * Magic set access.
      *
-     * @param string $id
-     * @param mixed  $value
+     * @param  string  $id
+     * @param mixed    $value
      */
-    public function __set($id, $value)
+    public function __set(string $id, $value)
     {
         $this->offsetSet($id, $value);
     }
@@ -134,7 +134,7 @@ class ServiceContainer extends Container
     public function registerProviders(array $providers)
     {
         foreach ($providers as $provider) {
-            parent::register(new $provider());
+            $this->register(new $provider());
         }
     }
 }
