@@ -24,13 +24,13 @@ use Psr\Http\Message\ResponseInterface;
 trait ResponseCastable
 {
     /**
-     * @param string|null $type
+     * @param  string|null  $type
      *
      * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
      *
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      */
-    protected function castResponseToType(ResponseInterface $response, $type = null)
+    protected function castResponseToType(ResponseInterface $response, string $type = null)
     {
         $response = Response::buildFromPsrResponse($response);
         $response->getBody()->rewind();
@@ -54,15 +54,15 @@ trait ResponseCastable
     }
 
     /**
-     * @param mixed       $response
-     * @param string|null $type
+     * @param mixed         $response
+     * @param  string|null  $type
      *
      * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
      *
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidArgumentException
      * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
      */
-    protected function detectAndCastResponseToType($response, $type = null)
+    protected function detectAndCastResponseToType($response, string $type = null)
     {
         switch (true) {
             case $response instanceof ResponseInterface:
