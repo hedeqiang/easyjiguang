@@ -23,7 +23,6 @@ use Psr\Http\Message\ResponseInterface;
  */
 trait ResponseCastable
 {
-
     /****
      * @param  ResponseInterface  $response
      * @param  string|null        $type

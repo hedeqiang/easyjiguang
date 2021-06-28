@@ -19,7 +19,6 @@ use Psr\Http\Message\ResponseInterface;
 
 class Client extends BaseClient
 {
-
     const ENDPOINT_TEMPLATE = 'https://api.verification.jpush.cn/v1/';
 
     const ENDPOINT_VERSION = 'v1';
@@ -27,10 +26,10 @@ class Client extends BaseClient
     /**
      * 号码认证
      *
-     * @return array|Collection|object|ResponseInterface|string
      * @throws GuzzleException
-     *
      * @throws InvalidConfigException
+     *
+     * @return array|Collection|object|ResponseInterface|string
      */
     public function verify(array $options, string $type = 'Android、iOS')
     {
@@ -53,12 +52,13 @@ class Client extends BaseClient
     /**
      * 一键登录.
      *
-     * @param  string  $loginToken
-     * @param          $exID
+     * @param string $loginToken
+     * @param        $exID
      *
-     * @return array|Collection|object|ResponseInterface|string
      * @throws GuzzleException
      * @throws InvalidConfigException
+     *
+     * @return array|Collection|object|ResponseInterface|string
      */
     public function loginTokenVerify(string $loginToken, $exID)
     {
@@ -74,7 +74,7 @@ class Client extends BaseClient
     /**
      * 解密手机号.
      *
-     * @param  string  $encrypted
+     * @param string $encrypted
      *
      * @return string[]
      */
@@ -88,5 +88,4 @@ class Client extends BaseClient
 
         return ['phone' => $result];
     }
-
 }

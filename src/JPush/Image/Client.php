@@ -26,10 +26,10 @@ class Client extends BaseClient
     /**
      * 新增图片（URL方式）.
      *
-     * @return array|Collection|object|ResponseInterface|string
      * @throws GuzzleException
-     *
      * @throws InvalidConfigException
+     *
+     * @return array|Collection|object|ResponseInterface|string
      */
     public function createByUrls(array $options)
     {
@@ -41,10 +41,10 @@ class Client extends BaseClient
     /**
      * 新增图片（文件方式）.
      *
-     * @return array|Collection|object|ResponseInterface|string
      *@throws GuzzleException
-     *
      * @throws InvalidConfigException
+     *
+     * @return array|Collection|object|ResponseInterface|string
      */
     public function createByFiles(array $options)
     {
@@ -56,10 +56,10 @@ class Client extends BaseClient
     /**
      * 更新图片（URL方式）.
      *
-     * @return array|Collection|object|ResponseInterface|string
      *@throws GuzzleException
-     *
      * @throws InvalidConfigException
+     *
+     * @return array|Collection|object|ResponseInterface|string
      */
     public function updateByUrls(string $mediaId, array $options)
     {
@@ -71,10 +71,10 @@ class Client extends BaseClient
     /**
      * 更新图片（文件方式）.
      *
-     * @return array|Collection|object|ResponseInterface|string
      *@throws GuzzleException
-     *
      * @throws InvalidConfigException
+     *
+     * @return array|Collection|object|ResponseInterface|string
      */
     public function updateByFiles(string $mediaId, array $options)
     {

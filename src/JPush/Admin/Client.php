@@ -28,10 +28,10 @@ class Client extends BaseClient
      *
      * @param $options
      *
-     * @return array|Collection|object|ResponseInterface|string
      *@throws GuzzleException
-     *
      * @throws InvalidConfigException
+     *
+     * @return array|Collection|object|ResponseInterface|string
      */
     public function createApp($options)
     {
@@ -41,10 +41,10 @@ class Client extends BaseClient
     /**
      * app 删除.
      *
-     * @return array|Collection|object|ResponseInterface|string
      *@throws GuzzleException
-     *
      * @throws InvalidConfigException
+     *
+     * @return array|Collection|object|ResponseInterface|string
      */
     public function deleteApp(string $appKey)
     {
@@ -56,10 +56,10 @@ class Client extends BaseClient
     /**
      * 证书上传.
      *
-     * @return array|Collection|object|ResponseInterface|string
      *@throws GuzzleException
-     *
      * @throws InvalidConfigException
+     *
+     * @return array|Collection|object|ResponseInterface|string
      */
     public function uploadCertificate(string $appKey, array $options)
     {

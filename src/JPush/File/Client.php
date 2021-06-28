@@ -27,10 +27,10 @@ class Client extends BaseClient
      * @param string $type
      * @param        $path
      *
-     * @return array|Collection|object|ResponseInterface|string
      *@throws GuzzleException
-     *
      * @throws InvalidConfigException
+     *
+     * @return array|Collection|object|ResponseInterface|string
      */
     public function files(string $type, $path)
     {
@@ -42,10 +42,10 @@ class Client extends BaseClient
     /**
      * 查询有效文件列表.
      *
-     * @return array|Collection|object|ResponseInterface|string
      *@throws GuzzleException
-     *
      * @throws InvalidConfigException
+     *
+     * @return array|Collection|object|ResponseInterface|string
      */
     public function getFiles()
     {
@@ -55,10 +55,10 @@ class Client extends BaseClient
     /**
      * 删除文件.
      *
-     * @return array|Collection|object|ResponseInterface|string
      *@throws GuzzleException
-     *
      * @throws InvalidConfigException
+     *
+     * @return array|Collection|object|ResponseInterface|string
      */
     public function deleteFiles(string $file_id)
     {
@@ -70,10 +70,10 @@ class Client extends BaseClient
     /**
      * 查询指定文件详情.
      *
-     * @return array|Collection|object|ResponseInterface|string
      *@throws GuzzleException
-     *
      * @throws InvalidConfigException
+     *
+     * @return array|Collection|object|ResponseInterface|string
      */
     public function getFilesById(string $file_id)
     {
