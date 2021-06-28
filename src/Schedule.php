@@ -27,9 +27,9 @@ class Schedule extends Base
      *
      * @param $options
      *
-     * @return array
-     *
      * @throws HttpException
+     *
+     * @return array
      */
     public function addSchedules($options)
     {
@@ -46,9 +46,9 @@ class Schedule extends Base
      * @param int         $page
      * @param array|int[] $query
      *
-     * @return array
-     *
      * @throws HttpException
+     *
+     * @return array
      */
     public function getSchedules($page = 1, $query = ['page' => $page])
     {
@@ -64,13 +64,14 @@ class Schedule extends Base
      *
      * @param $schedule_id
      *
-     * @return array
-     *
      * @throws HttpException
+     *
+     * @return array
      */
     public function getSchedulesById($schedule_id)
     {
         $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, $schedule_id);
+
         try {
             return $this->get($url, [], $this->getHeader());
         } catch (\Exception $e) {
@@ -83,13 +84,14 @@ class Schedule extends Base
      *
      * @param $schedule_id
      *
-     * @return array
-     *
      * @throws HttpException
+     *
+     * @return array
      */
     public function getMsgId($schedule_id)
     {
         $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, $schedule_id.'/msg_ids');
+
         try {
             return $this->get($url, [], $this->getHeader());
         } catch (\Exception $e) {
@@ -103,13 +105,14 @@ class Schedule extends Base
      * @param $schedule_id
      * @param $options
      *
-     * @return array
-     *
      * @throws HttpException
+     *
+     * @return array
      */
     public function updateSchedules($schedule_id, $options)
     {
         $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, $schedule_id);
+
         try {
             return $this->put($url, $options, $this->getHeader());
         } catch (\Exception $e) {
@@ -122,13 +125,14 @@ class Schedule extends Base
      *
      * @param $schedule_id
      *
-     * @return array
-     *
      * @throws HttpException
+     *
+     * @return array
      */
     public function deleteSchedules($schedule_id)
     {
         $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, $schedule_id);
+
         try {
             return $this->delete($url, $this->getHeader());
         } catch (\Exception $e) {

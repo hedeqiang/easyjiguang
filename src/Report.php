@@ -25,9 +25,9 @@ class Report extends Base
     /**
      * 送达统计详情（新）.
      *
-     * @return array
-     *
      * @throws HttpException
+     *
+     * @return array
      */
     public function received(array $query)
     {
@@ -35,6 +35,7 @@ class Report extends Base
             'msg_id' => $msg_id,
         ];*/
         $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, 'received/detail');
+
         try {
             return $this->get($url, $query, $this->getHeader());
         } catch (\Exception $e) {
@@ -45,13 +46,14 @@ class Report extends Base
     /**
      * 送达状态查询.
      *
-     * @return array
-     *
      * @throws HttpException
+     *
+     * @return array
      */
     public function status(array $options)
     {
         $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, 'status/message');
+
         try {
             return $this->postJson($url, $options, $this->getHeader());
         } catch (\Exception $e) {
@@ -62,9 +64,9 @@ class Report extends Base
     /**
      * 消息统计详情（VIP 专属接口，新）.
      *
-     * @return array
-     *
      * @throws HttpException
+     *
+     * @return array
      */
     public function detail(array $query)
     {
@@ -72,6 +74,7 @@ class Report extends Base
             'msg_ids' => $msg_ids,
         ];*/
         $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, 'messages/detail');
+
         try {
             return $this->get($url, $query, $this->getHeader());
         } catch (\Exception $e) {
@@ -82,13 +85,14 @@ class Report extends Base
     /**
      * 用户统计（VIP 专属接口）.
      *
-     * @return array
-     *
      * @throws HttpException
+     *
+     * @return array
      */
     public function users(array $query)
     {
         $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, 'users');
+
         try {
             return $this->get($url, $query, $this->getHeader());
         } catch (\Exception $e) {
@@ -99,13 +103,14 @@ class Report extends Base
     /**
      * 分组统计-消息统计（VIP 专属接口）.
      *
-     * @return array
-     *
      * @throws HttpException
+     *
+     * @return array
      */
     public function groupDetail(array $query)
     {
         $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, 'group/messages/detail');
+
         try {
             return $this->get($url, $query, $this->getHeader('group'));
         } catch (\Exception $e) {
@@ -116,13 +121,14 @@ class Report extends Base
     /**
      * 分组统计-用户统计（VIP 专属接口）.
      *
-     * @return array
-     *
      * @throws HttpException
+     *
+     * @return array
      */
     public function groupUsers(array $query)
     {
         $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, 'group/users');
+
         try {
             return $this->get($url, $query, $this->getHeader('group'));
         } catch (\Exception $e) {

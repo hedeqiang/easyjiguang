@@ -27,19 +27,20 @@ class File extends Base
      *
      * @param $content
      *
-     * @return array
-     *
      * @throws HttpException
+     *
+     * @return array
      */
     public function files(string $type, $content)
     {
         $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, $type);
+
         try {
             $options = [
                 [
                     'Content-type' => 'multipart/form-data',
-                    'name' => 'filename',
-                    'contents' => $content,
+                    'name'         => 'filename',
+                    'contents'     => $content,
                 ],
             ];
 
@@ -52,9 +53,9 @@ class File extends Base
     /**
      * 查询有效文件列表.
      *
-     * @return array
-     *
      * @throws HttpException
+     *
+     * @return array
      */
     public function getFiles()
     {
@@ -68,13 +69,14 @@ class File extends Base
     /**
      * 删除文件.
      *
-     * @return array
-     *
      * @throws HttpException
+     *
+     * @return array
      */
     public function deleteFiles(string $file_id)
     {
         $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, $file_id);
+
         try {
             return $this->delete($url, $this->getHeader());
         } catch (\Exception $e) {
@@ -85,13 +87,14 @@ class File extends Base
     /**
      * 查询指定文件详情.
      *
-     * @return array
-     *
      * @throws HttpException
+     *
+     * @return array
      */
     public function getFilesById(string $file_id)
     {
         $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, $file_id);
+
         try {
             return $this->get($url, [], $this->getHeader());
         } catch (\Exception $e) {
