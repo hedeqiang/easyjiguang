@@ -11,7 +11,11 @@
 
 namespace EasyJiGuang\JPush\Admin;
 
+use EasyJiGuang\Kernel\Exceptions\InvalidConfigException;
 use EasyJiGuang\Kernel\Support\BaseClient;
+use EasyJiGuang\Kernel\Support\Collection;
+use GuzzleHttp\Exception\GuzzleException;
+use Psr\Http\Message\ResponseInterface;
 
 class Client extends BaseClient
 {
@@ -24,10 +28,10 @@ class Client extends BaseClient
      *
      * @param $options
      *
-     * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @return array|Collection|object|ResponseInterface|string
+     *@throws GuzzleException
      *
-     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
+     * @throws InvalidConfigException
      */
     public function createApp($options)
     {
@@ -37,10 +41,10 @@ class Client extends BaseClient
     /**
      * app 删除.
      *
-     * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @return array|Collection|object|ResponseInterface|string
+     *@throws GuzzleException
      *
-     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
+     * @throws InvalidConfigException
      */
     public function deleteApp(string $appKey)
     {
@@ -52,10 +56,10 @@ class Client extends BaseClient
     /**
      * 证书上传.
      *
-     * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @return array|Collection|object|ResponseInterface|string
+     *@throws GuzzleException
      *
-     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
+     * @throws InvalidConfigException
      */
     public function uploadCertificate(string $appKey, array $options)
     {

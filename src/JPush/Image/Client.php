@@ -11,7 +11,11 @@
 
 namespace EasyJiGuang\JPush\Image;
 
+use EasyJiGuang\Kernel\Exceptions\InvalidConfigException;
 use EasyJiGuang\Kernel\Support\BaseClient;
+use EasyJiGuang\Kernel\Support\Collection;
+use GuzzleHttp\Exception\GuzzleException;
+use Psr\Http\Message\ResponseInterface;
 
 class Client extends BaseClient
 {
@@ -22,10 +26,10 @@ class Client extends BaseClient
     /**
      * 新增图片（URL方式）.
      *
-     * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @return array|Collection|object|ResponseInterface|string
+     * @throws GuzzleException
      *
-     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
+     * @throws InvalidConfigException
      */
     public function createByUrls(array $options)
     {
@@ -37,10 +41,10 @@ class Client extends BaseClient
     /**
      * 新增图片（文件方式）.
      *
-     * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @return array|Collection|object|ResponseInterface|string
+     *@throws GuzzleException
      *
-     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
+     * @throws InvalidConfigException
      */
     public function createByFiles(array $options)
     {
@@ -52,10 +56,10 @@ class Client extends BaseClient
     /**
      * 更新图片（URL方式）.
      *
-     * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @return array|Collection|object|ResponseInterface|string
+     *@throws GuzzleException
      *
-     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
+     * @throws InvalidConfigException
      */
     public function updateByUrls(string $mediaId, array $options)
     {
@@ -67,10 +71,10 @@ class Client extends BaseClient
     /**
      * 更新图片（文件方式）.
      *
-     * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @return array|Collection|object|ResponseInterface|string
+     *@throws GuzzleException
      *
-     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
+     * @throws InvalidConfigException
      */
     public function updateByFiles(string $mediaId, array $options)
     {

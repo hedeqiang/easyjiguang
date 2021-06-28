@@ -11,6 +11,14 @@
 
 namespace EasyJiGuang\Kernel\Exceptions;
 
-class Exception extends \Exception
+use Exception;
+
+/****
+ * Class EasyJiGuangException
+ *
+ * @package EasyJiGuang\Kernel\Exceptions
+ */
+class EasyJiGuangException extends Exception
 {
+
 }

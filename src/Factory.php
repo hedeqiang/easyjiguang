@@ -11,6 +11,8 @@
 
 namespace EasyJiGuang;
 
+use EasyJiGuang\Kernel\ServiceContainer;
+
 /**
  * @method static \EasyJiGuang\JPush\Application JPush(array $config)
  * @method static \EasyJiGuang\JVerify\Application JVerify(array $config)
@@ -24,7 +26,7 @@ class Factory
      * @param       $name
      * @param array $config
      *
-     * @return \EasyJiGuang\Kernel\ServiceContainer
+     * @return ServiceContainer
      */
     public static function make($name, array $config): Kernel\ServiceContainer
     {
@@ -37,7 +39,7 @@ class Factory
     /**
      * Dynamically pass methods to the application.
      *
-     * @return mixed
+     * @return ServiceContainer
      */
     public static function __callStatic(string $name, array $arguments)
     {

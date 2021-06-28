@@ -11,10 +11,15 @@
 
 namespace EasyJiGuang\JPush\Report;
 
+use EasyJiGuang\Kernel\Exceptions\InvalidConfigException;
 use EasyJiGuang\Kernel\Support\BaseClient;
+use EasyJiGuang\Kernel\Support\Collection;
+use GuzzleHttp\Exception\GuzzleException;
+use Psr\Http\Message\ResponseInterface;
 
 class Client extends BaseClient
 {
+
     const ENDPOINT_TEMPLATE = 'https://report.jpush.cn/v3';
 
     const ENDPOINT_VERSION = 'v3';
@@ -22,10 +27,11 @@ class Client extends BaseClient
     /**
      * 送达统计详情（新）.
      *
-     * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @param  array  $query
      *
-     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
+     * @return array|Collection|object|ResponseInterface|string
+     * @throws GuzzleException
+     * @throws InvalidConfigException
      */
     public function received(array $query)
     {
@@ -40,10 +46,10 @@ class Client extends BaseClient
     /**
      * 送达状态查询.
      *
-     * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @return array|Collection|object|ResponseInterface|string
+     * @throws GuzzleException
      *
-     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
+     * @throws InvalidConfigException
      */
     public function status(array $options)
     {
@@ -55,16 +61,13 @@ class Client extends BaseClient
     /**
      * 消息统计详情（VIP 专属接口，新）.
      *
-     * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @return array|Collection|object|ResponseInterface|string
+     * @throws GuzzleException
      *
-     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
+     * @throws InvalidConfigException
      */
     public function detail(array $query)
     {
-        /*$query = [
-            'msg_ids' => $msg_ids,
-        ];*/
         $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, 'messages/detail');
 
         return $this->httpGet($url, $query, $this->getHeader());
@@ -73,10 +76,10 @@ class Client extends BaseClient
     /**
      * 用户统计（VIP 专属接口）.
      *
-     * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @return array|Collection|object|ResponseInterface|string
+     * @throws GuzzleException
      *
-     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
+     * @throws InvalidConfigException
      */
     public function users(array $query)
     {
@@ -88,10 +91,10 @@ class Client extends BaseClient
     /**
      * 分组统计-消息统计（VIP 专属接口）.
      *
-     * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @return array|Collection|object|ResponseInterface|string
+     * @throws GuzzleException
      *
-     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
+     * @throws InvalidConfigException
      */
     public function groupDetail(array $query)
     {
@@ -103,10 +106,10 @@ class Client extends BaseClient
     /**
      * 分组统计-用户统计（VIP 专属接口）.
      *
-     * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @return array|Collection|object|ResponseInterface|string
+     * @throws GuzzleException
      *
-     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
+     * @throws InvalidConfigException
      */
     public function groupUsers(array $query)
     {
@@ -114,4 +117,5 @@ class Client extends BaseClient
 
         return $this->httpGet($url, $query, $this->getHeader('group'));
     }
+
 }

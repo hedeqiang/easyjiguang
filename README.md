@@ -1,4 +1,4 @@
-<h1 align="center"> JIGUANG </h1>
+<h1 align="center"> JIGuang Push</h1>
 
 <p align="center"> 极光 API Server SDK for PHP.</p>
 
@@ -427,8 +427,8 @@ EasyJiGuang::JVerify()->verify->verify();
 
 You can contribute in one of three ways:
 
-1. File bug reports using the [issue tracker](https://github.com/hedeqiang/jpush/issues).
-2. Answer questions or fix bugs on the [issue tracker](https://github.com/hedeqiang/jpush/issues).
+1. File bug reports using the [issue tracker](https://github.com/hedeqiang/easyjiguang/issues).
+2. Answer questions or fix bugs on the [issue tracker](https://github.com/hedeqiang/easyjiguang/issues).
 3. Contribute new features or update the wiki.
 
 _The code contribution process is not very formal. You just need to make sure that you follow the PSR-0, PSR-1, and

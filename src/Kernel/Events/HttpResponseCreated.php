@@ -19,10 +19,15 @@ use Psr\Http\Message\ResponseInterface;
 class HttpResponseCreated
 {
     /**
-     * @var \Psr\Http\Message\ResponseInterface
+     * @var ResponseInterface
      */
     public $response;
 
+    /****
+     * HttpResponseCreated constructor.
+     *
+     * @param  ResponseInterface  $response
+     */
     public function __construct(ResponseInterface $response)
     {
         $this->response = $response;

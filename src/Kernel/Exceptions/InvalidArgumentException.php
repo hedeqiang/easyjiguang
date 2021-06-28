@@ -11,6 +11,11 @@
 
 namespace EasyJiGuang\Kernel\Exceptions;
 
-class InvalidArgumentException extends Exception
+/****
+ * Class InvalidArgumentException
+ *
+ * @package EasyJiGuang\Kernel\Exceptions
+ */
+class InvalidArgumentException extends EasyJiGuangException
 {
 }

@@ -43,6 +43,9 @@ class JiGuangServiceProvider extends \Illuminate\Support\ServiceProvider
         }
     }
 
+    /****
+     * @return string[]
+     */
     public function provides(): array
     {
         return ['verify', 'push', 'message', 'link'];

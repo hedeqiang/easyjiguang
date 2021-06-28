@@ -11,7 +11,7 @@
 
 namespace EasyJiGuang\Kernel\Traits;
 
-use EasyJiGuang\Kernel\Contracts\Arrayable;
+use EasyJiGuang\Kernel\Contracts\ArrayAble;
 use EasyJiGuang\Kernel\Exceptions\InvalidArgumentException;
 use EasyJiGuang\Kernel\Exceptions\InvalidConfigException;
 use EasyJiGuang\Kernel\Http\Response;
@@ -23,12 +23,13 @@ use Psr\Http\Message\ResponseInterface;
  */
 trait ResponseCastable
 {
-    /**
-     * @param string|null $type
+
+    /****
+     * @param  ResponseInterface  $response
+     * @param  string|null        $type
      *
-     * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
-     *
-     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
+     * @return array|Response|Collection|mixed|object
+     * @throws InvalidConfigException
      */
     protected function castResponseToType(ResponseInterface $response, string $type = null)
     {
@@ -45,22 +46,21 @@ trait ResponseCastable
             case 'raw':
                 return $response;
             default:
-                if (!is_subclass_of($type, Arrayable::class)) {
-                    throw new InvalidConfigException(sprintf('Config key "response_type" classname must be an instanceof %s', Arrayable::class));
+                if (!is_subclass_of($type, ArrayAble::class)) {
+                    throw new InvalidConfigException(sprintf('Config key "response_type" classname must be an instanceof %s', ArrayAble::class));
                 }
 
                 return new $type($response);
         }
     }
 
-    /**
-     * @param mixed       $response
-     * @param string|null $type
+    /****
+     * @param               $response
+     * @param  string|null  $type
      *
-     * @throws \EasyJiGuang\Kernel\Exceptions\InvalidArgumentException
-     * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
-     *
-     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
+     * @return array|Response|Collection|mixed|object
+     * @throws InvalidArgumentException
+     * @throws InvalidConfigException
      */
     protected function detectAndCastResponseToType($response, string $type = null)
     {
@@ -69,7 +69,7 @@ trait ResponseCastable
                 $response = Response::buildFromPsrResponse($response);
 
                 break;
-            case $response instanceof Arrayable:
+            case $response instanceof ArrayAble:
                 $response = new Response(200, [], json_encode($response->toArray()));
 
                 break;

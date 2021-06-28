@@ -11,7 +11,9 @@
 
 namespace EasyJiGuang\JMLink;
 
+use EasyJiGuang\Kernel\Exceptions\InvalidConfigException;
 use EasyJiGuang\Kernel\Support\BaseClient;
+use GuzzleHttp\Exception\GuzzleException;
 
 class Client extends BaseClient
 {
@@ -22,8 +24,10 @@ class Client extends BaseClient
     /**
      * 短链查询.
      *
-     * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @param  array  $options
+     *
+     * @throws InvalidConfigException
+     * @throws GuzzleException
      */
     public function get(array $options)
     {
@@ -35,8 +39,8 @@ class Client extends BaseClient
     /**
      * 短链统计
      *
-     * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws InvalidConfigException
+     * @throws GuzzleException
      */
     public function count(string $link_key, array $options)
     {

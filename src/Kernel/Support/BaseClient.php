@@ -11,8 +11,11 @@
 
 namespace EasyJiGuang\Kernel\Support;
 
+use EasyJiGuang\Kernel\Exceptions\InvalidConfigException;
 use EasyJiGuang\Kernel\ServiceContainer;
 use EasyJiGuang\Kernel\Traits\HasHttpRequests;
+use EasyJiGuang\Kernel\Traits\string;
+use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\MessageFormatter;
 use GuzzleHttp\Middleware;
 use Psr\Http\Message\RequestInterface;
@@ -34,6 +37,8 @@ abstract class BaseClient
 
     /**
      * BaseClient constructor.
+     *
+     * @param  ServiceContainer  $app
      */
     public function __construct(ServiceContainer $app)
     {
@@ -43,10 +48,13 @@ abstract class BaseClient
     /**
      * GET request.
      *
-     * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @param  string  $url
+     * @param  array   $query
+     * @param  array   $headers
      *
-     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
+     * @return array|Collection|object|ResponseInterface|string
+     * @throws GuzzleException
+     * @throws InvalidConfigException
      */
     protected function httpGet(string $url, array $query, array $headers)
     {
@@ -56,10 +64,13 @@ abstract class BaseClient
     /**
      * POST request.
      *
-     * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @param  string  $url
+     * @param  array   $data
+     * @param  array   $headers
      *
-     * @return \Psr\Http\Message\ResponseInterface
+     * @return ResponseInterface
+     * @throws GuzzleException
+     * @throws InvalidConfigException
      */
     protected function httpPost(string $url, array $data = [], array $headers = [])
     {
@@ -73,8 +84,8 @@ abstract class BaseClient
      * @param array $headers
      * @param array $query
      * @return array|Collection|object|ResponseInterface|string
-     * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws InvalidConfigException
+     * @throws GuzzleException
      */
     protected function httpDelete(string $url, array $headers, array $query = [])
     {
@@ -87,37 +98,46 @@ abstract class BaseClient
     /**
      * JSON request.
      *
-     * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @param  string  $url
+     * @param  array   $data
+     * @param  array   $headers
      *
-     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
+     * @return array|Collection|object|ResponseInterface|string
+     * @throws GuzzleException
+     * @throws InvalidConfigException
      */
     protected function httpPostJson(string $url, array $data, array $headers)
     {
         return $this->request($url, 'POST', ['headers' => $headers, 'json' => $data]);
     }
 
-    /**
+    /****
      * PUT request.
-     *
-     * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @param  string  $url
+     * @param  array   $data
+     * @param  array   $headers
      *
      * @return array|Collection|object|ResponseInterface|string
+     * @throws GuzzleException
+     * @throws InvalidConfigException
      */
     protected function httpPut(string $url, array $data, array $headers)
     {
         return $this->request($url, 'PUT', ['headers' => $headers, 'json' => $data]);
     }
 
-    /**
+    /****
      * 上传文件
      * Upload file.
      *
-     * @throws \EasyJiGuang\Kernel\Exceptions\InvalidConfigException
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @param  string  $url
+     * @param  array   $files
+     * @param  array   $headers
+     * @param  array   $form
      *
-     * @return \Psr\Http\Message\ResponseInterface
+     * @return array|Collection|object|ResponseInterface|string
+     * @throws GuzzleException
+     * @throws InvalidConfigException
      */
     protected function httpUpload(string $url, array $files, array $headers, array $form = [])
     {
@@ -140,12 +160,17 @@ abstract class BaseClient
         );
     }
 
-    /**
-     * @throws \GuzzleHttp\Exception\GuzzleException|\EasyJiGuang\Kernel\Exceptions\InvalidConfigException
+    /****
+     * @param  string  $url
+     * @param  string  $method
+     * @param  array   $options
+     * @param  false   $returnRaw
      *
-     * @return array|\EasyJiGuang\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
+     * @return array|Collection|string|object|ResponseInterface
+     * @throws GuzzleException
+     * @throws InvalidConfigException
      */
-    protected function request(string $url, string $method = 'GET', array $options = [])
+    protected function request(string $url, string $method = 'GET', array $options = [], bool $returnRaw = false)
     {
         if (empty($this->middlewares)) {
             $this->registerHttpMiddlewares();
@@ -223,7 +248,7 @@ abstract class BaseClient
             // group
             return base64_encode($this->app->config->get('groupKey').':'.$this->app->config->get('groupSecret'));
         } elseif ('dev' === $type) {
-            return base64_encode($this->app->configg->get('devKey').':'.$this->app->config->get('devSecret'));
+            return base64_encode($this->app->config->get('devKey').':'.$this->app->config->get('devSecret'));
         }
     }
 

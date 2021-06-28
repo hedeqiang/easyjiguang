@@ -14,9 +14,9 @@ namespace EasyJiGuang\Kernel\Contracts;
 use ArrayAccess;
 
 /**
- * Interface Arrayable.
+ * Interface ArrayAble.
  */
-interface Arrayable extends ArrayAccess
+interface ArrayAble extends ArrayAccess
 {
     /**
      * Get the instance as an array.

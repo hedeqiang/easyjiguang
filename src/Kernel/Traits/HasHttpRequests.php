@@ -13,6 +13,7 @@ namespace EasyJiGuang\Kernel\Traits;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Utils;
 use Psr\Http\Message\ResponseInterface;
@@ -60,6 +61,8 @@ trait HasHttpRequests
 
     /**
      * Return current guzzle default settings.
+     *
+     * @return array
      */
     protected static function getDefaultOptions(): array
     {
@@ -68,6 +71,8 @@ trait HasHttpRequests
 
     /**
      * Set GuzzleHttp\Client.
+     *
+     * @param  ClientInterface  $httpClient
      *
      * @return $this
      */
@@ -80,6 +85,8 @@ trait HasHttpRequests
 
     /**
      * Return GuzzleHttp\ClientInterface instance.
+     *
+     * @return ClientInterface
      */
     protected function getHttpClient(): ClientInterface
     {
@@ -115,6 +122,8 @@ trait HasHttpRequests
 
     /**
      * Return all middlewares.
+     *
+     * @return array
      */
     protected function getMiddlewares(): array
     {
@@ -128,7 +137,7 @@ trait HasHttpRequests
      * @param string $method
      * @param array  $options
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return ResponseInterface
      */
@@ -151,6 +160,8 @@ trait HasHttpRequests
     }
 
     /**
+     * @param  HandlerStack  $handlerStack
+     *
      * @return $this
      */
     protected function setHandlerStack(HandlerStack $handlerStack): HasHttpRequests
@@ -162,6 +173,8 @@ trait HasHttpRequests
 
     /**
      * Build a handler stack.
+     *
+     * @return HandlerStack
      */
     protected function getHandlerStack(): HandlerStack
     {
@@ -178,6 +191,11 @@ trait HasHttpRequests
         return $this->handlerStack;
     }
 
+    /***
+     * @param  array  $options
+     *
+     * @return array
+     */
     protected function fixJsonIssue(array $options): array
     {
         if (isset($options['json']) && is_array($options['json'])) {

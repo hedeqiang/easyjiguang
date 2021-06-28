@@ -14,7 +14,7 @@ namespace EasyJiGuang\Kernel\Support;
 use ArrayAccess;
 use ArrayIterator;
 use Countable;
-use EasyJiGuang\Kernel\Contracts\Arrayable;
+use EasyJiGuang\Kernel\Contracts\ArrayAble;
 use IteratorAggregate;
 use JsonSerializable;
 use Serializable;
@@ -22,7 +22,7 @@ use Serializable;
 /**
  * Class Collection.
  */
-class Collection implements ArrayAccess, Countable, IteratorAggregate, JsonSerializable, Serializable, Arrayable
+class Collection implements ArrayAccess, Countable, IteratorAggregate, JsonSerializable, Serializable, ArrayAble
 {
     /**
      * The collection data.
@@ -33,6 +33,8 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate, JsonSeria
 
     /**
      * set data.
+     *
+     * @param  array  $items
      */
     public function __construct(array $items = [])
     {

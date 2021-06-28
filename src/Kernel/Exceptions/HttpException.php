@@ -11,6 +11,11 @@
 
 namespace EasyJiGuang\Kernel\Exceptions;
 
-class HttpException extends Exception
+/****
+ * Class HttpException
+ *
+ * @package EasyJiGuang\Kernel\Exceptions
+ */
+class HttpException extends EasyJiGuangException
 {
 }
