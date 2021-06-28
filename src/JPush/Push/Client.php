@@ -19,7 +19,6 @@ use Psr\Http\Message\ResponseInterface;
 
 class Client extends BaseClient
 {
-
     const ENDPOINT_TEMPLATE = 'https://api.jpush.cn/v3';
 
     const ENDPOINT_VERSION = 'v3';
@@ -27,12 +26,12 @@ class Client extends BaseClient
     /**
      * 向某单个设备或者某设备列表推送一条通知、或者消息。
      *
-     * @param  array  $options
+     * @param array $options
+     *
+     * @throws InvalidConfigException
+     * @throws GuzzleException
      *
      * @return ResponseInterface
-     * @throws InvalidConfigException
-     *
-     * @throws GuzzleException
      */
     public function message(array $options): ResponseInterface
     {
@@ -44,10 +43,10 @@ class Client extends BaseClient
     /**
      * 推送唯一标识符.
      *
-     * @return array|Collection|object|ResponseInterface|string
      * @throws GuzzleException
-     *
      * @throws InvalidConfigException
+     *
+     * @return array|Collection|object|ResponseInterface|string
      */
     public function getCid(array $query)
     {
@@ -63,10 +62,10 @@ class Client extends BaseClient
     /**
      * 推送校验 API.
      *
-     * @return array|Collection|object|ResponseInterface|string
      * @throws GuzzleException
-     *
      * @throws InvalidConfigException
+     *
+     * @return array|Collection|object|ResponseInterface|string
      */
     public function validate(array $options)
     {
@@ -78,10 +77,10 @@ class Client extends BaseClient
     /**
      * 批量单推  针对的是RegID方式批量单推.
      *
-     * @return array|Collection|object|ResponseInterface|string
      * @throws InvalidConfigException
-     *
      * @throws GuzzleException
+     *
+     * @return array|Collection|object|ResponseInterface|string
      */
     public function batchRegidSingle(array $options)
     {
@@ -93,10 +92,10 @@ class Client extends BaseClient
     /**
      * 针对的是Alias方式批量单推.
      *
-     * @return array|Collection|object|ResponseInterface|string
      * @throws GuzzleException
-     *
      * @throws InvalidConfigException
+     *
+     * @return array|Collection|object|ResponseInterface|string
      */
     public function batchAliasSingle(array $options)
     {
@@ -110,10 +109,10 @@ class Client extends BaseClient
      *
      * @param $msgID
      *
-     * @return array|Collection|object|ResponseInterface|string
      * @throws GuzzleException
-     *
      * @throws InvalidConfigException
+     *
+     * @return array|Collection|object|ResponseInterface|string
      */
     public function revoke($msgID)
     {
@@ -125,10 +124,10 @@ class Client extends BaseClient
     /**
      * 文件推送
      *
-     * @return array|Collection|object|ResponseInterface|string
      * @throws GuzzleException
-     *
      * @throws InvalidConfigException
+     *
+     * @return array|Collection|object|ResponseInterface|string
      */
     public function file(array $options)
     {
@@ -140,10 +139,10 @@ class Client extends BaseClient
     /**
      * Group Push API：应用分组推送
      *
-     * @return array|Collection|object|ResponseInterface|string
      * @throws GuzzleException
-     *
      * @throws InvalidConfigException
+     *
+     * @return array|Collection|object|ResponseInterface|string
      */
     public function groupPush(array $options)
     {
@@ -155,10 +154,10 @@ class Client extends BaseClient
     /**
      * 应用分组文件推送（VIP专属接口）.
      *
-     * @return array|Collection|object|ResponseInterface|string
      * @throws GuzzleException
-     *
      * @throws InvalidConfigException
+     *
+     * @return array|Collection|object|ResponseInterface|string
      */
     public function groupPushFile(array $options)
     {
@@ -166,5 +165,4 @@ class Client extends BaseClient
 
         return $this->httpPostJson($url, $options, $this->getHeader('group'));
     }
-
 }

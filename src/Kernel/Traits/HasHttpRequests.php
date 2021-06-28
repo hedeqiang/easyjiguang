@@ -72,7 +72,7 @@ trait HasHttpRequests
     /**
      * Set GuzzleHttp\Client.
      *
-     * @param  ClientInterface  $httpClient
+     * @param ClientInterface $httpClient
      *
      * @return $this
      */
@@ -160,7 +160,7 @@ trait HasHttpRequests
     }
 
     /**
-     * @param  HandlerStack  $handlerStack
+     * @param HandlerStack $handlerStack
      *
      * @return $this
      */

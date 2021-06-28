@@ -81,9 +81,9 @@ class LogManager implements LoggerInterface
      *
      * @param string|null $channel
      *
-     * @return LoggerInterface
      *@throws Exception
      *
+     * @return LoggerInterface
      */
     public function stack(array $channels, string $channel = null)
     {
@@ -109,9 +109,9 @@ class LogManager implements LoggerInterface
      *
      * @param string|null $driver
      *
-     * @return LoggerInterface|Monolog
      *@throws Exception
      *
+     * @return LoggerInterface|Monolog
      */
     public function driver(string $driver = null)
     {
@@ -123,9 +123,9 @@ class LogManager implements LoggerInterface
      *
      * @param string $name
      *
-     * @return LoggerInterface
      *@throws Exception
      *
+     * @return LoggerInterface
      */
     protected function get(string $name)
     {
@@ -147,9 +147,9 @@ class LogManager implements LoggerInterface
      *
      * @param string $name
      *
-     * @return LoggerInterface
      *@throws InvalidArgumentException
      *
+     * @return LoggerInterface
      */
     protected function resolve(string $name): LoggerInterface
     {
@@ -188,7 +188,7 @@ class LogManager implements LoggerInterface
     /**
      * Call a custom driver creator.
      *
-     * @param  array  $config
+     * @param array $config
      *
      * @return mixed
      */
@@ -224,7 +224,7 @@ class LogManager implements LoggerInterface
     /**
      * Create an instance of the single file log driver.
      *
-     * @param  array  $config
+     * @param array $config
      *
      * @return LoggerInterface
      */
@@ -244,7 +244,7 @@ class LogManager implements LoggerInterface
     /**
      * Create an instance of the daily file log driver.
      *
-     * @param  array  $config
+     * @param array $config
      *
      * @return LoggerInterface
      */
@@ -265,7 +265,7 @@ class LogManager implements LoggerInterface
     /**
      * Create an instance of the Slack log driver.
      *
-     * @param  array  $config
+     * @param array $config
      *
      * @return LoggerInterface
      */
@@ -290,7 +290,7 @@ class LogManager implements LoggerInterface
     /**
      * Create an instance of the syslog log driver.
      *
-     * @param  array  $config
+     * @param array $config
      *
      * @return LoggerInterface
      */
@@ -308,7 +308,7 @@ class LogManager implements LoggerInterface
     /**
      * Create an instance of the "error log" log driver.
      *
-     * @param  array  $config
+     * @param array $config
      *
      * @return LoggerInterface
      */
@@ -422,8 +422,8 @@ class LogManager implements LoggerInterface
     /**
      * Register a custom driver creator Closure.
      *
-     * @param  string    $driver
-     * @param  \Closure  $callback
+     * @param string   $driver
+     * @param \Closure $callback
      *
      * @return $this
      */
@@ -437,11 +437,12 @@ class LogManager implements LoggerInterface
     /**
      * System is unusable.
      *
-     * @param  string  $message
-     * @param  array   $context
+     * @param string $message
+     * @param array  $context
+     *
+     * @throws Exception
      *
      * @return void
-     * @throws Exception
      */
     public function emergency($message, array $context = [])
     {
@@ -454,11 +455,12 @@ class LogManager implements LoggerInterface
      * Example: Entire website down, database unavailable, etc. This should
      * trigger the SMS alerts and wake you up.
      *
-     * @param  string  $message
-     * @param  array   $context
+     * @param string $message
+     * @param array  $context
+     *
+     * @throws Exception
      *
      * @return mixed
-     * @throws Exception
      */
     public function alert($message, array $context = [])
     {
@@ -472,9 +474,9 @@ class LogManager implements LoggerInterface
      *
      * @param string $message
      *
-     * @return mixed
      *@throws Exception
      *
+     * @return mixed
      */
     public function critical($message, array $context = [])
     {
@@ -487,9 +489,9 @@ class LogManager implements LoggerInterface
      *
      * @param string $message
      *
-     * @return mixed
      *@throws Exception
      *
+     * @return mixed
      */
     public function error($message, array $context = [])
     {
@@ -504,9 +506,9 @@ class LogManager implements LoggerInterface
      *
      * @param string $message
      *
-     * @return mixed
      *@throws Exception
      *
+     * @return mixed
      */
     public function warning($message, array $context = [])
     {
@@ -518,9 +520,9 @@ class LogManager implements LoggerInterface
      *
      * @param string $message
      *
-     * @return mixed
      *@throws Exception
      *
+     * @return mixed
      */
     public function notice($message, array $context = [])
     {
@@ -534,9 +536,9 @@ class LogManager implements LoggerInterface
      *
      * @param string $message
      *
-     * @return mixed
      * @throws Exception
      *
+     * @return mixed
      */
     public function info($message, array $context = [])
     {
@@ -548,9 +550,9 @@ class LogManager implements LoggerInterface
      *
      * @param string $message
      *
-     * @return mixed
      * @throws Exception
      *
+     * @return mixed
      */
     public function debug($message, array $context = [])
     {
@@ -563,9 +565,9 @@ class LogManager implements LoggerInterface
      * @param mixed  $level
      * @param string $message
      *
-     * @return mixed
      * @throws Exception
      *
+     * @return mixed
      */
     public function log($level, $message, array $context = [])
     {

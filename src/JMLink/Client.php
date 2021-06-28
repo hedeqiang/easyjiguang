@@ -24,7 +24,7 @@ class Client extends BaseClient
     /**
      * 短链查询.
      *
-     * @param  array  $options
+     * @param array $options
      *
      * @throws InvalidConfigException
      * @throws GuzzleException

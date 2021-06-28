@@ -19,7 +19,6 @@ use Psr\Http\Message\ResponseInterface;
 
 class Client extends BaseClient
 {
-
     const ENDPOINT_TEMPLATE = 'https://api.jpush.cn/v3/schedules';
 
     const ENDPOINT_VERSION = 'v3';
@@ -29,10 +28,10 @@ class Client extends BaseClient
      *
      * @param $options
      *
-     * @return array|Collection|object|ResponseInterface|string
      * @throws GuzzleException
-     *
      * @throws InvalidConfigException
+     *
+     * @return array|Collection|object|ResponseInterface|string
      */
     public function addSchedules($options)
     {
@@ -42,13 +41,13 @@ class Client extends BaseClient
     /**
      * 获取有效的 Schedule 列表.
      *
-     * @param  int          $page
-     * @param  array|int[]  $query
+     * @param int         $page
+     * @param array|int[] $query
+     *
+     * @throws GuzzleException
+     * @throws InvalidConfigException
      *
      * @return array|Collection|object|ResponseInterface|string
-     * @throws GuzzleException
-     *
-     * @throws InvalidConfigException
      */
     public function getSchedules(int $page = 1, array $query = ['page' => $page])
     {
@@ -60,10 +59,10 @@ class Client extends BaseClient
      *
      * @param $schedule_id
      *
-     * @return array|Collection|object|ResponseInterface|string
      * @throws GuzzleException
-     *
      * @throws InvalidConfigException
+     *
+     * @return array|Collection|object|ResponseInterface|string
      */
     public function getSchedulesById($schedule_id)
     {
@@ -77,10 +76,10 @@ class Client extends BaseClient
      *
      * @param $schedule_id
      *
-     * @return array|Collection|object|ResponseInterface|string
      * @throws GuzzleException
-     *
      * @throws InvalidConfigException
+     *
+     * @return array|Collection|object|ResponseInterface|string
      */
     public function getMsgId($schedule_id)
     {
@@ -95,10 +94,10 @@ class Client extends BaseClient
      * @param $schedule_id
      * @param $options
      *
-     * @return array|Collection|object|ResponseInterface|string
      * @throws GuzzleException
-     *
      * @throws InvalidConfigException
+     *
+     * @return array|Collection|object|ResponseInterface|string
      */
     public function updateSchedules($schedule_id, $options)
     {
@@ -112,10 +111,10 @@ class Client extends BaseClient
      *
      * @param $schedule_id
      *
-     * @return array|Collection|object|ResponseInterface|string
      * @throws GuzzleException
-     *
      * @throws InvalidConfigException
+     *
+     * @return array|Collection|object|ResponseInterface|string
      */
     public function deleteSchedules($schedule_id)
     {
@@ -123,5 +122,4 @@ class Client extends BaseClient
 
         return $this->httpDelete($url, $this->getHeader());
     }
-
 }

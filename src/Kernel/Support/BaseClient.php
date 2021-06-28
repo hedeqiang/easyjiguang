@@ -38,7 +38,7 @@ abstract class BaseClient
     /**
      * BaseClient constructor.
      *
-     * @param  ServiceContainer  $app
+     * @param ServiceContainer $app
      */
     public function __construct(ServiceContainer $app)
     {
@@ -48,13 +48,14 @@ abstract class BaseClient
     /**
      * GET request.
      *
-     * @param  string  $url
-     * @param  array   $query
-     * @param  array   $headers
+     * @param string $url
+     * @param array  $query
+     * @param array  $headers
      *
-     * @return array|Collection|object|ResponseInterface|string
      * @throws GuzzleException
      * @throws InvalidConfigException
+     *
+     * @return array|Collection|object|ResponseInterface|string
      */
     protected function httpGet(string $url, array $query, array $headers)
     {
@@ -64,13 +65,14 @@ abstract class BaseClient
     /**
      * POST request.
      *
-     * @param  string  $url
-     * @param  array   $data
-     * @param  array   $headers
+     * @param string $url
+     * @param array  $data
+     * @param array  $headers
      *
-     * @return ResponseInterface
      * @throws GuzzleException
      * @throws InvalidConfigException
+     *
+     * @return ResponseInterface
      */
     protected function httpPost(string $url, array $data = [], array $headers = [])
     {
@@ -98,13 +100,14 @@ abstract class BaseClient
     /**
      * JSON request.
      *
-     * @param  string  $url
-     * @param  array   $data
-     * @param  array   $headers
+     * @param string $url
+     * @param array  $data
+     * @param array  $headers
      *
-     * @return array|Collection|object|ResponseInterface|string
      * @throws GuzzleException
      * @throws InvalidConfigException
+     *
+     * @return array|Collection|object|ResponseInterface|string
      */
     protected function httpPostJson(string $url, array $data, array $headers)
     {

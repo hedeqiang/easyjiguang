@@ -17,7 +17,6 @@ use GuzzleHttp\Exception\GuzzleException;
 
 class Client extends BaseClient
 {
-
     const ENDPOINT_TEMPLATE = 'https://api.sms.jpush.cn/v1/';
 
     const ENDPOINT_VERSION = 'v1';
@@ -25,7 +24,7 @@ class Client extends BaseClient
     /**
      * 发送文本验证码短信 API.
      *
-     * @param  array  $options
+     * @param array $options
      *
      * @throws GuzzleException
      * @throws InvalidConfigException
@@ -40,7 +39,7 @@ class Client extends BaseClient
     /**
      * 发送语音验证码短信 API.
      *
-     * @param  array  $options
+     * @param array $options
      *
      * @throws GuzzleException
      * @throws InvalidConfigException
@@ -55,8 +54,8 @@ class Client extends BaseClient
     /**
      * 验证码验证 API.
      *
-     * @param  string  $msg_id
-     * @param  string  $code
+     * @param string $msg_id
+     * @param string $code
      *
      * @throws GuzzleException
      * @throws InvalidConfigException
@@ -71,7 +70,7 @@ class Client extends BaseClient
     /**
      * 发送单条模板短信 API.
      *
-     * @param  array  $options
+     * @param array $options
      *
      * @throws GuzzleException
      * @throws InvalidConfigException
@@ -86,7 +85,7 @@ class Client extends BaseClient
     /**
      * 发送批量模板短信 API.
      *
-     * @param  array  $options
+     * @param array $options
      *
      * @throws GuzzleException
      * @throws InvalidConfigException
@@ -101,7 +100,7 @@ class Client extends BaseClient
     /**
      * 单条定时短信提交 API.
      *
-     * @param  array  $options
+     * @param array $options
      *
      * @throws GuzzleException
      * @throws InvalidConfigException
@@ -116,7 +115,7 @@ class Client extends BaseClient
     /**
      * 批量定时短信提交 API.
      *
-     * @param  array  $options
+     * @param array $options
      *
      * @throws GuzzleException
      * @throws InvalidConfigException
@@ -131,8 +130,8 @@ class Client extends BaseClient
     /**
      * 单条定时短信修改 API.
      *
-     * @param  string  $schedule_id
-     * @param  array   $options
+     * @param string $schedule_id
+     * @param array  $options
      *
      * @throws GuzzleException
      * @throws InvalidConfigException
@@ -147,8 +146,8 @@ class Client extends BaseClient
     /**
      * 批量定时短信修改 API.
      *
-     * @param  string  $schedule_id
-     * @param  array   $options
+     * @param string $schedule_id
+     * @param array  $options
      *
      * @throws GuzzleException
      * @throws InvalidConfigException
@@ -163,7 +162,7 @@ class Client extends BaseClient
     /**
      * 定时短信查询API.
      *
-     * @param  string  $schedule_id
+     * @param string $schedule_id
      *
      * @throws GuzzleException
      * @throws InvalidConfigException
@@ -178,7 +177,7 @@ class Client extends BaseClient
     /**
      * 定时短信删除 API.
      *
-     * @param  string  $schedule_id
+     * @param string $schedule_id
      *
      * @throws GuzzleException
      * @throws InvalidConfigException
@@ -189,5 +188,4 @@ class Client extends BaseClient
 
         $this->httpDelete($url, $this->getHeader());
     }
-
 }

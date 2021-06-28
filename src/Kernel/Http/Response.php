@@ -21,7 +21,6 @@ use Psr\Http\Message\ResponseInterface;
  */
 class Response extends GuzzleResponse
 {
-
     /****
      * @return string
      */
@@ -35,7 +34,7 @@ class Response extends GuzzleResponse
     }
 
     /**
-     * @param  ResponseInterface  $response
+     * @param ResponseInterface $response
      *
      * @return \EasyJiGuang\Kernel\Http\Response
      */
@@ -76,7 +75,7 @@ class Response extends GuzzleResponse
         $array = json_decode($content, true, 512, JSON_BIGINT_AS_STRING);
 
         if (JSON_ERROR_NONE === json_last_error()) {
-            return (array)$array;
+            return (array) $array;
         }
 
         return [];
@@ -109,7 +108,7 @@ class Response extends GuzzleResponse
     }
 
     /**
-     * @param  string  $content
+     * @param string $content
      *
      * @return string
      */
@@ -117,5 +116,4 @@ class Response extends GuzzleResponse
     {
         return preg_replace('/[\x00-\x1F\x80-\x9F]/u', '', $content);
     }
-
 }

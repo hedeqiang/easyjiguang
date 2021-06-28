@@ -47,10 +47,10 @@ class Client extends BaseClient
      * @param $registration_id
      * @param $options
      *
-     * @return array|Collection|object|ResponseInterface|string
      *@throws GuzzleException
-     *
      * @throws InvalidConfigException
+     *
+     * @return array|Collection|object|ResponseInterface|string
      */
     public function updateDevices($registration_id, $options)
     {
@@ -63,12 +63,12 @@ class Client extends BaseClient
      * 查询别名.
      *
      * @param $alias_value
-     * @param  string[]  $platform
+     * @param string[] $platform
+     *
+     *@throws GuzzleException
+     * @throws InvalidConfigException
      *
      * @return array|Collection|object|ResponseInterface|string
-     *@throws GuzzleException
-     *
-     * @throws InvalidConfigException
      */
     public function getAliases($alias_value, array $platform = ['platform ' => 'all'])
     {
@@ -81,12 +81,12 @@ class Client extends BaseClient
      * 删除别名.
      *
      * @param $alias_value
-     * @param  string[]  $platform
+     * @param string[] $platform
+     *
+     *@throws GuzzleException
+     * @throws InvalidConfigException
      *
      * @return array|Collection|object|ResponseInterface|string
-     *@throws GuzzleException
-     *
-     * @throws InvalidConfigException
      */
     public function deleteAliases($alias_value, array $platform = ['platform ' => 'all'])
     {
@@ -101,10 +101,10 @@ class Client extends BaseClient
      * @param $alias_value
      * @param $options
      *
-     * @return array|Collection|object|ResponseInterface|string
      *@throws GuzzleException
-     *
      * @throws InvalidConfigException
+     *
+     * @return array|Collection|object|ResponseInterface|string
      */
     public function removeAliases($alias_value, $options)
     {
@@ -116,10 +116,10 @@ class Client extends BaseClient
     /**
      * 查询标签列表.
      *
-     * @return array|Collection|object|ResponseInterface|string
      *@throws GuzzleException
-     *
      * @throws InvalidConfigException
+     *
+     * @return array|Collection|object|ResponseInterface|string
      */
     public function getTags()
     {
@@ -131,10 +131,10 @@ class Client extends BaseClient
     /**
      * 判断设备与标签绑定关系.
      *
-     * @return array|Collection|object|ResponseInterface|string
      *@throws GuzzleException
-     *
      * @throws InvalidConfigException
+     *
+     * @return array|Collection|object|ResponseInterface|string
      */
     public function isDeviceInTag(string $tag_value, string $registration_id)
     {
@@ -146,10 +146,10 @@ class Client extends BaseClient
     /**
      * 更新标签.
      *
-     * @return array|Collection|object|ResponseInterface|string
      *@throws GuzzleException
-     *
      * @throws InvalidConfigException
+     *
+     * @return array|Collection|object|ResponseInterface|string
      */
     public function updateTag(string $tag_value, array $options)
     {
@@ -161,12 +161,12 @@ class Client extends BaseClient
     /**
      *  删除标签.
      *
-     * @param  string[]  $platform
+     * @param string[] $platform
+     *
+     *@throws GuzzleException
+     * @throws InvalidConfigException
      *
      * @return array|Collection|object|ResponseInterface|string
-     *@throws GuzzleException
-     *
-     * @throws InvalidConfigException
      */
     public function deleteTag(string $tag_value, array $platform = ['platform ' => 'all'])
     {
@@ -178,10 +178,10 @@ class Client extends BaseClient
     /**
      * 获取用户在线状态（VIP 专属接口）.
      *
-     * @return array|Collection|object|ResponseInterface|string
      *@throws GuzzleException
-     *
      * @throws InvalidConfigException
+     *
+     * @return array|Collection|object|ResponseInterface|string
      */
     public function status(array $options)
     {
