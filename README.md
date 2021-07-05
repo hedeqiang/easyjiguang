@@ -434,6 +434,10 @@ You can contribute in one of three ways:
 _The code contribution process is not very formal. You just need to make sure that you follow the PSR-0, PSR-1, and
 PSR-2 coding guidelines. Any new code contributions must be accompanied by unit tests where applicable._
 
+
+## 工具
+<a target="_blank" href="https://www.jetbrains.com/?from=easyjiguang"><img src="https://upyun.laravelcode.cn/upload/JetBrains/jetbrains-training-partner.png" width="100"></img></a>
+
 ## License
 
 MIT
