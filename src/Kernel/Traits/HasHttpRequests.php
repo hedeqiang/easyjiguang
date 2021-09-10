@@ -109,7 +109,7 @@ trait HasHttpRequests
      *
      * @return $this
      */
-    protected function pushMiddleware(callable $middleware, string $name = null): HasHttpRequests
+    protected function pushMiddleware(callable $middleware, string $name = null)
     {
         if (!is_null($name)) {
             $this->middlewares[$name] = $middleware;
@@ -164,7 +164,7 @@ trait HasHttpRequests
      *
      * @return $this
      */
-    protected function setHandlerStack(HandlerStack $handlerStack): HasHttpRequests
+    protected function setHandlerStack(HandlerStack $handlerStack)
     {
         $this->handlerStack = $handlerStack;
 
@@ -218,7 +218,7 @@ trait HasHttpRequests
      *
      * @return callable
      */
-    protected function getGuzzleHandler(): callable
+    protected function getGuzzleHandler()
     {
         if (property_exists($this, 'app') && isset($this->app['guzzle_handler'])) {
             return is_string($handler = $this->app->raw('guzzle_handler'))
