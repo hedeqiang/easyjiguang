@@ -14,7 +14,6 @@ namespace EasyJiGuang\Kernel\Support;
 use EasyJiGuang\Kernel\Exceptions\InvalidConfigException;
 use EasyJiGuang\Kernel\ServiceContainer;
 use EasyJiGuang\Kernel\Traits\HasHttpRequests;
-use EasyJiGuang\Kernel\Traits\string;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\MessageFormatter;
 use GuzzleHttp\Middleware;
