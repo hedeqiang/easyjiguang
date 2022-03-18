@@ -31,9 +31,9 @@ class Client extends BaseClient
      * @throws InvalidConfigException
      * @throws GuzzleException
      *
-     * @return ResponseInterface
+     * @return array|Collection|object|ResponseInterface|string
      */
-    public function message(array $options): ResponseInterface
+    public function message(array $options)
     {
         $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, 'push');
 

@@ -41,7 +41,6 @@ class Client extends BaseClient
     /**
      * 获取有效的 Schedule 列表.
      *
-     * @param int         $page
      * @param array|int[] $query
      *
      * @throws GuzzleException
@@ -49,7 +48,7 @@ class Client extends BaseClient
      *
      * @return array|Collection|object|ResponseInterface|string
      */
-    public function getSchedules(int $page = 1, array $query = ['page' => $page])
+    public function getSchedules(array $query = ['page' => 1])
     {
         return $this->httpGet(self::ENDPOINT_TEMPLATE, $query, $this->getHeader());
     }
