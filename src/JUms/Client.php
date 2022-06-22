@@ -11,14 +11,11 @@
 
 namespace EasyJiGuang\JUms;
 
-use EasyJiGuang\Kernel\Exceptions\InvalidConfigException;
 use EasyJiGuang\Kernel\Support\BaseClient;
-use GuzzleHttp\Exception\GuzzleException;
 
 class Client extends BaseClient
 {
     const ENDPOINT_TEMPLATE = 'https://api.ums.jiguang.cn/v1/broadcast';
 
     //const ENDPOINT_TEMPLATE = 'https://api.ums.jiguang.cn/v1/sent';
-
 }
