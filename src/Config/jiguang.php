@@ -16,12 +16,15 @@ return [
     'groupKey'    => env('JPUSH_GROUP_KEY'),
     'groupSecret' => env('JPUSH_GROUP_SECRET'),
 
-    'devKey'    => env('JPUSH_DEV_KEY'),
-    'devSecret' => env('JPUSH_DEV_SECRET'),
+    'devKey'        => env('JPUSH_DEV_KEY'),
+    'devSecret'     => env('JPUSH_DEV_SECRET'),
 
     // UMS
-    'ChannelKey'   => env('JPUSH_CHANNEL_KEY'),
-    'MasterSecret' => env('JPUSH_MASTER_SECRET'),
+    'ums'           => [
+        'channelKey'   => env('JPUSH_CHANNEL_KEY'),
+        'masterSecret' => env('JPUSH_MASTER_SECRET'),
+    ],
+
 
     /*
      * 指定 API 调用返回结果的类型：array(default)/collection/object/raw/自定义类名
@@ -35,11 +38,11 @@ return [
      *         debug/info/notice/warning/error/critical/alert/emergency
      * path：日志文件位置(绝对路径!!!)，要求可写权限
      */
-    'log' => [
+    'log'           => [
         'default'  => env('APP_DEBUG', false) ? 'dev' : 'prod', // 默认使用的 channel，生产环境可以改为下面的 prod
         'channels' => [
             // 测试环境
-            'dev' => [
+            'dev'  => [
                 'driver' => 'single',
                 'path'   => '/tmp/push.log',
                 'level'  => 'debug',

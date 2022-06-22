@@ -11,11 +11,41 @@
 
 namespace EasyJiGuang\JUms;
 
+use EasyJiGuang\Kernel\Exceptions\InvalidConfigException;
 use EasyJiGuang\Kernel\Support\BaseClient;
 
 class Client extends BaseClient
 {
-    const ENDPOINT_TEMPLATE = 'https://api.ums.jiguang.cn/v1/broadcast';
+    const ENDPOINT_TEMPLATE = 'https://api.ums.jiguang.cn/v1/%s';
 
-    //const ENDPOINT_TEMPLATE = 'https://api.ums.jiguang.cn/v1/sent';
+    /**
+     * @throws InvalidConfigException
+     */
+    public function broadcast(array $options)
+    {
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, 'broadcast');
+
+        return $this->httpPostJson($url, $options, $this->getHeader('ums'));
+    }
+
+    public function sent(array $options)
+    {
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, 'sent');
+
+        return $this->httpPostJson($url, $options, $this->getHeader('ums'));
+    }
+
+    public function templateBroadcast(array $options)
+    {
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, 'template/broadcast');
+
+        return $this->httpPostJson($url, $options, $this->getHeader('ums'));
+    }
+
+    public function templateSent(array $options)
+    {
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, 'template/sent');
+
+        return $this->httpPostJson($url, $options, $this->getHeader('ums'));
+    }
 }

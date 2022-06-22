@@ -247,10 +247,11 @@ abstract class BaseClient
         if ('app' === $type) {
             return base64_encode($this->app->config->get('appKey').':'.$this->app->config->get('masterSecret'));
         } elseif ('group' === $type) {
-            // group
             return base64_encode($this->app->config->get('groupKey').':'.$this->app->config->get('groupSecret'));
         } elseif ('dev' === $type) {
             return base64_encode($this->app->config->get('devKey').':'.$this->app->config->get('devSecret'));
+        } elseif ('ums' === $type) {
+            return base64_encode($this->app->config->get('ums.channelKey').':'.$this->app->config->get('ums.masterSecret'));
         }
     }
 
