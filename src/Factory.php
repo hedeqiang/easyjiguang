@@ -18,6 +18,7 @@ use EasyJiGuang\Kernel\ServiceContainer;
  * @method static \EasyJiGuang\JVerify\Application JVerify(array $config)
  * @method static \EasyJiGuang\JMessage\Application JMessage(array $config)
  * @method static \EasyJiGuang\JMLink\Application JMLink(array $config)
+ * @method static \EasyJiGuang\JUms\Application JUms(array $config)
  *                                                                          Class Factory
  */
 class Factory

@@ -47,4 +47,9 @@ class EasyJiGuang extends Facade
     {
         return app('link');
     }
+
+    public static function JUms(): \EasyJiGuang\JUms\Application
+    {
+        return app('ums');
+    }
 }
