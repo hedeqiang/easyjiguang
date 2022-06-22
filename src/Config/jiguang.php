@@ -20,7 +20,7 @@ return [
     'devSecret' => env('JPUSH_DEV_SECRET'),
 
     // UMS
-    'ChannelKey' => env('JPUSH_CHANNEL_KEY'),
+    'ChannelKey'   => env('JPUSH_CHANNEL_KEY'),
     'MasterSecret' => env('JPUSH_MASTER_SECRET'),
 
     /*

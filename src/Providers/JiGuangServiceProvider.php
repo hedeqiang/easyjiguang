@@ -14,8 +14,8 @@ namespace EasyJiGuang\Providers;
 use EasyJiGuang\JMessage\Application as JMessage;
 use EasyJiGuang\JMLink\Application as JMLink;
 use EasyJiGuang\JPush\Application as JPush;
-use EasyJiGuang\JVerify\Application as JVerify;
 use EasyJiGuang\Jums\Application as JUms;
+use EasyJiGuang\JVerify\Application as JVerify;
 
 class JiGuangServiceProvider extends \Illuminate\Support\ServiceProvider
 {
@@ -35,7 +35,7 @@ class JiGuangServiceProvider extends \Illuminate\Support\ServiceProvider
             'push'    => JPush::class,
             'message' => JMessage::class,
             'link'    => JMLink::class,
-            'ums'    => JUms::class,
+            'ums'     => JUms::class,
         ];
         foreach ($apps as $name => $class) {
             $this->app->singleton($class, function ($app) use ($class) {
@@ -50,6 +50,6 @@ class JiGuangServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     public function provides(): array
     {
-        return ['verify', 'push', 'message', 'link','ums'];
+        return ['verify', 'push', 'message', 'link', 'ums'];
     }
 }
