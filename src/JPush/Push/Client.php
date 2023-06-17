@@ -21,7 +21,6 @@ class Client extends BaseClient
 {
     const ENDPOINT_TEMPLATE = 'https://api.jpush.cn/v3';
 
-
     /**
      * 向某单个设备或者某设备列表推送一条通知、或者消息。
      *
