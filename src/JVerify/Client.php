@@ -21,7 +21,6 @@ class Client extends BaseClient
 {
     const ENDPOINT_TEMPLATE = 'https://api.verification.jpush.cn/v1/';
 
-
     /**
      * 号码认证
      *

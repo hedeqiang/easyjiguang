@@ -19,7 +19,6 @@ class Client extends BaseClient
 {
     const ENDPOINT_TEMPLATE = 'https://api.jmlk.co/v1/';
 
-
     /**
      * 短链查询.
      *

@@ -132,7 +132,7 @@ class XML
 
             $xml .= "<{$key}{$attr}>";
 
-            if ((is_array($val) || is_object($val))) {
+            if (is_array($val) || is_object($val)) {
                 $xml .= self::data2Xml((array) $val, $item, $id);
             } else {
                 $xml .= is_numeric($val) ? $val : self::cdata($val);
