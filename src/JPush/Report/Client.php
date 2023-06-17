@@ -21,7 +21,6 @@ class Client extends BaseClient
 {
     const ENDPOINT_TEMPLATE = 'https://report.jpush.cn/v3';
 
-
     /**
      * 送达统计详情（新）.
      *
