@@ -19,8 +19,6 @@ class Client extends BaseClient
 {
     const ENDPOINT_TEMPLATE = 'https://api.sms.jpush.cn/v1/';
 
-    const ENDPOINT_VERSION = 'v1';
-
     /**
      * 发送文本验证码短信 API.
      *
