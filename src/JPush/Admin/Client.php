@@ -21,8 +21,6 @@ class Client extends BaseClient
 {
     const ENDPOINT_TEMPLATE = 'https://admin.jpush.cn/v1/app';
 
-    const ENDPOINT_VERSION = 'v1';
-
     /**
      * 创建极光 app.
      *

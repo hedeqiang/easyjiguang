@@ -21,8 +21,6 @@ class Client extends BaseClient
 {
     const ENDPOINT_TEMPLATE = 'https://api.jpush.cn/v3/images';
 
-    const ENDPOINT_VERSION = 'v3';
-
     /**
      * 新增图片（URL方式）.
      *

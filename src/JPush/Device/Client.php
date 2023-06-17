@@ -21,8 +21,6 @@ class Client extends BaseClient
 {
     const ENDPOINT_TEMPLATE = 'https://device.jpush.cn/v3';
 
-    const ENDPOINT_VERSION = 'v3';
-
     protected $config;
 
     /***

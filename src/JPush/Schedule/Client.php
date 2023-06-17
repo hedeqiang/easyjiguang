@@ -21,7 +21,6 @@ class Client extends BaseClient
 {
     const ENDPOINT_TEMPLATE = 'https://api.jpush.cn/v3/schedules';
 
-    const ENDPOINT_VERSION = 'v3';
 
     /**
      * 创建定时任务

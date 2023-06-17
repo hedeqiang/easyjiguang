@@ -21,8 +21,6 @@ class Client extends BaseClient
 {
     const ENDPOINT_TEMPLATE = 'https://api.jpush.cn/v3/files';
 
-    const ENDPOINT_VERSION = 'v3';
-
     /**
      * @param string $type
      * @param        $path
