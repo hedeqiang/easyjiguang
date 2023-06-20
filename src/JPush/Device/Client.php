@@ -60,7 +60,7 @@ class Client extends BaseClient
     /**
      * 查询别名.
      *
-     * @param $alias_value
+     * @param          $alias_value
      * @param string[] $platform
      *
      *@throws GuzzleException
@@ -78,7 +78,7 @@ class Client extends BaseClient
     /**
      * 删除别名.
      *
-     * @param $alias_value
+     * @param          $alias_value
      * @param string[] $platform
      *
      *@throws GuzzleException
