@@ -1,4 +1,4 @@
-<h1 align="center"> JIGuang Push</h1>
+<h1 align="center"> JIGuang</h1>
 
 <p align="center"> 极光 API Server SDK for PHP.</p>
 
