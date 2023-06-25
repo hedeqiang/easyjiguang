@@ -11,9 +11,7 @@
 
 namespace EasyJiGuang\JEmail;
 
-use EasyJiGuang\Kernel\Exceptions\InvalidConfigException;
 use EasyJiGuang\Kernel\Support\BaseClient;
-use GuzzleHttp\Exception\GuzzleException;
 
 class Client extends BaseClient
 {
@@ -21,6 +19,5 @@ class Client extends BaseClient
 
     public function send()
     {
-        
     }
 }
