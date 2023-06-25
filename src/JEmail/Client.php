@@ -11,13 +11,20 @@
 
 namespace EasyJiGuang\JEmail;
 
+use EasyJiGuang\Kernel\Exceptions\InvalidConfigException;
 use EasyJiGuang\Kernel\Support\BaseClient;
 
 class Client extends BaseClient
 {
     const ENDPOINT_TEMPLATE = 'https://api.sendcloud.net/apiv2/';
 
-    public function send()
+    /**
+     * @throws InvalidConfigException
+     */
+    public function send($options = [])
     {
+        $url = $this->buildEndpoint(self::ENDPOINT_TEMPLATE, 'mail/send');
+
+        $this->httpPostJson($url, $options, $this->getHeader());
     }
 }
